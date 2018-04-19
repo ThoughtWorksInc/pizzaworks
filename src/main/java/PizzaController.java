@@ -8,6 +8,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import static spark.Spark.after;
+import static spark.Spark.delete;
 import static spark.Spark.exception;
 import static spark.Spark.get;
 import static spark.Spark.port;
@@ -21,17 +22,16 @@ public class PizzaController {
         staticFiles.location("/public");
 
         get("/", (req, res) -> renderPizzas(req));
-//        get("/pizza/:id/edit",          (req, res)      -> renderEditPizza(req));
 
         post("/pizzas", (req, res) -> {
             PizzaDao.add(Pizza.create(req.queryParams("pizza-name")));
             return renderPizzas(req);
         });
-//        delete("/todos/completed",      (ICRoute) (req) -> TodoDao.removeCompleted());
-//        delete("/todos/:id",            (ICRoute) (req) -> TodoDao.remove(req.params("id")));
-//        put("/todos/toggle_status",     (ICRoute) (req) -> TodoDao.toggleAll(req.queryParams("toggle-all") != null));
-//        put("/todos/:id",               (ICRoute) (req) -> TodoDao.update(req.params("id"), req.queryParams("todo-title")));
-//        put("/todos/:id/toggle_status", (ICRoute) (req) -> TodoDao.toggleStatus(req.params("id")));
+
+        delete("/pizzas/:id", (req, res) -> {
+            PizzaDao.remove(req.params("id"));
+            return renderPizzas(req);
+        });
 
         after((req, res) -> {
             if (res.body() == null) { // if the route didn't return anything

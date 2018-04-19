@@ -2,6 +2,7 @@ package model;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class PizzaDao {
 
@@ -15,19 +16,20 @@ public class PizzaDao {
         return PIZZAS.stream().filter(t -> t.getId().equals(id)).findFirst().orElse(null);
     }
 
-//    public static List<Pizza> ofStatus(String statusString) {
-//        return (statusString == null || statusString.isEmpty()) ? PIZZAS : ofStatus(Status.valueOf(statusString.toUpperCase()));
-//    }
-//
-//    public static List<Pizza> ofStatus(Status status) {
-//        return PIZZAS.stream().filter(t -> t.getStatus().equals(status)).collect(Collectors.toList());
-//    }
-
     public static List<Pizza> all() {
         return PIZZAS;
     }
 
     public static Integer count() {
         return PIZZAS.size();
+    }
+
+    public static void remove(String id) {
+        Optional<Pizza> pizzaToRemove = PIZZAS.stream().filter(pizza -> pizza.getId().equals(id)).findFirst();
+        pizzaToRemove.ifPresent(PIZZAS::remove);
+    }
+
+    public static void clearPizzas() {
+        PIZZAS.clear();
     }
 }
