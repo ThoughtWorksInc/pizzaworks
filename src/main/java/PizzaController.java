@@ -9,22 +9,20 @@ import java.util.Map;
 
 import static spark.Spark.after;
 import static spark.Spark.delete;
-import static spark.Spark.exception;
 import static spark.Spark.get;
-import static spark.Spark.port;
 import static spark.Spark.post;
-import static spark.Spark.staticFiles;
 
 public class PizzaController {
-    public static void main(String[] args) {
-        port(getHerokuAssignedPort());
-        exception(Exception.class, (e, req, res) -> e.printStackTrace()); // print all exceptions
-        staticFiles.location("/public");
-
+    public static void initialize() {
         get("/", (req, res) -> renderPizzas(req));
 
         post("/pizzas", (req, res) -> {
             PizzaDao.add(Pizza.create(req.queryParams("pizza-name")));
+            return renderPizzas(req);
+        });
+
+        delete("/pizzas", (req, res) -> {
+            PizzaDao.clearPizzas();
             return renderPizzas(req);
         });
 
@@ -40,16 +38,7 @@ public class PizzaController {
         });
     }
 
-    static int getHerokuAssignedPort() {
-        ProcessBuilder processBuilder = new ProcessBuilder();
-        if (processBuilder.environment().get("PORT") != null) {
-            return Integer.parseInt(processBuilder.environment().get("PORT"));
-        }
-        return 4567;
-    }
-
     private static String renderPizzas(Request req) {
-        String statusStr = req.queryParams("status");
         Map<String, Object> model = new HashMap<>();
         model.put("pizzas", PizzaDao.all());
         model.put("count", PizzaDao.count());
@@ -62,5 +51,4 @@ public class PizzaController {
     private static String renderTemplate(String template, Map model) {
         return new VelocityTemplateEngine().render(new ModelAndView(model, template));
     }
-
 }
