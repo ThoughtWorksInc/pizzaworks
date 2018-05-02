@@ -1,5 +1,5 @@
 <header ic-include='{"status":"$status"}'>
-    <h1>pizzas</h1>
+    <h1>pizzas deployed by pipeline</h1>
     <form id="pizza-form" ic-post-to="/pizzas">
         <input id="new-pizza" placeholder="What is the name of this pizza?" name="pizza-name" pattern=".{4,}" required
                title="> 3 chars" autofocus>
