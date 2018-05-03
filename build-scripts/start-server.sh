@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 echo "---- killing old process ----"
 
 # if there is a running process then kill it...
