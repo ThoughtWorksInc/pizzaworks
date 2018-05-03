@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.thoughtworks.pizza</groupId>
-    <artifactId>twizza</artifactId>
+    <artifactId>pizzaworks</artifactId>
     <version>1.${env.GO_PIPELINE_COUNTER}-RELEASE-CANDIDATE</version>
     <build>
         <plugins>
