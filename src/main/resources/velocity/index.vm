@@ -11,6 +11,9 @@
 <section id="pizzaapp" ic-target="this">
     #parse("/velocity/pizzaList.vm")
 </section>
+<div id="info">
+    <p>Phone number: 0782-129-8883</p>
+</div>
 <script src="/js/vendor/jquery-3.3.1.js"></script>
 <script src="/js/app.js"></script>
 </body>
