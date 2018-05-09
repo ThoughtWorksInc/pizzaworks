@@ -1,9 +1,5 @@
-<header ic-include='{"status":"$status"}'>
-    <h1>pizzas deployed by pipeline</h1>
-    <form id="pizza-form" ic-post-to="/pizzas">
-        <input id="new-pizza" placeholder="What is the name of this pizza?" name="pizza-name" pattern=".{4,}" required
-               title="> 3 chars" autofocus>
-    </form>
+<header>
+    <h1>Welcome to PizzaWorks</h1>
 </header>
 
 <section id="main">
@@ -11,9 +7,7 @@
         #foreach($pizza in $pizzas)
             <li>
                 <div class="view">
-                    <label ic-get-from="/pizzas/$pizza.id/edit" ic-target="closest li" ic-trigger-on="dblclick"
-                           ic-replace-target="true">$pizza.name</label>
-                    <button class="destroy" ic-delete-from="/pizzas/$pizza.id">X</button>
+                    <label>$pizza.name</label>
                 </div>
             </li>
         #end
@@ -21,7 +15,4 @@
 </section>
 
 <footer>
-    <span id="pizza-count">
-        <strong>$count</strong> pizzas in total
-    </span>
 </footer>
