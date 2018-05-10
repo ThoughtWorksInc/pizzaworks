@@ -1,3 +1,3 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
-(cd migrations && pg-migrator postgres://superpizza:$PIZZA_WORKS_PW@localhost/pizzaworks)
+(cd migrations && pg-migrator postgres://$PGUSER:$PGPW@$PGHOST:$PGPORT/$PGDATABASE)
