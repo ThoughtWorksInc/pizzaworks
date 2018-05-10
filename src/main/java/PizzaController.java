@@ -43,8 +43,14 @@ public class PizzaController {
 
     private static String renderPizzas(Request req) {
         Map<String, Object> model = new HashMap<>();
-        Sql2o sql2o = new Sql2o("jdbc:postgresql://localhost:5432/pizzaworks",
-                "superpizza", "bob", new PostgresQuirks() {
+        String host = System.getenv("PGHOST");
+        String port = System.getenv("PGPORT");
+        String user = System.getenv("PGUSER");
+        String databaseName = System.getenv("PGDATABASE");
+        String password = System.getenv("PGPW");
+
+        Sql2o sql2o = new Sql2o("jdbc:postgresql://" + host + ":" + port + "/" + databaseName + "",
+                user, password, new PostgresQuirks() {
             {
                 // make sure we use default UUID converter.
                 converters.put(UUID.class, new UUIDConverter());
