@@ -10,6 +10,8 @@ if [ -f save_pid.txt ]; then
    rm save_pid.txt
 fi
 
+logger pghost: $PGHOST
+
 echo "---- start new process ----"
 nohup java -jar pizzaworks.jar > pizzalogs.log 2>&1 &  # start process detached from session and background it
 echo $! > save_pid.txt  # write pid file
