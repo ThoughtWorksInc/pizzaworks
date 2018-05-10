@@ -1,8 +1,4 @@
-<header>
-    <h1>Welcome to PizzaWorks!</h1>
-</header>
-
-<section id="main">
+<div id="main" class="row">
     <ul id="pizza-list">
         #foreach($pizza in $pizzas)
             <li>
@@ -12,7 +8,4 @@
             </li>
         #end
     </ul>
-</section>
-
-<footer>
-</footer>
+</div>

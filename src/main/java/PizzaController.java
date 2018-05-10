@@ -42,9 +42,7 @@ public class PizzaController {
         Map<String, Object> model = new HashMap<>();
         model.put("pizzas", PizzaDao.all());
         model.put("count", PizzaDao.count());
-        if ("true".equals(req.queryParams("ic-request"))) {
-            return renderTemplate("velocity/pizzaList.vm", model);
-        }
+
         return renderTemplate("velocity/index.vm", model);
     }
 
