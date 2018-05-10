@@ -1,11 +1,14 @@
-import model.Pizza;
-import model.PizzaDao;
+import dal.Sql2oDatabaseModel;
+import org.sql2o.Sql2o;
+import org.sql2o.converters.UUIDConverter;
+import org.sql2o.quirks.PostgresQuirks;
 import spark.ModelAndView;
 import spark.Request;
 import spark.template.velocity.VelocityTemplateEngine;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.UUID;
 
 import static spark.Spark.after;
 import static spark.Spark.delete;
@@ -17,17 +20,17 @@ public class PizzaController {
         get("/", (req, res) -> renderPizzas(req));
 
         post("/pizzas", (req, res) -> {
-            PizzaDao.add(Pizza.create(req.queryParams("pizza-name")));
+//            PizzaDao.add(Pizza.create(req.queryParams("pizza-name")));
             return renderPizzas(req);
         });
 
         delete("/pizzas", (req, res) -> {
-            PizzaDao.clearPizzas();
+//            PizzaDao.clearPizzas();
             return renderPizzas(req);
         });
 
         delete("/pizzas/:id", (req, res) -> {
-            PizzaDao.remove(req.params("id"));
+//            PizzaDao.remove(req.params("id"));
             return renderPizzas(req);
         });
 
@@ -40,8 +43,15 @@ public class PizzaController {
 
     private static String renderPizzas(Request req) {
         Map<String, Object> model = new HashMap<>();
-        model.put("pizzas", PizzaDao.all());
-        model.put("count", PizzaDao.count());
+        Sql2o sql2o = new Sql2o("jdbc:postgresql://localhost:5432/pizzaworks",
+                "superpizza", "bob", new PostgresQuirks() {
+            {
+                // make sure we use default UUID converter.
+                converters.put(UUID.class, new UUIDConverter());
+            }
+        });
+
+        model.put("pizzas", new Sql2oDatabaseModel(sql2o).getAllPizzas());
 
         return renderTemplate("velocity/index.vm", model);
     }

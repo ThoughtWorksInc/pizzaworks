@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-initdb -U superpizza /usr/local/var/postgres
+initdb -U superpizza
 
 bash db-scripts/start_db.sh;
 

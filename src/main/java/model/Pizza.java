@@ -4,18 +4,25 @@ import java.util.UUID;
 
 public class Pizza {
     private String name;
-    private String id;
+    private UUID uuid;
 
-    public Pizza(String name, String id) {
+    public Pizza(String name, UUID uuid) {
         this.name = name;
-        this.id = id;
+        this.uuid = uuid;
     }
 
     public Pizza(String name) {
         this.name = name;
-        this.id = UUID.randomUUID().toString();
+        this.uuid = UUID.randomUUID();
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setUuid(UUID uuid) {
+        this.uuid = uuid;
+    }
 
     public static Pizza create(String name) {
         return new Pizza(name);
@@ -25,7 +32,7 @@ public class Pizza {
         return name;
     }
 
-    public String getId() {
-        return id;
+    public UUID getUuid() {
+        return uuid;
     }
 }
