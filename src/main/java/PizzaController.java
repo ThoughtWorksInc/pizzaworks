@@ -11,28 +11,11 @@ import java.util.Map;
 import java.util.UUID;
 
 import static spark.Spark.after;
-import static spark.Spark.delete;
 import static spark.Spark.get;
-import static spark.Spark.post;
 
 public class PizzaController {
     public static void initialize() {
         get("/", (req, res) -> renderPizzas(req));
-
-        post("/pizzas", (req, res) -> {
-//            PizzaDao.add(Pizza.create(req.queryParams("pizza-name")));
-            return renderPizzas(req);
-        });
-
-        delete("/pizzas", (req, res) -> {
-//            PizzaDao.clearPizzas();
-            return renderPizzas(req);
-        });
-
-        delete("/pizzas/:id", (req, res) -> {
-//            PizzaDao.remove(req.params("id"));
-            return renderPizzas(req);
-        });
 
         after((req, res) -> {
             if (res.body() == null) { // if the route didn't return anything

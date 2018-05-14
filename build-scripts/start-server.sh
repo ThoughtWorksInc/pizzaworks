@@ -12,6 +12,7 @@ fi
 
 logger pghost: $PGHOST
 
+# migrate the database
 (cd migrations && pg-migrator postgres://$PGUSER:$PGPW@$PGHOST:$PGPORT/$PGDATABASE)
 
 echo "---- start new process ----"
