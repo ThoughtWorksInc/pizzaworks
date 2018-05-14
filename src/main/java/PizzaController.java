@@ -25,7 +25,6 @@ public class PizzaController {
     }
 
     private static String renderPizzas(Request req) {
-        Map<String, Object> model = new HashMap<>();
         String host = System.getenv("PGHOST");
         String port = System.getenv("PGPORT");
         String user = System.getenv("PGUSER");
@@ -40,6 +39,7 @@ public class PizzaController {
             }
         });
 
+        Map<String, Object> model = new HashMap<>();
         model.put("pizzas", new PizzaService(sql2o).getAllPizzas());
 
         return renderTemplate("velocity/index.vm", model);
