@@ -1,4 +1,4 @@
-import dal.Sql2oDatabaseModel;
+import dal.PizzaService;
 import org.sql2o.Sql2o;
 import org.sql2o.converters.UUIDConverter;
 import org.sql2o.quirks.PostgresQuirks;
@@ -40,7 +40,7 @@ public class PizzaController {
             }
         });
 
-        model.put("pizzas", new Sql2oDatabaseModel(sql2o).getAllPizzas());
+        model.put("pizzas", new PizzaService(sql2o).getAllPizzas());
 
         return renderTemplate("velocity/index.vm", model);
     }
