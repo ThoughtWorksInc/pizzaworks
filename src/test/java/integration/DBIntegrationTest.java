@@ -41,7 +41,7 @@ public class DBIntegrationTest {
 
     @Test
     public void should() throws Exception {
-        ProcessBuilder pb = new ProcessBuilder("./build-scripts/migrate.sh");
+        ProcessBuilder pb = new ProcessBuilder("./db-scripts/migrate.sh");
         Map<String, String> env = pb.environment();
         env.put("PGHOST", host);
         env.put("PGPORT", port);
