@@ -66,9 +66,9 @@ public class DBIntegrationTest {
         });
 
         List<Pizza> allPizzas = new PizzaService(sql2o).getAllPizzas();
-        assertThat(allPizzas.size(), is(2));
-        assertThat(allPizzas.get(0).getName(), is("Pepperoni pizza"));
-        assertThat(allPizzas.get(1).getName(), is("Veggie pizza"));
+        assertThat(allPizzas.size(), is(4));
+        assertThat(allPizzas.get(0).getName(), is("Veggie"));
+        assertThat(allPizzas.get(1).getName(), is("Pepperoni feast"));
     }
 
     @After
