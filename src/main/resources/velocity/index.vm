@@ -12,12 +12,12 @@
     <header class="page-header">
         <a href="/"><img id="header-image" src="/images/pizzaworks-logo.png"></a>
         <h1>Welcome to PizzaWorks!</h1>
-    </header>
-    #parse("/velocity/pizzaList.vm")
-    <footer>
         <div id="info">
             <p>Phone number: 0782-129-8883</p>
         </div>
+    </header>
+    #parse("/velocity/pizzaList.vm")
+    <footer>
     </footer>
 </div>
 <script src="/js/vendor/jquery-3.3.1.js"></script>
