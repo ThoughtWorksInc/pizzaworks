@@ -10,3 +10,6 @@ createdb -U superpizza -O superpizza pizzaworks;
 psql -U superpizza pizzaworks -f db-scripts/init-superpizza.sql
 
 bash db-scripts/migrate.sh;
+
+cp git-hooks/pre-commit .git/hooks/
+chmod +x .git/hooks/pre-commit
