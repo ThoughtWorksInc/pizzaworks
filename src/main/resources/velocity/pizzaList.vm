@@ -1,11 +1,18 @@
 <div id="main" class="row">
-    <ul id="pizza-list">
-        #foreach($pizza in $pizzas)
-            <li>
-                <div class="view">
-                    <label>$pizza.name</label>
-                </div>
-            </li>
-        #end
-    </ul>
+    <div class="col-12">
+        <div class="info">
+            Our famous pizzas:
+        </div>
+    </div>
+    <div class="col-12">
+        <ul id="pizza-list">
+            #foreach($pizza in $pizzas)
+                <li>
+                    <div class="view">
+                        <label>$pizza.name</label>
+                    </div>
+                </li>
+            #end
+        </ul>
+    </div>
 </div>
