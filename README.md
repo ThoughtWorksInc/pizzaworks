@@ -2,6 +2,10 @@
 
 ## Requirements
 
+#### Java 8
+
+- http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html
+
 #### Nvm and node
 
 - Install nvm: https://github.com/creationix/nvm#install-script
@@ -11,11 +15,11 @@
 
 #### Homebrew
 
-- https://brew.sh/
+- `/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`
 
 #### Maven
 
-- https://maven.apache.org/index.html
+- `brew install maven`
 
 ## Database setup
 
@@ -48,7 +52,8 @@ Where superpizza is the postgres role that owns the database, pizzaworks is the 
 and password is, obviously, the correct password
 
 > Note - if you want to load this automatically, add these lines to either your 
-  ~/.bashrc, ~/.bash_profile, ~/.zsh_profile or whatever you use
+  ~/.bashrc, ~/.bash_profile, ~/.zsh_profile or whatever you use, then source that file 
+  e.g. `source ~/.bashrc`
 
 - From main project directory run `./build-scripts/local-server-start.sh`
 
