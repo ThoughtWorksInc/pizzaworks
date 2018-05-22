@@ -40,7 +40,7 @@ public class DBIntegrationTest {
     }
 
     @Test
-    public void should() throws Exception {
+    public void shouldRetrievePizzas() throws Exception {
         ProcessBuilder pb = new ProcessBuilder("./db-scripts/migrate.sh");
         Map<String, String> env = pb.environment();
         env.put("PGHOST", host);
