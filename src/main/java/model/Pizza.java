@@ -7,6 +7,7 @@ public class Pizza {
     private UUID uuid;
     private float price;
     private String ingredients;
+    private String slug;
 
     public Pizza(String name, UUID uuid) {
         this.name = name;
@@ -44,5 +45,9 @@ public class Pizza {
 
     public String getIngredients() {
         return ingredients;
+    }
+
+    public String getSlug() {
+        return slug;
     }
 }

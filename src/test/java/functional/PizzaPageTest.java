@@ -15,6 +15,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
+import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static ru.yandex.qatools.embed.postgresql.distribution.Version.Main.V10;
 
@@ -67,6 +68,15 @@ public class PizzaPageTest {
         driver.get("http://localhost:4568");
         List<WebElement> pizzaElements = driver.findElements(By.className("pizza"));
         assertThat(pizzaElements.size(), Matchers.is(4));
+        assertThat(driver.getCurrentUrl(), is("http://localhost:4568/"));
+
+        WebElement firstPizza = pizzaElements.get(0);
+        firstPizza.findElement(By.linkText("Veggie")).click();
+
+        assertThat(driver.getCurrentUrl(), is("http://localhost:4568/pizza/veggie"));
+
 
     }
+
+
 }
