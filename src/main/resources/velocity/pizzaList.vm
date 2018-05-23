@@ -7,10 +7,8 @@
     <div class="col-12">
         <ul id="pizza-list">
             #foreach($pizza in $pizzas)
-                <li>
-                    <div class="view">
-                        <label>$pizza.name</label>
-                    </div>
+                <li class="pizza">
+                    <label>$pizza.name</label>
                 </li>
             #end
         </ul>
