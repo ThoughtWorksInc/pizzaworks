@@ -67,8 +67,23 @@ public class DBIntegrationTest {
 
         List<Pizza> allPizzas = new PizzaService(sql2o).getAllPizzas();
         assertThat(allPizzas.size(), is(4));
-        assertThat(allPizzas.get(0).getName(), is("Veggie"));
-        assertThat(allPizzas.get(1).getName(), is("Pepperoni feast"));
+
+        Pizza veggiePizza = getPizzaByName(allPizzas, "Veggie");
+        Pizza pepperoniPizza = getPizzaByName(allPizzas, "Pepperoni feast");
+
+        assertThat(veggiePizza.getName(), is("Veggie"));
+        assertThat(veggiePizza.getIngredients(), is("Pizza sauce, vegan alternative to cheese, spinach, sweetcorn, mixed peppers, red onion, mushrooms"));
+        assertThat(veggiePizza.getPrice(), is(12.99F));
+
+        assertThat(pepperoniPizza.getName(), is("Pepperoni feast"));
+        assertThat(pepperoniPizza.getIngredients(), is("Pizza sauce, mozzarella cheese, pepperoni"));
+        assertThat(pepperoniPizza.getPrice(), is(13.99F));
+    }
+
+    private Pizza getPizzaByName(List<Pizza> allPizzas, String pizzaName) {
+        return allPizzas.stream()
+                .filter(pizza -> pizza.getName().equals(pizzaName))
+                .findFirst().get();
     }
 
     @After

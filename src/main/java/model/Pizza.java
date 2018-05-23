@@ -5,6 +5,8 @@ import java.util.UUID;
 public class Pizza {
     private String name;
     private UUID uuid;
+    private float price;
+    private String ingredients;
 
     public Pizza(String name, UUID uuid) {
         this.name = name;
@@ -34,5 +36,13 @@ public class Pizza {
 
     public UUID getUuid() {
         return uuid;
+    }
+
+    public float getPrice() {
+        return price;
+    }
+
+    public String getIngredients() {
+        return ingredients;
     }
 }

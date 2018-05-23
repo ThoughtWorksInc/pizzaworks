@@ -13,6 +13,7 @@ public class PizzaService {
         this.sql2o = sql2o;
     }
 
+
     public List<Pizza> getAllPizzas() {
         try (Connection conn = sql2o.open()) {
             return conn.createQuery("select * from pizza")
