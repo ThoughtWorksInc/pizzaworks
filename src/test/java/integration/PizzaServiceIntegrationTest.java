@@ -21,7 +21,7 @@ import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 import static ru.yandex.qatools.embed.postgresql.distribution.Version.Main.V10;
 
-public class DBIntegrationTest {
+public class PizzaServiceIntegrationTest {
     private String host = "localhost";
     private String port = "5434";
     private String user = "superpizza";
@@ -30,6 +30,7 @@ public class DBIntegrationTest {
 
     private EmbeddedPostgres postgres;
     private Connection conn;
+    private PizzaService pizzaService;
 
     @Before
     public void setUp() throws Exception {
@@ -37,10 +38,7 @@ public class DBIntegrationTest {
         String url = postgres.start(host, Integer.parseInt(port), databaseName, user, password);
 
         conn = DriverManager.getConnection(url);
-    }
 
-    @Test
-    public void shouldRetrievePizzas() throws Exception {
         ProcessBuilder pb = new ProcessBuilder("./db-scripts/migrate.sh");
         Map<String, String> env = pb.environment();
         env.put("PGHOST", host);
@@ -65,7 +63,14 @@ public class DBIntegrationTest {
             }
         });
 
-        List<Pizza> allPizzas = new PizzaService(sql2o).getAllPizzas();
+        pizzaService = new PizzaService(sql2o);
+    }
+
+
+    @Test
+    public void shouldRetrievePizzas() throws Exception {
+
+        List<Pizza> allPizzas = pizzaService.getAllPizzas();
         assertThat(allPizzas.size(), is(4));
 
         Pizza veggiePizza = getPizzaByName(allPizzas, "Veggie");
@@ -80,6 +85,13 @@ public class DBIntegrationTest {
         assertThat(pepperoniPizza.getSlug(), is("pepperoni-feast"));
         assertThat(pepperoniPizza.getIngredients(), is("Pizza sauce, mozzarella cheese, pepperoni"));
         assertThat(pepperoniPizza.getPrice(), is(13.99F));
+    }
+
+    @Test
+    public void shouldRRetrievePizzaBySlug() {
+        Pizza veggie = pizzaService.getPizzaBySlug("veggie");
+        assertThat((veggie.getName()), is("Veggie"));
+
     }
 
     private Pizza getPizzaByName(List<Pizza> allPizzas, String pizzaName) {

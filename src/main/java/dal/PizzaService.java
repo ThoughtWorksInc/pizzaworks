@@ -20,4 +20,12 @@ public class PizzaService {
                     .executeAndFetch(Pizza.class);
         }
     }
+
+    public Pizza getPizzaBySlug(String slug) {
+        try (Connection conn = sql2o.open()) {
+            return conn.createQuery("select * from pizza where slug = :slug")
+                    .addParameter("slug", slug)
+                    .executeAndFetch(Pizza.class).get(0);
+        }
+    }
 }
