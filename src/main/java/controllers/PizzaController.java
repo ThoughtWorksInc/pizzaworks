@@ -22,7 +22,7 @@ public class PizzaController {
     public static void initialize(DatabaseConfig databaseConfig) {
         PizzaController.databaseConfig = databaseConfig;
         get("/", (req, res) -> renderPizzas());
-        get("/pizza/veggie", (req, res) -> renderChosenPizza());
+        get("/pizza/:pizzaslug", (req, res) -> renderChosenPizza());
 
         after((req, res) -> {
             if (res.body() == null) { // if the route didn't return anything
@@ -49,8 +49,7 @@ public class PizzaController {
                 databaseConfig.getUser(), databaseConfig.getPassword(), new PostgresQuirks() {
             {
                 // make sure we use default UUID converter.
-                converters.put(UUID.class, new UUIDConverter());
-            }
+                converters.put(UUID.class, new UUIDConverter());            }
         });
     }
 
