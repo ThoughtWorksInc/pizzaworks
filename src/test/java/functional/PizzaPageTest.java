@@ -2,7 +2,6 @@ package functional;
 
 import com.despegar.sparkjava.test.SparkServer;
 import config.DatabaseConfig;
-import org.hamcrest.Matchers;
 import org.junit.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -14,9 +13,12 @@ import java.io.File;
 import java.io.IOException;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
-import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.MatcherAssert.assertThat;
+import static junit.framework.TestCase.assertTrue;
+import static org.hamcrest.Matchers.is;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertThat;
 import static ru.yandex.qatools.embed.postgresql.distribution.Version.Main.V10;
 
 public class PizzaPageTest {
@@ -28,7 +30,7 @@ public class PizzaPageTest {
     public static void beforeAll() throws InterruptedException, IOException {
         postgres = new EmbeddedPostgres(V10);
         DatabaseConfig pizzaTestConfig = TestPizzaApplication.getPizzaTestConfig();
-        String url = postgres.start(pizzaTestConfig.getHost(), Integer.parseInt(pizzaTestConfig.getPort()), pizzaTestConfig.getDatabaseName(), pizzaTestConfig.getUser(), pizzaTestConfig.getPassword());
+        postgres.start(pizzaTestConfig.getHost(), Integer.parseInt(pizzaTestConfig.getPort()), pizzaTestConfig.getDatabaseName(), pizzaTestConfig.getUser(), pizzaTestConfig.getPassword());
 
         ProcessBuilder pb = new ProcessBuilder("./db-scripts/migrate.sh");
         Map<String, String> env = pb.environment();
@@ -47,6 +49,14 @@ public class PizzaPageTest {
 
     }
 
+    @Before
+    public void setUp() {
+        System.setProperty("webdriver.gecko.driver", "./lib/geckodriver");
+        driver = new HtmlUnitDriver();
+        driver.get("http://localhost:4568");
+    }
+
+
     @After
     public void tearDown() throws Exception {
         driver.close();
@@ -63,16 +73,31 @@ public class PizzaPageTest {
 
     @Test
     public void shouldBeAbleToNavigateToIndividualPizzaPage() {
-        driver = new HtmlUnitDriver();
-        driver.get("http://localhost:4568");
         List<WebElement> pizzaElements = driver.findElements(By.className("pizza"));
-        assertThat(pizzaElements.size(), Matchers.is(4));
+        assertThat(pizzaElements.size(), is(4));
         assertThat(driver.getCurrentUrl(), is("http://localhost:4568/"));
         driver.findElement(By.linkText("Veggie")).click();
         assertThat(driver.getCurrentUrl(), is("http://localhost:4568/pizza/veggie"));
 
         assertThat(driver.findElement(By.className("pizza-title")).getText(), is("Veggie"));
         assertThat(driver.findElement(By.className("pizza-price")).getText(), is("£12.99"));
+    }
+
+    @Test
+    public void shouldReturnPriceAndIngredientsForPizza() {
+        List<WebElement> pizzaElements = driver.findElements(By.className("pizza"));
+        Optional<WebElement> margheritaListElement = pizzaElements.stream()
+                .filter(pizzaElement -> pizzaElement.findElement(By.cssSelector("a")).getText().equals("Margherita"))
+                .findFirst();
+        assertTrue(margheritaListElement.isPresent());
+
+        WebElement ingredientsElement = margheritaListElement.get().findElement(By.className("ingredients"));
+        assertEquals("Pizza sauce, mozzarella cheese", ingredientsElement.getText());
+
+        WebElement priceElement = margheritaListElement.get().findElement(By.className("price"));
+        assertEquals("£14.49", priceElement.getText());
+
+
     }
 
 }
