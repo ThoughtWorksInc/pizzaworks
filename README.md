@@ -21,7 +21,7 @@
 
 - `brew install maven`
 
-## Database setup
+## database setup
 
 #### Postgres migration tool installation:
 

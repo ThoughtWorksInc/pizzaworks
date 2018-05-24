@@ -1,5 +1,6 @@
-import config.DatabaseConfig;
 import controllers.PizzaController;
+import dal.PizzaService;
+import database.DatabaseSetUp;
 
 import static spark.Spark.exception;
 import static spark.Spark.port;
@@ -10,15 +11,8 @@ public class Main {
         port(getAssignedPort());
         exception(Exception.class, (e, req, res) -> e.printStackTrace()); // print all exceptions
         staticFiles.location("/public");
-        String host = System.getenv("PGHOST");
-        String port = System.getenv("PGPORT");
-        String user = System.getenv("PGUSER");
-        String databaseName = System.getenv("PGDATABASE");
-        String password = System.getenv("PGPW");
 
-        DatabaseConfig databaseConfig = new DatabaseConfig(host, port, user, databaseName, password);
-
-        PizzaController.initialize(databaseConfig);
+        PizzaController.initialize(new PizzaService(DatabaseSetUp.sql2oFromDataBase()));
     }
 
     static int getAssignedPort() {
