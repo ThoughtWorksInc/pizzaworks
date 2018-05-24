@@ -21,12 +21,19 @@ public class PizzaController {
     public static void initialize(DatabaseConfig databaseConfig) {
         PizzaController.databaseConfig = databaseConfig;
         get("/", (req, res) -> renderPizzas());
+        get("/pizza/veggie", (req, res) -> renderChosenPizza());
 
         after((req, res) -> {
             if (res.body() == null) { // if the route didn't return anything
                 res.body(renderPizzas());
             }
         });
+    }
+
+    private static String renderChosenPizza() {
+        Map<String, Object> model = new HashMap<>();
+
+        return renderTemplate("velocity/chosenPizza.vm", model);
     }
 
     private static String renderPizzas() {

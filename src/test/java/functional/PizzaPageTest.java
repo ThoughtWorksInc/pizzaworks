@@ -68,10 +68,10 @@ public class PizzaPageTest {
         List<WebElement> pizzaElements = driver.findElements(By.className("pizza"));
         assertThat(pizzaElements.size(), Matchers.is(4));
         assertThat(driver.getCurrentUrl(), is("http://localhost:4568/"));
-
         driver.findElement(By.linkText("Veggie")).click();
-
         assertThat(driver.getCurrentUrl(), is("http://localhost:4568/pizza/veggie"));
+
+        assertThat(driver.findElement(By.className("pizza-title")).getText(), is("Veggie"));
     }
 
 
