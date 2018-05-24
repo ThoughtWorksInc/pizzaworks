@@ -72,10 +72,12 @@ public class DBIntegrationTest {
         Pizza pepperoniPizza = getPizzaByName(allPizzas, "Pepperoni feast");
 
         assertThat(veggiePizza.getName(), is("Veggie"));
+        assertThat(veggiePizza.getSlug(), is("veggie"));
         assertThat(veggiePizza.getIngredients(), is("Pizza sauce, vegan alternative to cheese, spinach, sweetcorn, mixed peppers, red onion, mushrooms"));
         assertThat(veggiePizza.getPrice(), is(12.99F));
 
         assertThat(pepperoniPizza.getName(), is("Pepperoni feast"));
+        assertThat(pepperoniPizza.getSlug(), is("pepperoni-feast"));
         assertThat(pepperoniPizza.getIngredients(), is("Pizza sauce, mozzarella cheese, pepperoni"));
         assertThat(pepperoniPizza.getPrice(), is(13.99F));
     }
