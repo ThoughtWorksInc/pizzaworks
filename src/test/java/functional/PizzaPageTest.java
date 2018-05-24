@@ -62,21 +62,16 @@ public class PizzaPageTest {
 
 
     @Test
-    @Ignore("We are still progressing story #14")
     public void shouldBeAbleToNavigateToIndividualPizzaPage() {
-        System.setProperty("webdriver.gecko.driver", "./lib/geckodriver");
         driver = new HtmlUnitDriver();
         driver.get("http://localhost:4568");
         List<WebElement> pizzaElements = driver.findElements(By.className("pizza"));
         assertThat(pizzaElements.size(), Matchers.is(4));
         assertThat(driver.getCurrentUrl(), is("http://localhost:4568/"));
 
-        WebElement firstPizza = pizzaElements.get(0);
-        firstPizza.findElement(By.linkText("Veggie")).click();
+        driver.findElement(By.linkText("Veggie")).click();
 
         assertThat(driver.getCurrentUrl(), is("http://localhost:4568/pizza/veggie"));
-
-
     }
 
 
