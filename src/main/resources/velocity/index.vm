@@ -16,7 +16,7 @@
             <p>Phone number: 0782-129-8883</p>
         </div>
     </header>
-    #parse("/velocity/pizzaList.vm")
+    #parse($template)
     <footer>
     </footer>
 </div>

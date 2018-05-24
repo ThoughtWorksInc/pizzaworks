@@ -2,6 +2,7 @@ package controllers;
 
 import config.DatabaseConfig;
 import dal.PizzaService;
+import org.apache.velocity.app.VelocityEngine;
 import org.sql2o.Sql2o;
 import org.sql2o.converters.UUIDConverter;
 import org.sql2o.quirks.PostgresQuirks;
@@ -40,7 +41,7 @@ public class PizzaController {
         Map<String, Object> model = new HashMap<>();
         model.put("pizzas", new PizzaService(sql2oFromEnvVars()).getAllPizzas());
 
-        return renderTemplate("velocity/index.vm", model);
+        return renderTemplate("velocity/pizzaList.vm", model);
     }
 
     private static Sql2o sql2oFromEnvVars() {
@@ -54,6 +55,7 @@ public class PizzaController {
     }
 
     private static String renderTemplate(String template, Map model) {
-        return new VelocityTemplateEngine().render(new ModelAndView(model, template));
+        model.put("template", template);
+        return new VelocityTemplateEngine().render(new ModelAndView(model, "velocity/index.vm"));
     }
 }
