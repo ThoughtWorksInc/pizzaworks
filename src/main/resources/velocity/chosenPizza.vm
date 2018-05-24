@@ -1,1 +1,2 @@
 <h1 class="pizza-title">$chosenPizza.name</h1>
+<h2 class="pizza-price">£$chosenPizza.price</h2>
