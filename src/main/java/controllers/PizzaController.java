@@ -2,7 +2,6 @@ package controllers;
 
 import config.DatabaseConfig;
 import dal.PizzaService;
-import org.apache.velocity.app.VelocityEngine;
 import org.sql2o.Sql2o;
 import org.sql2o.converters.UUIDConverter;
 import org.sql2o.quirks.PostgresQuirks;
@@ -22,7 +21,7 @@ public class PizzaController {
     public static void initialize(DatabaseConfig databaseConfig) {
         PizzaController.databaseConfig = databaseConfig;
         get("/", (req, res) -> renderPizzas());
-        get("/pizza/:pizzaslug", (req, res) -> renderChosenPizza());
+        get("/pizza/:pizzaslug", (req, res) -> renderChosenPizza(req.params(":pizzaslug")));
 
         after((req, res) -> {
             if (res.body() == null) { // if the route didn't return anything
@@ -31,20 +30,20 @@ public class PizzaController {
         });
     }
 
-    private static String renderChosenPizza() {
+    private static String renderChosenPizza(String slug) {
         Map<String, Object> model = new HashMap<>();
-
+        model.put("chosenPizza", new PizzaService(sql2oFromDataBase()).getPizzaBySlug(slug));
         return renderTemplate("velocity/chosenPizza.vm", model);
     }
 
     private static String renderPizzas() {
         Map<String, Object> model = new HashMap<>();
-        model.put("pizzas", new PizzaService(sql2oFromEnvVars()).getAllPizzas());
+        model.put("pizzas", new PizzaService(sql2oFromDataBase()).getAllPizzas());
 
         return renderTemplate("velocity/pizzaList.vm", model);
     }
 
-    private static Sql2o sql2oFromEnvVars() {
+    private static Sql2o sql2oFromDataBase() {
         return new Sql2o("jdbc:postgresql://" + databaseConfig.getHost() + ":" + databaseConfig.getPort() + "/" + databaseConfig.getDatabaseName() + "",
                 databaseConfig.getUser(), databaseConfig.getPassword(), new PostgresQuirks() {
             {
