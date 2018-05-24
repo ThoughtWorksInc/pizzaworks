@@ -75,5 +75,4 @@ public class PizzaPageTest {
         assertThat(driver.findElement(By.className("pizza-price")).getText(), is("£12.99"));
     }
 
-
 }

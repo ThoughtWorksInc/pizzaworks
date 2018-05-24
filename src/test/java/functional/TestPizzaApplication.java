@@ -9,7 +9,7 @@ import spark.servlet.SparkApplication;
 public class TestPizzaApplication implements SparkApplication {
     @Override
     public void init() {
-        PizzaController.initialize(new PizzaService(DatabaseSetUp.sql2oFromDataBase()));
+        PizzaController.initialize(new PizzaService(DatabaseSetUp.sql2oFromDataBase(getPizzaTestConfig())));
     }
 
     public static DatabaseConfig getPizzaTestConfig() {
