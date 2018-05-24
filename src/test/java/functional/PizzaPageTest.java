@@ -62,6 +62,7 @@ public class PizzaPageTest {
 
 
     @Test
+    @Ignore("We are still progressing story #14")
     public void shouldBeAbleToNavigateToIndividualPizzaPage() {
         System.setProperty("webdriver.gecko.driver", "./lib/geckodriver");
         driver = new HtmlUnitDriver();
