@@ -3,11 +3,13 @@ package model;
 import java.util.UUID;
 
 public class Pizza {
+
     private String name;
     private UUID uuid;
     private float price;
     private String ingredients;
     private String slug;
+    private NutritionalValues nutritionalValues;
 
     public Pizza(String name, UUID uuid) {
         this.name = name;
@@ -49,5 +51,9 @@ public class Pizza {
 
     public String getSlug() {
         return slug;
+    }
+
+    public NutritionalValues getNutritionalValues() {
+        return nutritionalValues;
     }
 }
