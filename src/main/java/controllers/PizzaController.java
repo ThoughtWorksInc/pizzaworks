@@ -1,15 +1,15 @@
 package controllers;
 
-import config.DatabaseConfig;
 import dal.PizzaService;
+import model.Pizza;
 import spark.ModelAndView;
 import spark.template.velocity.VelocityTemplateEngine;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 
-import static spark.Spark.after;
-import static spark.Spark.get;
+import static spark.Spark.*;
 
 public class PizzaController {
     private  static PizzaService pizzaService;
@@ -27,8 +27,12 @@ public class PizzaController {
     }
 
     private static String renderChosenPizza(String slug) {
-        Map<String, Object> model = new HashMap<>();
-        model.put("chosenPizza", pizzaService.getPizzaBySlug(slug));
+        Map<String, Pizza> model = new HashMap<>();
+        Optional<Pizza> pizzaBySlug = pizzaService.getPizzaBySlug(slug);
+        if (!pizzaBySlug.isPresent()) {
+            halt("Not found");
+        }
+        model.put("chosenPizza", pizzaBySlug.get());
         return renderTemplate("velocity/chosenPizza.vm", model);
     }
 

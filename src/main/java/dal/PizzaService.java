@@ -5,6 +5,7 @@ import org.sql2o.Connection;
 import org.sql2o.Sql2o;
 
 import java.util.List;
+import java.util.Optional;
 
 public class PizzaService {
     private Sql2o sql2o;
@@ -21,11 +22,13 @@ public class PizzaService {
         }
     }
 
-    public Pizza getPizzaBySlug(String slug) {
+    public Optional<Pizza> getPizzaBySlug(String slug) {
         try (Connection conn = sql2o.open()) {
             return conn.createQuery("select * from pizza where slug = :slug")
                     .addParameter("slug", slug)
-                    .executeAndFetch(Pizza.class).get(0);
+                    .executeAndFetch(Pizza.class)
+                    .stream()
+                    .findFirst();
         }
     }
 }

@@ -15,9 +15,11 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.UUID;
 
 import static org.hamcrest.core.Is.is;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertThat;
 import static ru.yandex.qatools.embed.postgresql.distribution.Version.Main.V10;
 
@@ -89,7 +91,7 @@ public class PizzaServiceIntegrationTest {
 
     @Test
     public void shouldRRetrievePizzaBySlug() {
-        Pizza veggie = pizzaService.getPizzaBySlug("veggie");
+        Pizza veggie = pizzaService.getPizzaBySlug("veggie").get();
         assertThat((veggie.getName()), is("Veggie"));
 
     }
@@ -106,5 +108,11 @@ public class PizzaServiceIntegrationTest {
         conn.close();
         // stop Postgres
         postgres.stop();
+    }
+
+    @Test
+    public void shouldReturnEmptyOptionalIfNoPizzaWithSlugCanBeFound(){
+        Optional<Pizza> optional = pizzaService.getPizzaBySlug("pizzadoesnotexist");
+        assertFalse(optional.isPresent());
     }
 }

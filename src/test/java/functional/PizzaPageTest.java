@@ -100,4 +100,11 @@ public class PizzaPageTest {
 
     }
 
+    @Test
+    public void shouldShow404IfTriesToNavigateToPizzaThatDoesntExist() {
+        driver = new HtmlUnitDriver();
+        driver.get("http://localhost:4568/pizza/pizzathatdoesntexist");
+        assertThat(driver.findElement(By.tagName("body")).getText(), is("Not found"));
+    }
+
 }
