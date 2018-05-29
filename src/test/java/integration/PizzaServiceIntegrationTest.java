@@ -59,7 +59,7 @@ public class PizzaServiceIntegrationTest extends DBIntegrationTest {
     public void shouldRetrieveNutritionalValues() {
         List<Pizza> allPizzas = pizzaService.getAllPizzas();
         Pizza veggiePizza = getPizzaByName(allPizzas, "Veggie");
-        Pizza pepperoniPizza = getPizzaByName(allPizzas, "Pepperoni feast");
+        // Pizza pepperoniPizza = getPizzaByName(allPizzas, "Pepperoni feast"); // Not using yet
 
         assertThat(veggiePizza.getNutritionalValues().getEnergyPerSlice(), is(144));
     }
