@@ -1,3 +1,10 @@
+<header class="page-header">
+    <a href="/"><img id="header-image" src="/images/pizzaworks-logo.png"></a>
+    <a href="/login"><button>Login</button></a>
+    <div id="info">
+        <p>Phone number: 0782-129-8883</p>
+    </div>
+</header>
 <h1 class="pizza-title">$chosenPizza.name</h1>
 <h2 class="pizza-price">£$chosenPizza.price</h2>
 <a href="/"><button> Return to list of pizzas</button></a>
