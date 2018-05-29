@@ -3,3 +3,5 @@
 target/
 .gradle
 logfile
+pizzalogs.log
+save_pid.txt
