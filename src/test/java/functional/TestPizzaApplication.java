@@ -1,6 +1,7 @@
 package functional;
 
 import config.DatabaseConfig;
+import controllers.LoginController;
 import controllers.PizzaController;
 import dal.PizzaService;
 import database.DatabaseSetUp;
@@ -10,6 +11,7 @@ public class TestPizzaApplication implements SparkApplication {
     @Override
     public void init() {
         PizzaController.initialize(new PizzaService(DatabaseSetUp.sql2oFromDataBase(getPizzaTestConfig())));
+        LoginController.initialize();
     }
 
     public static DatabaseConfig getPizzaTestConfig() {

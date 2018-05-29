@@ -1,3 +1,4 @@
+import controllers.LoginController;
 import controllers.PizzaController;
 import dal.PizzaService;
 import database.DatabaseSetUp;
@@ -13,6 +14,7 @@ public class Main {
         staticFiles.location("/public");
 
         PizzaController.initialize(new PizzaService(DatabaseSetUp.sql2oFromDataBase()));
+        LoginController.initialize();
     }
 
     static int getAssignedPort() {

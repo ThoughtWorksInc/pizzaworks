@@ -2,8 +2,7 @@ package controllers;
 
 import dal.PizzaService;
 import model.Pizza;
-import spark.ModelAndView;
-import spark.template.velocity.VelocityTemplateEngine;
+import util.TemplateHelper;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -18,20 +17,12 @@ public class PizzaController {
         PizzaController.pizzaService = pizzaService;
         get("/", (req, res) -> renderPizzas());
         get("/pizza/:pizzaslug", (req, res) -> renderChosenPizza(req.params(":pizzaslug")));
-        get("/login", (req, res) -> renderLoginPage());
-
-
 
         after((req, res) -> {
             if (res.body() == null) { // if the route didn't return anything
                 res.body(renderPizzas());
             }
         });
-    }
-
-    private static String renderLoginPage() {
-        Map<String, Object> model = new HashMap<>();
-        return renderTemplate("velocity/login.vm", model);
     }
 
     private static String renderChosenPizza(String slug) {
@@ -41,18 +32,14 @@ public class PizzaController {
             halt("Not found");
         }
         model.put("chosenPizza", pizzaBySlug.get());
-        return renderTemplate("velocity/chosenPizza.vm", model);
+        return TemplateHelper.renderTemplate("velocity/chosenPizza.vm", model);
     }
 
     private static String renderPizzas() {
         Map<String, Object> model = new HashMap<>();
         model.put("pizzas", pizzaService.getAllPizzas());
 
-        return renderTemplate("velocity/pizzaList.vm", model);
+        return TemplateHelper.renderTemplate("velocity/pizzaList.vm", model);
     }
 
-    private static String renderTemplate(String template, Map model) {
-        model.put("template", template);
-        return new VelocityTemplateEngine().render(new ModelAndView(model, "velocity/index.vm"));
-    }
 }
