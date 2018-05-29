@@ -1,20 +1,33 @@
 package controllers;
 
-import dal.PizzaService;
+import spark.Request;
+import spark.Response;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import static spark.Spark.after;
-import static spark.Spark.get;
-import static spark.Spark.post;
+import static spark.Spark.*;
 import static util.TemplateHelper.renderTemplate;
 
 public class LoginController {
     public static void initialize() {
         get("/login", (req, res) -> renderLoginPage());
-        post("/login/admin", (req, res) -> renderAdminPage());
+        get("/admin", (req, res) -> renderAdminPage());
+        post("/login", LoginController::processLogin);
 
+        before("/admin", (request, response) -> {
+            Boolean loggedIn = request.session().attribute("loggedIn");
+            if(loggedIn == null || !loggedIn) {
+                response.redirect("/login");
+            }
+
+        });
+    }
+
+    private static String processLogin(Request req, Response response) {
+        req.session(true).attribute("loggedIn", true);
+        response.redirect("/admin");
+        return "";
     }
 
     private static String renderLoginPage() {

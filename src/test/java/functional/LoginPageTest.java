@@ -19,9 +19,15 @@ public class LoginPageTest extends ServerSetup {
         driver.findElement(By.name("password")).sendKeys("password");
         driver.findElement(By.id("login-button")).click();
         assertThat(driver.findElement(By.className("title")).getText(), is("Welcome Admin!"));
+
     }
 
+    @Test
+    public void shouldReturnToLoginPageIfNotLoggedIn() {
+        driver.get("http://localhost:4568/admin");
+        assertThat(driver.getCurrentUrl(), is("http://localhost:4568/login"));
 
+    }
 
 
 };

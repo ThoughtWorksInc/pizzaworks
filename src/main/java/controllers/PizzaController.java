@@ -18,11 +18,6 @@ public class PizzaController {
         get("/", (req, res) -> renderPizzas());
         get("/pizza/:pizzaslug", (req, res) -> renderChosenPizza(req.params(":pizzaslug")));
 
-        after((req, res) -> {
-            if (res.body() == null) { // if the route didn't return anything
-                res.body(renderPizzas());
-            }
-        });
     }
 
     private static String renderChosenPizza(String slug) {
