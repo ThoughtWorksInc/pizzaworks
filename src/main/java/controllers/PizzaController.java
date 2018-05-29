@@ -1,6 +1,9 @@
 package controllers;
 
 import dal.PizzaService;
+import dal.dao.PizzaDAO;
+import spark.ModelAndView;
+import spark.template.velocity.VelocityTemplateEngine;
 import model.Pizza;
 import util.TemplateHelper;
 
@@ -21,8 +24,8 @@ public class PizzaController {
     }
 
     private static String renderChosenPizza(String slug) {
-        Map<String, Pizza> model = new HashMap<>();
-        Optional<Pizza> pizzaBySlug = pizzaService.getPizzaBySlug(slug);
+        Map<String, PizzaDAO> model = new HashMap<>();
+        Optional<PizzaDAO> pizzaBySlug = pizzaService.getPizzaBySlug(slug);
         if (!pizzaBySlug.isPresent()) {
             halt("Not found");
         }

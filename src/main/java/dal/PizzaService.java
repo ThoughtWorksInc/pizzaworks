@@ -1,5 +1,7 @@
 package dal;
 
+import dal.dao.PizzaDAO;
+import mappers.PizzaMapper;
 import model.Pizza;
 import org.sql2o.Connection;
 import org.sql2o.Sql2o;
@@ -15,20 +17,27 @@ public class PizzaService {
     }
 
 
-    public List<Pizza> getAllPizzas() {
+    public List<PizzaDAO> getAllPizzaDaos() {
         try (Connection conn = sql2o.open()) {
             return conn.createQuery("select * from pizza")
-                    .executeAndFetch(Pizza.class);
+                    .executeAndFetch(PizzaDAO.class);
         }
     }
 
-    public Optional<Pizza> getPizzaBySlug(String slug) {
+    public Optional<PizzaDAO> getPizzaBySlug(String slug) {
         try (Connection conn = sql2o.open()) {
             return conn.createQuery("select * from pizza where slug = :slug")
                     .addParameter("slug", slug)
-                    .executeAndFetch(Pizza.class)
+                    .executeAndFetch(PizzaDAO.class)
                     .stream()
                     .findFirst();
+        }
+    }
+
+    public List<Pizza> getAllPizzas() {
+        try (Connection conn = sql2o.open()) {
+            return PizzaMapper.fromPizzaDaos(conn.createQuery("select * from pizza")
+                    .executeAndFetch(PizzaDAO.class));
         }
     }
 }

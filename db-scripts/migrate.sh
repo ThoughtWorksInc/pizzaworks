@@ -4,7 +4,6 @@ if [ "$IS_GO_AGENT" = "true" ]; then
     echo "Go agent detected - setting npm"
     source /var/go/.bashrc
 else
-    source ~/.bashrc
     echo "Go agent NOT detected - continuing using local environment"
 fi
 

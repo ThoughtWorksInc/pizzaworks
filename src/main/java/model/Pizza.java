@@ -3,7 +3,6 @@ package model;
 import java.util.UUID;
 
 public class Pizza {
-
     private String name;
     private UUID uuid;
     private float price;
@@ -11,26 +10,18 @@ public class Pizza {
     private String slug;
     private NutritionalValues nutritionalValues;
 
-    public Pizza(String name, UUID uuid) {
+
+    public Pizza(String name, UUID uuid, float price, String ingredients, String slug, NutritionalValues nutritionalValues) {
         this.name = name;
         this.uuid = uuid;
+        this.price = price;
+        this.ingredients = ingredients;
+        this.slug = slug;
+        this.nutritionalValues = nutritionalValues;
     }
 
-    public Pizza(String name) {
-        this.name = name;
-        this.uuid = UUID.randomUUID();
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setUuid(UUID uuid) {
-        this.uuid = uuid;
-    }
-
-    public static Pizza create(String name) {
-        return new Pizza(name);
+    public NutritionalValues getNutritionalValues() {
+        return nutritionalValues;
     }
 
     public String getName() {
@@ -51,9 +42,5 @@ public class Pizza {
 
     public String getSlug() {
         return slug;
-    }
-
-    public NutritionalValues getNutritionalValues() {
-        return nutritionalValues;
     }
 }

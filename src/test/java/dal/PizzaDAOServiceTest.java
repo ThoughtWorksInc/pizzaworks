@@ -1,6 +1,6 @@
 package dal;
 
-import model.Pizza;
+import dal.dao.PizzaDAO;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.InjectMocks;
@@ -15,7 +15,7 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-public class PizzaServiceTest {
+public class PizzaDAOServiceTest {
 
     @Mock
     private Sql2o sql2oMock;
@@ -35,8 +35,8 @@ public class PizzaServiceTest {
         Query queryMock = mock(Query.class);
         when(connectionMock.createQuery(eq("select * from pizza"))).thenReturn(queryMock);
 
-        pizzaService.getAllPizzas();
-        verify(queryMock).executeAndFetch(Pizza.class);
+        pizzaService.getAllPizzaDaos();
+        verify(queryMock).executeAndFetch(PizzaDAO.class);
     }
 
 }
