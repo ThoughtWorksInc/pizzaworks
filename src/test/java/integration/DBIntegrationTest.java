@@ -1,5 +1,6 @@
 package integration;
 
+import com.google.common.collect.Lists;
 import org.junit.After;
 import org.junit.Before;
 import org.sql2o.Sql2o;
@@ -10,6 +11,7 @@ import ru.yandex.qatools.embed.postgresql.EmbeddedPostgres;
 import java.io.File;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.util.ArrayList;
 import java.util.Map;
 import java.util.UUID;
 
@@ -34,7 +36,8 @@ abstract class DBIntegrationTest {
 
         conn = DriverManager.getConnection(url);
 
-        ProcessBuilder pb = new ProcessBuilder("./db-scripts/migrate.sh");
+        ArrayList<String> commandList = Lists.newArrayList("/bin/bash", "-ic", "./db-scripts/migrate.sh");
+        ProcessBuilder pb = new ProcessBuilder(commandList);
         Map<String, String> env = pb.environment();
         env.put("PGHOST", host);
         env.put("PGPORT", port);

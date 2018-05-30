@@ -14,8 +14,6 @@ import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
 
-
-
 public class PizzaPageTest extends ServerSetup {
 
     @Test
@@ -43,8 +41,6 @@ public class PizzaPageTest extends ServerSetup {
 
         WebElement priceElement = margheritaListElement.get().findElement(By.className("price"));
         assertEquals("£14.49", priceElement.getText());
-
-
     }
 
     @Test
