@@ -1,8 +1,7 @@
-package integration;
+package functional.helpers;
 
 import com.google.common.collect.Lists;
-import org.junit.After;
-import org.junit.Before;
+import org.junit.rules.ExternalResource;
 import org.sql2o.Sql2o;
 import org.sql2o.converters.UUIDConverter;
 import org.sql2o.quirks.PostgresQuirks;
@@ -11,14 +10,14 @@ import ru.yandex.qatools.embed.postgresql.EmbeddedPostgres;
 import java.io.File;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Map;
 import java.util.UUID;
 
 import static ru.yandex.qatools.embed.postgresql.distribution.Version.Main.V10;
 
-abstract class DBIntegrationTest {
-
+public class DatabaseSetupRule extends ExternalResource {
     private String host = "localhost";
     private String port = "5434";
     private String user = "superpizza";
@@ -27,10 +26,11 @@ abstract class DBIntegrationTest {
 
     private EmbeddedPostgres postgres;
     private Connection conn;
-    protected Sql2o sql2o;
+    private Sql2o sql2o;
 
-    @Before
-    protected void setUp() throws Exception {
+    @Override
+    protected void before() throws Throwable {
+        super.before();
         postgres = new EmbeddedPostgres(V10);
         String url = postgres.start(host, Integer.parseInt(port), databaseName, user, password);
 
@@ -62,11 +62,20 @@ abstract class DBIntegrationTest {
         });
     }
 
-    @After
-    protected void tearDown() throws Exception {
+    @Override
+    protected void after() {
+        super.after();
         // close db connection
-        conn.close();
+        try {
+            conn.close();
+        } catch (SQLException e) {
+            throw new RuntimeException("Connection could not close");
+        }
         // stop Postgres
         postgres.stop();
+    }
+
+    public Sql2o getSql2o() {
+        return sql2o;
     }
 }

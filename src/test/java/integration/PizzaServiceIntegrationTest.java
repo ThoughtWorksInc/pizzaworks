@@ -2,9 +2,11 @@ package integration;
 
 import dal.PizzaService;
 import dal.dao.PizzaDAO;
-import org.junit.After;
+import functional.helpers.DatabaseSetupRule;
 import org.junit.Before;
+import org.junit.ClassRule;
 import org.junit.Test;
+
 import java.util.List;
 import java.util.Optional;
 
@@ -12,18 +14,20 @@ import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertThat;
 
-public class PizzaServiceIntegrationTest extends DBIntegrationTest {
+public class PizzaServiceIntegrationTest {
 
     private PizzaService pizzaService;
 
+    @ClassRule
+    public static DatabaseSetupRule dbSetupRule = new DatabaseSetupRule();
+
     @Before
-    public void setUp() throws Exception {
-        super.setUp();
-        pizzaService = new PizzaService(sql2o);
+    public void setUp() {
+        pizzaService = new PizzaService(dbSetupRule.getSql2o());
     }
 
     @Test
-    public void shouldRetrievePizzas() throws Exception {
+    public void shouldRetrievePizzas() {
 
         List<PizzaDAO> allPizzaDAOS = pizzaService.getAllPizzaDaos();
         assertThat(allPizzaDAOS.size(), is(4));
@@ -55,11 +59,6 @@ public class PizzaServiceIntegrationTest extends DBIntegrationTest {
                 .findFirst().get();
     }
 
-
-    @After
-    public void tearDown() throws Exception {
-        super.tearDown();
-    }
 
     @Test
     public void shouldReturnEmptyOptionalIfNoPizzaWithSlugCanBeFound(){

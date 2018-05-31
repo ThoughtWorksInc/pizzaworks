@@ -2,26 +2,25 @@ package integration;
 
 import dal.OrderService;
 import dal.PizzaService;
-import dal.dao.PizzaDAO;
+import functional.helpers.DatabaseSetupRule;
 import mappers.PizzaMapper;
 import model.Pizza;
-import org.junit.After;
 import org.junit.Before;
+import org.junit.ClassRule;
 import org.junit.Test;
 
-import java.util.Optional;
-import java.util.function.Function;
-
-public class OrderServiceIntegrationTest extends DBIntegrationTest {
+public class OrderServiceIntegrationTest {
 
     private OrderService orderService;
     private PizzaService pizzaService;
 
+    @ClassRule
+    public static DatabaseSetupRule dbSetupRule = new DatabaseSetupRule();
+
     @Before
-    public void setUp() throws Exception {
-        super.setUp();
-        orderService = new OrderService(sql2o);
-        pizzaService = new PizzaService(sql2o);
+    public void setUp() {
+        orderService = new OrderService(dbSetupRule.getSql2o());
+        pizzaService = new PizzaService(dbSetupRule.getSql2o());
 
     }
 
@@ -33,9 +32,4 @@ public class OrderServiceIntegrationTest extends DBIntegrationTest {
 
     }
 
-
-    @After
-    public void tearDown() throws Exception {
-        super.tearDown();
-    }
 }
