@@ -1,6 +1,7 @@
 package functional.helpers;
 
 import com.google.common.collect.Lists;
+import de.flapdoodle.embed.process.config.IRuntimeConfig;
 import org.junit.rules.ExternalResource;
 import org.sql2o.Sql2o;
 import org.sql2o.converters.UUIDConverter;
@@ -8,6 +9,7 @@ import org.sql2o.quirks.PostgresQuirks;
 import ru.yandex.qatools.embed.postgresql.EmbeddedPostgres;
 
 import java.io.File;
+import java.nio.file.Paths;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -15,6 +17,8 @@ import java.util.ArrayList;
 import java.util.Map;
 import java.util.UUID;
 
+import static java.util.Collections.emptyList;
+import static ru.yandex.qatools.embed.postgresql.EmbeddedPostgres.cachedRuntimeConfig;
 import static ru.yandex.qatools.embed.postgresql.distribution.Version.Main.V10;
 
 public class DatabaseSetupRule extends ExternalResource {
@@ -32,7 +36,8 @@ public class DatabaseSetupRule extends ExternalResource {
     protected void before() throws Throwable {
         super.before();
         postgres = new EmbeddedPostgres(V10);
-        String url = postgres.start(host, Integer.parseInt(port), databaseName, user, password);
+        IRuntimeConfig config = cachedRuntimeConfig(Paths.get("./libs/postgres"));
+        String url = postgres.start(config, host, Integer.parseInt(port), databaseName, user, password, emptyList());
 
         conn = DriverManager.getConnection(url);
 

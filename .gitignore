@@ -5,3 +5,4 @@ target/
 logfile
 pizzalogs.log
 save_pid.txt
+/libs/
