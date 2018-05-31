@@ -1,5 +1,6 @@
 package controllers;
 
+import domain.PizzaWorksRequest;
 import spark.Request;
 import spark.Response;
 
@@ -16,6 +17,8 @@ public class LoginController {
         post("/login", LoginController::processLogin);
 
         before("/admin", (request, response) -> {
+//            RequestHelper.isLoggedIn(request);
+            new PizzaWorksRequest(request);
             Boolean loggedIn = request.session().attribute("loggedIn");
             if(loggedIn == null || !loggedIn) {
                 response.redirect("/login");
@@ -38,5 +41,5 @@ public class LoginController {
     private static String renderAdminPage() {
         Map<String, Object> model = new HashMap<>();
         return renderTemplate("velocity/admin.vm", model);
-    };
+    }
 }

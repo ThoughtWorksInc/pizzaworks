@@ -13,7 +13,6 @@ import java.io.IOException;
 import java.util.Map;
 
 import static ru.yandex.qatools.embed.postgresql.distribution.Version.Main.V10;
-import static spark.Spark.stop;
 
 public class ServerSetup {
 
