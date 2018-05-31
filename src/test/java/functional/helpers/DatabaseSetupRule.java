@@ -36,6 +36,7 @@ public class DatabaseSetupRule extends ExternalResource {
     protected void before() throws Throwable {
         super.before();
         postgres = new EmbeddedPostgres(V10);
+        new File("./libs/postgres").mkdirs();
         IRuntimeConfig config = cachedRuntimeConfig(Paths.get("./libs/postgres"));
         String url = postgres.start(config, host, Integer.parseInt(port), databaseName, user, password, emptyList());
 
