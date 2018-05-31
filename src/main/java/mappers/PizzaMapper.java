@@ -6,6 +6,8 @@ import model.Pizza;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class PizzaMapper {
 
@@ -20,13 +22,9 @@ public class PizzaMapper {
 
     public static List<Pizza> fromPizzaDaos(List<PizzaDAO> pizzaDAOS) {
 
-        List<Pizza> pizzaList = new ArrayList<Pizza>();
-
-        for (PizzaDAO pizzaDAO : pizzaDAOS) {
-            pizzaList.add(PizzaMapper.toPizza(pizzaDAO));
-        }
-
-        return pizzaList;
+        return pizzaDAOS.stream()
+                .map(PizzaMapper::toPizza)
+                .collect(Collectors.toList());
 
     }
 }
