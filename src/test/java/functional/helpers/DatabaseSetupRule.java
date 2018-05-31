@@ -36,8 +36,7 @@ public class DatabaseSetupRule extends ExternalResource {
     protected void before() throws Throwable {
         super.before();
         postgres = new EmbeddedPostgres(V10);
-        IRuntimeConfig config = cachedRuntimeConfig(Paths.get("libs", "postgres"));
-        String url = postgres.start(config, host, Integer.parseInt(port), databaseName, user, password, emptyList());
+        String url = postgres.start(host, Integer.parseInt(port), databaseName, user, password, emptyList());
 
         conn = DriverManager.getConnection(url);
 
