@@ -2,6 +2,7 @@ package functional;
 
 import config.DatabaseConfig;
 import controllers.LoginController;
+import controllers.OrderController;
 import controllers.PizzaController;
 import dal.PizzaService;
 import database.DatabaseSetUp;
@@ -12,6 +13,7 @@ public class TestPizzaApplication implements SparkApplication {
     public void init() {
         PizzaController.initialize(new PizzaService(DatabaseSetUp.sql2oFromDataBase(getPizzaTestConfig())));
         LoginController.initialize();
+        OrderController.initialize();
     }
 
     public static DatabaseConfig getPizzaTestConfig() {

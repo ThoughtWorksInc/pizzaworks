@@ -1,11 +1,10 @@
 import controllers.LoginController;
+import controllers.OrderController;
 import controllers.PizzaController;
 import dal.PizzaService;
 import database.DatabaseSetUp;
 
-import static spark.Spark.exception;
-import static spark.Spark.port;
-import static spark.Spark.staticFiles;
+import static spark.Spark.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -15,6 +14,7 @@ public class Main {
 
         PizzaController.initialize(new PizzaService(DatabaseSetUp.sql2oFromDataBase()));
         LoginController.initialize();
+        OrderController.initialize();
     }
 
     static int getAssignedPort() {
