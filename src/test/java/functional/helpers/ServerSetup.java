@@ -1,6 +1,7 @@
 package functional.helpers;
 
 import com.despegar.sparkjava.test.SparkServer;
+import com.google.common.collect.Lists;
 import config.DatabaseConfig;
 import functional.TestPizzaApplication;
 import org.junit.*;
@@ -10,6 +11,7 @@ import ru.yandex.qatools.embed.postgresql.EmbeddedPostgres;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Map;
 
 import static ru.yandex.qatools.embed.postgresql.distribution.Version.Main.V10;
@@ -25,7 +27,8 @@ public class ServerSetup {
         DatabaseConfig pizzaTestConfig = TestPizzaApplication.getPizzaTestConfig();
         postgres.start(pizzaTestConfig.getHost(), Integer.parseInt(pizzaTestConfig.getPort()), pizzaTestConfig.getDatabaseName(), pizzaTestConfig.getUser(), pizzaTestConfig.getPassword());
 
-        ProcessBuilder pb = new ProcessBuilder("./db-scripts/migrate.sh");
+        ArrayList<String> commandList = Lists.newArrayList("/bin/bash", "-ic", "./db-scripts/migrate.sh");
+        ProcessBuilder pb = new ProcessBuilder(commandList);
         Map<String, String> env = pb.environment();
         env.put("PGHOST", pizzaTestConfig.getHost());
         env.put("PGPORT", pizzaTestConfig.getPort());

@@ -2,10 +2,15 @@ package integration;
 
 import dal.OrderService;
 import dal.PizzaService;
+import dal.dao.PizzaDAO;
+import mappers.PizzaMapper;
 import model.Pizza;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+
+import java.util.Optional;
+import java.util.function.Function;
 
 public class OrderServiceIntegrationTest extends DBIntegrationTest {
 
@@ -23,7 +28,7 @@ public class OrderServiceIntegrationTest extends DBIntegrationTest {
     @Test
     public void shouldCreateAndGetOrder() {
         String customerName = "Jenny";
-        Pizza pizza = pizzaService.getPizzaBySlug("veggie").get();
+        Pizza pizza = PizzaMapper.toPizza(pizzaService.getPizzaBySlug("veggie").get());
         orderService.createOrder(customerName, pizza);
 
     }

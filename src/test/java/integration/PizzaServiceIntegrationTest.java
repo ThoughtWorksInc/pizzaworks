@@ -33,12 +33,12 @@ public class PizzaServiceIntegrationTest extends DBIntegrationTest {
 
         assertThat(veggiePizzaDAO.getName(), is("Veggie"));
         assertThat(veggiePizzaDAO.getSlug(), is("veggie"));
-        assertThat(veggiePizzaDAO.getIngredients(), is("PizzaDAO sauce, vegan alternative to cheese, spinach, sweetcorn, mixed peppers, red onion, mushrooms"));
+        assertThat(veggiePizzaDAO.getIngredients(), is("Pizza sauce, vegan alternative to cheese, spinach, sweetcorn, mixed peppers, red onion, mushrooms"));
         assertThat(veggiePizzaDAO.getPrice(), is(12.99F));
 
         assertThat(pepperoniPizzaDAO.getName(), is("Pepperoni feast"));
         assertThat(pepperoniPizzaDAO.getSlug(), is("pepperoni-feast"));
-        assertThat(pepperoniPizzaDAO.getIngredients(), is("PizzaDAO sauce, mozzarella cheese, pepperoni"));
+        assertThat(pepperoniPizzaDAO.getIngredients(), is("Pizza sauce, mozzarella cheese, pepperoni"));
         assertThat(pepperoniPizzaDAO.getPrice(), is(13.99F));
     }
 
