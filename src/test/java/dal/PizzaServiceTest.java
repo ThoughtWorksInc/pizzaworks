@@ -2,7 +2,6 @@ package dal;
 
 import com.google.common.collect.Lists;
 import dal.dao.PizzaDAO;
-import mappers.PizzaMapper;
 import model.Pizza;
 import org.junit.After;
 import org.junit.Before;
@@ -16,6 +15,7 @@ import org.sql2o.Sql2o;
 
 import java.util.List;
 
+import static junit.framework.TestCase.fail;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 import static org.mockito.ArgumentMatchers.eq;

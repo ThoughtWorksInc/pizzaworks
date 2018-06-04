@@ -13,7 +13,8 @@ public class PizzaMapper {
 
     public static Pizza toPizza(PizzaDAO pizzaDAO) {
 
-        NutritionalValues nutritionalValues = new NutritionalValues(pizzaDAO.getEnergyPerSlice());
+        NutritionalValues nutritionalValues = new NutritionalValues(pizzaDAO.getEnergyPerSlice(), );
+
         return new Pizza(pizzaDAO.getName(), pizzaDAO.getUuid(), pizzaDAO.getPrice(), pizzaDAO.getIngredients(), pizzaDAO.getSlug(), nutritionalValues);
     }
 

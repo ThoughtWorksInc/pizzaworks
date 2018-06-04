@@ -1,0 +1,38 @@
+ALTER TABLE pizza
+  DROP COLUMN weight;
+ALTER TABLE pizza
+  DROP COLUMN num_slices;
+ALTER TABLE pizza
+  DROP COLUMN energy_per_slice;
+ALTER TABLE pizza
+  DROP COLUMN protein_per_slice;
+ALTER TABLE pizza
+  DROP COLUMN carbohydrate_per_slice;
+ALTER TABLE pizza
+  DROP COLUMN sugars_per_slice;
+ALTER TABLE pizza
+  DROP COLUMN fat_per_slice;
+ALTER TABLE pizza
+  DROP COLUMN saturated_fat_per_slice;
+ALTER TABLE pizza
+  DROP COLUMN salt_per_slice;
+ALTER TABLE pizza
+  DROP COLUMN energy_per_100;
+ALTER TABLE pizza
+  DROP COLUMN protein_per_100;
+ALTER TABLE pizza
+  DROP COLUMN carbohydrate_per_100;
+ALTER TABLE pizza
+  DROP COLUMN sugars_per_100;
+ALTER TABLE pizza
+  DROP COLUMN fat_per_100;
+ALTER TABLE pizza
+  DROP COLUMN saturated_fat_per_100;
+ALTER TABLE pizza
+  DROP COLUMN salt_per_100;
+ALTER TABLE pizza
+  DROP COLUMN allergens;
+ALTER TABLE pizza
+  DROP COLUMN vegetarian;
+ALTER TABLE pizza
+  DROP COLUMN vegan;
