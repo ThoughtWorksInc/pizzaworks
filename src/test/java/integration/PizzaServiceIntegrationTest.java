@@ -3,6 +3,7 @@ package integration;
 import dal.PizzaService;
 import dal.dao.PizzaDAO;
 import functional.helpers.DatabaseSetupRule;
+import model.Pizza;
 import org.junit.Before;
 import org.junit.ClassRule;
 import org.junit.Test;
@@ -29,32 +30,32 @@ public class PizzaServiceIntegrationTest {
     @Test
     public void shouldRetrievePizzas() {
 
-        List<PizzaDAO> allPizzaDAOS = pizzaService.getAllPizzaDaos();
-        assertThat(allPizzaDAOS.size(), is(4));
+        List<Pizza> allPizzas = pizzaService.getAllPizzas();
+        assertThat(allPizzas.size(), is(4));
 
-        PizzaDAO veggiePizzaDAO = getPizzaByName(allPizzaDAOS, "Veggie");
-        PizzaDAO pepperoniPizzaDAO = getPizzaByName(allPizzaDAOS, "Pepperoni feast");
+        Pizza veggiePizza = getPizzaByName(allPizzas, "Veggie");
+        Pizza pepperoniPizza = getPizzaByName(allPizzas, "Pepperoni feast");
 
-        assertThat(veggiePizzaDAO.getName(), is("Veggie"));
-        assertThat(veggiePizzaDAO.getSlug(), is("veggie"));
-        assertThat(veggiePizzaDAO.getIngredients(), is("Pizza sauce, vegan alternative to cheese, spinach, sweetcorn, mixed peppers, red onion, mushrooms"));
-        assertThat(veggiePizzaDAO.getPrice(), is(12.99F));
+        assertThat(veggiePizza.getName(), is("Veggie"));
+        assertThat(veggiePizza.getSlug(), is("veggie"));
+        assertThat(veggiePizza.getIngredients(), is("Pizza sauce, vegan alternative to cheese, spinach, sweetcorn, mixed peppers, red onion, mushrooms"));
+        assertThat(veggiePizza.getPrice(), is(12.99F));
 
-        assertThat(pepperoniPizzaDAO.getName(), is("Pepperoni feast"));
-        assertThat(pepperoniPizzaDAO.getSlug(), is("pepperoni-feast"));
-        assertThat(pepperoniPizzaDAO.getIngredients(), is("Pizza sauce, mozzarella cheese, pepperoni"));
-        assertThat(pepperoniPizzaDAO.getPrice(), is(13.99F));
+        assertThat(pepperoniPizza.getName(), is("Pepperoni feast"));
+        assertThat(pepperoniPizza.getSlug(), is("pepperoni-feast"));
+        assertThat(pepperoniPizza.getIngredients(), is("Pizza sauce, mozzarella cheese, pepperoni"));
+        assertThat(pepperoniPizza.getPrice(), is(13.99F));
     }
 
     @Test
     public void shouldRRetrievePizzaBySlug() {
-        PizzaDAO veggie = pizzaService.getPizzaBySlug("veggie").get();
+        Pizza veggie = pizzaService.getPizzaBySlug("veggie").get();
         assertThat((veggie.getName()), is("Veggie"));
 
     }
 
-    private PizzaDAO getPizzaByName(List<PizzaDAO> allPizzaDAOS, String pizzaName) {
-        return allPizzaDAOS.stream()
+    private Pizza getPizzaByName(List<Pizza> allPizzas, String pizzaName) {
+        return allPizzas.stream()
                 .filter(pizza -> pizza.getName().equals(pizzaName))
                 .findFirst().get();
     }
@@ -62,7 +63,7 @@ public class PizzaServiceIntegrationTest {
 
     @Test
     public void shouldReturnEmptyOptionalIfNoPizzaWithSlugCanBeFound(){
-        Optional<PizzaDAO> optional = pizzaService.getPizzaBySlug("pizzadoesnotexist");
+        Optional<Pizza> optional = pizzaService.getPizzaBySlug("pizzadoesnotexist");
         assertFalse(optional.isPresent());
     }
 }

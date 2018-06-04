@@ -27,9 +27,8 @@ public class OrderServiceIntegrationTest {
     @Test
     public void shouldCreateAndGetOrder() {
         String customerName = "Jenny";
-        Pizza pizza = PizzaMapper.toPizza(pizzaService.getPizzaBySlug("veggie").get());
+        Pizza pizza = pizzaService.getPizzaBySlug("veggie").get();
         orderService.createOrder(customerName, pizza);
-
     }
 
 }

@@ -16,20 +16,13 @@ public class PizzaService {
         this.sql2o = sql2o;
     }
 
-
-    public List<PizzaDAO> getAllPizzaDaos() {
-        try (Connection conn = sql2o.open()) {
-            return conn.createQuery("select * from pizza")
-                    .executeAndFetch(PizzaDAO.class);
-        }
-    }
-
-    public Optional<PizzaDAO> getPizzaBySlug(String slug) {
+    public Optional<Pizza> getPizzaBySlug(String slug) {
         try (Connection conn = sql2o.open()) {
             return conn.createQuery("select * from pizza where slug = :slug")
                     .addParameter("slug", slug)
                     .executeAndFetch(PizzaDAO.class)
                     .stream()
+                    .map(PizzaMapper::toPizza)
                     .findFirst();
         }
     }

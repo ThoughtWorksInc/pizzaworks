@@ -16,6 +16,4 @@ public class NutritionalValues {
         this.energyPerSlice = energyPerSlice;
     }
 
-    // TODO: 25/05/2018 Maybe change how values are stored (maybe a list or a hashMap?)
-    // TODO: 25/05/2018 Add energyPerSlice column to DB
 }
