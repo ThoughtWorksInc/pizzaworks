@@ -13,7 +13,7 @@ public class TestPizzaApplication implements SparkApplication {
     public void init() {
         PizzaController.initialize(new PizzaService(DatabaseSetUp.sql2oFromDataBase(getPizzaTestConfig())));
         LoginController.initialize();
-        OrderController.initialize();
+        OrderController.initialize(new PizzaService(DatabaseSetUp.sql2oFromDataBase(getPizzaTestConfig())));
     }
 
     public static DatabaseConfig getPizzaTestConfig() {

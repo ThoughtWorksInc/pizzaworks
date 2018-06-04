@@ -23,7 +23,9 @@
                     <div class="ingredients col-6 offset-1">$pizza.ingredients</div>
                     <div class="price col-1 offset-1"> £$pizza.price</div>
                     <div class="order-button col-1">
-                        <a href="/checkout" id="order-$pizza.slug">Order</a>
+
+                        <a href="/checkout/$pizza.slug" id="order-$pizza.slug">Order</a>
+
                     </div>
                 </li>
             #end

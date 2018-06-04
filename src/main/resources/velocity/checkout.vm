@@ -1,5 +1,17 @@
-###parse( "header.vm" )
+<header class="page-header">
+    <a href="/"><img id="header-image" src="/images/pizzaworks-logo.png"></a>
+</header>
+
+<div class="checkout-title">
+    <h1>Checkout</h1>
+    <p>You can now order online and pay on collection by completing the details below.</p>
+</div>
+
 
 <div class="order-details">
-    <h1 class="order-details">Veggie</h1>
+    <h2 class="order-details-title">Here is your order</h2>
+    <ul class="ordered-pizza">
+        <li id="name">$orderedPizza.name</li>
+        <li id="price">$orderedPizza.price</li>
+    </ul>
 </div>
