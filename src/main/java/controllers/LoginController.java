@@ -1,6 +1,7 @@
 package controllers;
 
 import domain.PizzaWorksRequest;
+import jdk.nashorn.internal.parser.JSONParser;
 import spark.Request;
 import spark.Response;
 
@@ -28,6 +29,7 @@ public class LoginController {
     }
 
     private static String processLogin(Request req, Response response) {
+//        String hashedPassword = new JSONParser(req.body()).parse().get("hashedPassword");
         req.session(true).attribute("loggedIn", true);
         response.redirect("/admin");
         return "";

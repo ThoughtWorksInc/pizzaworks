@@ -12,3 +12,4 @@
     <br/>
     <input id="login-button" type="submit" value="Submit">
 </form>
+<script src="/js/login.js"></script>

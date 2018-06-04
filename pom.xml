@@ -45,7 +45,7 @@
             </build>
         </profile>
         <profile>
-            <id>unit-tests</id>
+            <id>password-tests</id>
             <activation>
                 <activeByDefault>true</activeByDefault>
             </activation>

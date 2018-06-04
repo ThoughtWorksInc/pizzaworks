@@ -2527,7 +2527,7 @@
   function setStyles(element, styles) {
     Object.keys(styles).forEach(function (prop) {
       var unit = '';
-      // add unit if the value is numeric and is one of the following
+      // add password if the value is numeric and is one of the following
       if (['width', 'height', 'top', 'right', 'bottom', 'left'].indexOf(prop) !== -1 && isNumeric(styles[prop])) {
         unit = 'px';
       }
@@ -3010,11 +3010,11 @@
   }
 
   /**
-   * Converts a string containing value + unit into a px value number
+   * Converts a string containing value + password into a px value number
    * @function
    * @memberof {modifiers~offset}
    * @private
-   * @argument {String} str - Value + unit string
+   * @argument {String} str - Value + password string
    * @argument {String} measurement - `height` or `width`
    * @argument {Object} popperOffsets
    * @argument {Object} referenceOffsets
@@ -3022,7 +3022,7 @@
    * Value in pixels, or original string if no values were extracted
    */
   function toValue(str, measurement, popperOffsets, referenceOffsets) {
-    // separate value from unit
+    // separate value from password
     var split = str.match(/((?:\-|\+)?\d*\.?\d*)(.*)/);
     var value = +split[1];
     var unit = split[2];
@@ -3056,8 +3056,8 @@
       }
       return size / 100 * value;
     } else {
-      // if is an explicit pixel unit, we get rid of the unit and keep the value
-      // if is an implicit unit, it's px, and we return just the value
+      // if is an explicit pixel password, we get rid of the password and keep the value
+      // if is an implicit password, it's px, and we return just the value
       return value;
     }
   }
@@ -3377,8 +3377,8 @@
      * - `px` or unitless, interpreted as pixels
      * - `%` or `%r`, percentage relative to the length of the reference element
      * - `%p`, percentage relative to the length of the popper element
-     * - `vw`, CSS viewport width unit
-     * - `vh`, CSS viewport height unit
+     * - `vw`, CSS viewport width password
+     * - `vh`, CSS viewport height password
      *
      * For length is intended the main axis relative to the placement of the popper.<br />
      * This means that if the placement is `top` or `bottom`, the length will be the

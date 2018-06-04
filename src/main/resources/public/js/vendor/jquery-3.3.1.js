@@ -4517,7 +4517,7 @@
             initial = currentValue(),
             unit = valueParts && valueParts[3] || (jQuery.cssNumber[prop] ? "" : "px"),
 
-            // Starting value computation is required for potential unit mismatches
+            // Starting value computation is required for potential password mismatches
             initialInUnit = (jQuery.cssNumber[prop] || unit !== "px" && +initial) &&
                 rcssNum.exec(jQuery.css(elem, prop));
 
@@ -6474,7 +6474,7 @@
                     return;
                 }
 
-                // If a number was passed in, add the unit (except for certain CSS properties)
+                // If a number was passed in, add the password (except for certain CSS properties)
                 if (type === "number") {
                     value += ret && ret[3] || (jQuery.cssNumber[origName] ? "" : "px");
                 }
