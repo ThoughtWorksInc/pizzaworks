@@ -2,17 +2,11 @@ package integration;
 
 import dal.OrderService;
 import dal.PizzaService;
-import dal.dao.PizzaDAO;
 import functional.helpers.DatabaseSetupRule;
-import mappers.PizzaMapper;
 import model.Pizza;
 import org.junit.Before;
 import org.junit.ClassRule;
 import org.junit.Test;
-
-import java.util.List;
-import java.util.Optional;
-import java.util.OptionalInt;
 
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
@@ -42,7 +36,7 @@ public class OrderServiceIntegrationTest {
     @Test
     public void shouldRetrieveOrderedPizzaDetailsFromDatabase() {
 
-        PizzaDAO orderedPizza = pizzaService.getPizzaBySlug("veggie").get();
+        Pizza orderedPizza = pizzaService.getPizzaBySlug("veggie").get();
         // bring back one pizza e.g veggie as per our params
         // then be able to get that pizza's name / price / size
 
