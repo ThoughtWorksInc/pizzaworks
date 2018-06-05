@@ -32,6 +32,9 @@ public class OrderPizzaJourneyTest extends FunctionalTestSetup {
 
     @Test
     public void shouldBeAbleToNavigateToHomePageIfWeCancelAtCheckout() throws InterruptedException {
+        assertThat(driver.getCurrentUrl(), is("http://localhost:4568/"));
+        WebElement veggieOrderButton = driver.findElement(By.id("order-veggie"));
+        veggieOrderButton.click();
         assertThat(driver.getCurrentUrl(), is("http://localhost:4568/checkout/veggie"));
         WebElement cancelOrderButton = driver.findElement(By.id("cancel-order-button"));
         cancelOrderButton.click();
