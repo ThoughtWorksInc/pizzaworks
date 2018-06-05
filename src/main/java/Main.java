@@ -1,6 +1,8 @@
+import controllers.CheckoutController;
+import controllers.ConfirmationController;
 import controllers.LoginController;
-import controllers.OrderController;
 import controllers.PizzaController;
+import dal.OrderService;
 import dal.PizzaService;
 import database.DatabaseSetUp;
 
@@ -14,7 +16,8 @@ public class Main {
 
         PizzaController.initialize(new PizzaService(DatabaseSetUp.sql2oFromDataBase()));
         LoginController.initialize();
-        OrderController.initialize(new PizzaService(DatabaseSetUp.sql2oFromDataBase()));
+        CheckoutController.initialize(new PizzaService(DatabaseSetUp.sql2oFromDataBase()));
+        ConfirmationController.initialize(new OrderService(DatabaseSetUp.sql2oFromDataBase()));
     }
 
     static int getAssignedPort() {

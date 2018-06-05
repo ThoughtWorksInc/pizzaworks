@@ -1,0 +1,19 @@
+<header class="page-header">
+    <a href="/"><img id="header-image" src="/images/pizzaworks-logo.png"></a>
+</header>
+
+<div class="confirmation-title">
+    <h1>Order confirmation</h1>
+    <p>Order no.</p>
+</div>
+<div class="confirmation-content">
+    <p>customer message</p>
+</div>
+
+<div class="confirmation-details">
+    <h2 class="confirmation-details-title">Order details</h2>
+    <ul class="confirmed-pizza">
+        <li id="confirmed-pizza-name">Veggie</li>
+        <li id="confirmed-pizza-price">12.99</li>
+    </ul>
+</div>

@@ -9,12 +9,12 @@ import java.util.Map;
 import static spark.Spark.get;
 import static util.TemplateHelper.renderTemplate;
 
-public class OrderController {
+public class CheckoutController {
 
     private  static PizzaService pizzaService;
 
     public static void initialize(PizzaService pizzaService) {
-        OrderController.pizzaService = pizzaService;
+        CheckoutController.pizzaService = pizzaService;
         get("/checkout/:slug", (req, res) -> renderCheckoutPage(req.params(":slug")));
     }
 

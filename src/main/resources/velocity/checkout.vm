@@ -15,3 +15,8 @@
         <li id="price">$orderedPizza.price</li>
     </ul>
 </div>
+
+<div>
+    <a href="/"><button id="cancel-order-button"> Cancel</button></a>
+    <a href="/confirmation"><button id="submit-order-button">Submit</button></a>
+</div>
