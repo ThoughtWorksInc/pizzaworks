@@ -7,4 +7,6 @@
 </header>
 <h1 class="pizza-title">$chosenPizza.name</h1>
 <h2 class="pizza-price">£$chosenPizza.price</h2>
+<h3 class="pizza-num-slices">$chosenPizza.nutritionalValues.num_slices</h3>
+
 <a href="/"><button> Return to list of pizzas</button></a>

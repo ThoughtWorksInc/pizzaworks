@@ -20,7 +20,7 @@ public class PizzaMapperTest {
 
         Pizza pizza = PizzaMapper.toPizza(pizzaDAO);
 
-        assertThat(pizza.getNutritionalValues().getEnergyPerSlice(), is(1));
+        assertThat(pizza.getNutritionalValues().getEnergy_per_slice(), is(1));
         assertThat(pizza.getName(), is("pizzaName"));
     }
 

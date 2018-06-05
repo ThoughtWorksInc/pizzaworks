@@ -25,6 +25,7 @@ public class PizzaPageTest extends FunctionalTestSetup {
         assertThat(driver.getCurrentUrl(), is("http://localhost:4568/pizza/veggie"));
 
         assertThat(driver.findElement(By.className("pizza-title")).getText(), is("Veggie"));
+        assertThat(driver.findElement(By.className("pizza-num-slices")).getText(), is("6"));
         assertThat(driver.findElement(By.className("pizza-price")).getText(), is("£12.99"));
     }
 

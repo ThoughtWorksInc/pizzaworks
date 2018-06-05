@@ -3,43 +3,43 @@ package model;
 public class NutritionalValues {
 
     private int weight;
-    private int numSlices;
-    private int energyPerSlice;
-    private double proteinPerSlice;
-    private double carbohydratePerSlice;
-    private double sugarsPerSlice;
-    private double fatPerSlice;
-    private double saturatedFatPerSlice;
-    private double saltPerSlice;
-    private int energyPer100;
-    private double proteinPer100;
-    private double carbohydratePer100;
-    private double sugarsPer100;
-    private double fatPer100;
-    private double saturatedFatPer100;
-    private double saltPer100;
+    private int num_slices;
+    private int energy_per_slice;
+    private double protein_per_slice;
+    private double carbohydrate_per_slice;
+    private double sugars_per_slice;
+    private double fat_per_slice;
+    private double saturated_fat_per_slice;
+    private double salt_per_slice;
+    private int energy_per_100;
+    private double protein_per_100;
+    private double carbohydrate_per_100;
+    private double sugars_per_100;
+    private double fat_per_100;
+    private double saturated_fat_per_100;
+    private double salt_per_100;
     private String allergens;
     private boolean vegetarian;
     private boolean vegan;
 
 
-    public NutritionalValues(int weight, int numSlices, int energyPerSlice, double proteinPerSlice, double carbohydratePerSlice, double sugarsPerSlice, double fatPerSlice, double saturatedFatPerSlice, double saltPerSlice, int energyPer100, double proteinPer100, double carbohydratePer100, double sugarsPer100, double fatPer100, double saturatedFatPer100, double saltPer100, String allergens, boolean vegetarian, boolean vegan) {
+    public NutritionalValues(int weight, int num_slices, int energy_per_slice, double protein_per_slice, double carbohydrate_per_slice, double sugars_per_slice, double fat_per_slice, double saturated_fat_per_slice, double salt_per_slice, int energy_per_100, double protein_per_100, double carbohydrate_per_100, double sugars_per_100, double fat_per_100, double saturated_fat_per_100, double salt_per_100, String allergens, boolean vegetarian, boolean vegan) {
         this.weight = weight;
-        this.numSlices = numSlices;
-        this.energyPerSlice = energyPerSlice;
-        this.proteinPerSlice = proteinPerSlice;
-        this.carbohydratePerSlice = carbohydratePerSlice;
-        this.sugarsPerSlice = sugarsPerSlice;
-        this.fatPerSlice = fatPerSlice;
-        this.saturatedFatPerSlice = saturatedFatPerSlice;
-        this.saltPerSlice = saltPerSlice;
-        this.energyPer100 = energyPer100;
-        this.proteinPer100 = proteinPer100;
-        this.carbohydratePer100 = carbohydratePer100;
-        this.sugarsPer100 = sugarsPer100;
-        this.fatPer100 = fatPer100;
-        this.saturatedFatPer100 = saturatedFatPer100;
-        this.saltPer100 = saltPer100;
+        this.num_slices = num_slices;
+        this.energy_per_slice = energy_per_slice;
+        this.protein_per_slice = protein_per_slice;
+        this.carbohydrate_per_slice = carbohydrate_per_slice;
+        this.sugars_per_slice = sugars_per_slice;
+        this.fat_per_slice = fat_per_slice;
+        this.saturated_fat_per_slice = saturated_fat_per_slice;
+        this.salt_per_slice = salt_per_slice;
+        this.energy_per_100 = energy_per_100;
+        this.protein_per_100 = protein_per_100;
+        this.carbohydrate_per_100 = carbohydrate_per_100;
+        this.sugars_per_100 = sugars_per_100;
+        this.fat_per_100 = fat_per_100;
+        this.saturated_fat_per_100 = saturated_fat_per_100;
+        this.salt_per_100 = salt_per_100;
         this.allergens = allergens;
         this.vegetarian = vegetarian;
         this.vegan = vegan;
@@ -49,64 +49,64 @@ public class NutritionalValues {
         return weight;
     }
 
-    public int getNumSlices() {
-        return numSlices;
+    public int getNum_slices() {
+        return num_slices;
     }
 
-    public int getEnergyPerSlice() {
-        return energyPerSlice;
+    public int getEnergy_per_slice() {
+        return energy_per_slice;
     }
 
-    public double getProteinPerSlice() {
-        return proteinPerSlice;
+    public double getProtein_per_slice() {
+        return protein_per_slice;
     }
 
-    public double getCarbohydratePerSlice() {
-        return carbohydratePerSlice;
+    public double getCarbohydrate_per_slice() {
+        return carbohydrate_per_slice;
     }
 
-    public double getSugarsPerSlice() {
-        return sugarsPerSlice;
+    public double getSugars_per_slice() {
+        return sugars_per_slice;
     }
 
-    public double getFatPerSlice() {
-        return fatPerSlice;
+    public double getFat_per_slice() {
+        return fat_per_slice;
     }
 
-    public double getSaturatedFatPerSlice() {
-        return saturatedFatPerSlice;
+    public double getSaturated_fat_per_slice() {
+        return saturated_fat_per_slice;
     }
 
-    public double getSaltPerSlice() {
-        return saltPerSlice;
+    public double getSalt_per_slice() {
+        return salt_per_slice;
     }
 
-    public int getEnergyPer100() {
-        return energyPer100;
+    public int getEnergy_per_100() {
+        return energy_per_100;
     }
 
-    public double getProteinPer100() {
-        return proteinPer100;
+    public double getProtein_per_100() {
+        return protein_per_100;
     }
 
-    public double getCarbohydratePer100() {
-        return carbohydratePer100;
+    public double getCarbohydrate_per_100() {
+        return carbohydrate_per_100;
     }
 
-    public double getSugarsPer100() {
-        return sugarsPer100;
+    public double getSugars_per_100() {
+        return sugars_per_100;
     }
 
-    public double getFatPer100() {
-        return fatPer100;
+    public double getFat_per_100() {
+        return fat_per_100;
     }
 
-    public double getSaturatedFatPer100() {
-        return saturatedFatPer100;
+    public double getSaturated_fat_per_100() {
+        return saturated_fat_per_100;
     }
 
-    public double getSaltPer100() {
-        return saltPer100;
+    public double getSalt_per_100() {
+        return salt_per_100;
     }
 
     public String getAllergens() {
