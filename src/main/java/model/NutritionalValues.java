@@ -19,11 +19,12 @@ public class NutritionalValues {
     private double saturated_fat_per_100;
     private double salt_per_100;
     private String allergens;
-    private boolean vegetarian;
-    private boolean vegan;
+    private String vegetarian;
+    private String vegan;
 
 
     public NutritionalValues(int weight, int num_slices, int energy_per_slice, double protein_per_slice, double carbohydrate_per_slice, double sugars_per_slice, double fat_per_slice, double saturated_fat_per_slice, double salt_per_slice, int energy_per_100, double protein_per_100, double carbohydrate_per_100, double sugars_per_100, double fat_per_100, double saturated_fat_per_100, double salt_per_100, String allergens, boolean vegetarian, boolean vegan) {
+
         this.weight = weight;
         this.num_slices = num_slices;
         this.energy_per_slice = energy_per_slice;
@@ -41,8 +42,18 @@ public class NutritionalValues {
         this.saturated_fat_per_100 = saturated_fat_per_100;
         this.salt_per_100 = salt_per_100;
         this.allergens = allergens;
-        this.vegetarian = vegetarian;
-        this.vegan = vegan;
+
+        if (vegetarian) {
+            this.vegetarian = "Yes";
+        } else {
+            this.vegetarian = "No";
+        }
+
+        if (vegan) {
+            this.vegan = "Yes";
+        } else {
+            this.vegan = "No";
+        }
     }
 
     public int getWeight() {
@@ -113,11 +124,11 @@ public class NutritionalValues {
         return allergens;
     }
 
-    public boolean isVegetarian() {
+    public String getVegetarian() {
         return vegetarian;
     }
 
-    public boolean isVegan() {
+    public String getVegan() {
         return vegan;
     }
 }
