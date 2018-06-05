@@ -15,4 +15,44 @@
 <p class="pizza-vegetarian">Suitable for vegetarians: <strong>$chosenPizza.nutritionalValues.vegetarian</strong></p>
 <p class="pizza-vegan">Suitable for vegans: <strong>$chosenPizza.nutritionalValues.vegan</strong></p>
 
-<a href="/"><button> Return to list of pizzas</button></a>
+<table>
+    <tr>
+        <th>Nutritional info (per slice)</th>
+        <th>Nutritional info (per 100g)</th>
+    </tr>
+    <tr>
+        <td>Energy (kCal): $chosenPizza.nutritionalValues.energy_per_slice</td>
+        <td>Energy (kCal): $chosenPizza.nutritionalValues.energy_per_100</td>
+    </tr>
+
+    <tr>
+        <td>Protein (g): $chosenPizza.nutritionalValues.protein_per_slice</td>
+        <td>Protein (g): $chosenPizza.nutritionalValues.protein_per_100</td>
+    </tr>
+
+    <tr>
+        <td>Carbohydrate (g): $chosenPizza.nutritionalValues.carbohydrate_per_slice</td>
+        <td>Carbohydrate (g): $chosenPizza.nutritionalValues.carbohydrate_per_100</td>
+    </tr>
+
+    <tr>
+        <td>Sugars (g): $chosenPizza.nutritionalValues.sugars_per_slice</td>
+        <td>Sugars (g): $chosenPizza.nutritionalValues.sugars_per_100</td>
+    </tr>
+
+    <tr>
+        <td>Fat (g): $chosenPizza.nutritionalValues.fat_per_slice</td>
+        <td>Fat (g): $chosenPizza.nutritionalValues.fat_per_100</td>
+    </tr>
+
+    <tr>
+        <td>Salt (g): $chosenPizza.nutritionalValues.salt_per_slice</td>
+        <td>Salt (g): $chosenPizza.nutritionalValues.salt_per_100</td>
+    </tr>
+</table>
+
+<br>
+
+<a href="/"><button align="center"> Return to list of pizzas</button></a>
+
+<br>

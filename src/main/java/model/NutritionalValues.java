@@ -28,19 +28,19 @@ public class NutritionalValues {
         this.weight = weight;
         this.num_slices = num_slices;
         this.energy_per_slice = energy_per_slice;
-        this.protein_per_slice = protein_per_slice;
-        this.carbohydrate_per_slice = carbohydrate_per_slice;
-        this.sugars_per_slice = sugars_per_slice;
-        this.fat_per_slice = fat_per_slice;
-        this.saturated_fat_per_slice = saturated_fat_per_slice;
-        this.salt_per_slice = salt_per_slice;
+        this.protein_per_slice = Math.round(protein_per_slice * 10.0)/10.0;
+        this.carbohydrate_per_slice = Math.round(carbohydrate_per_slice * 10.0)/10.0;
+        this.sugars_per_slice = Math.round(sugars_per_slice * 10.0)/10.0;
+        this.fat_per_slice = Math.round(fat_per_slice * 10.0)/10.0;
+        this.saturated_fat_per_slice = Math.round(saturated_fat_per_slice * 10.0)/10.0;
+        this.salt_per_slice = Math.round(salt_per_slice*100.0)/100.0;
         this.energy_per_100 = energy_per_100;
-        this.protein_per_100 = protein_per_100;
-        this.carbohydrate_per_100 = carbohydrate_per_100;
-        this.sugars_per_100 = sugars_per_100;
-        this.fat_per_100 = fat_per_100;
-        this.saturated_fat_per_100 = saturated_fat_per_100;
-        this.salt_per_100 = salt_per_100;
+        this.protein_per_100 = Math.round(protein_per_100 * 10.0)/10.0;
+        this.carbohydrate_per_100 = Math.round(carbohydrate_per_100 * 10.0)/10.0;
+        this.sugars_per_100 = Math.round(sugars_per_100 * 10.0)/10.0;
+        this.fat_per_100 = Math.round(fat_per_100 * 10.0)/10.0;
+        this.saturated_fat_per_100 = Math.round(saturated_fat_per_100 * 10.0)/10.0;
+        this.salt_per_100 = Math.round(salt_per_100*100.0)/100.0;
         this.allergens = allergens;
 
         if (vegetarian) {
