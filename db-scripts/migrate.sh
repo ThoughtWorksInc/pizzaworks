@@ -7,7 +7,7 @@ else
     echo "Go agent NOT detected - continuing using local environment"
 fi
 
-nvm use
+. $NVM_DIR/nvm.sh && nvm use
 
 if [ -z "$MIGRATE_TO" ]; then
     echo "Migrating back to version: $MIGRATE_TO"
