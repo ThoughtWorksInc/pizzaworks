@@ -12,6 +12,7 @@ public class DatabaseSetUp {
 
     public static Sql2o sql2oFromDataBase() {
         DatabaseConfig databaseConfig = getDatabaseConfigFromEnv();
+        UUID uuid = UUID.randomUUID();
         return sql2oFromDataBase(databaseConfig);
 
     }
