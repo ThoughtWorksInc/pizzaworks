@@ -7,7 +7,6 @@ import spark.Request;
 import java.util.HashMap;
 import java.util.Map;
 
-import static spark.Spark.get;
 import static spark.Spark.post;
 import static util.TemplateHelper.renderTemplate;
 
@@ -25,7 +24,7 @@ public class ConfirmationController {
     private static Object renderConfirmationPage(Request req) {
         Map<String, Object> model = new HashMap<>();
         Pizza pizza = new Pizza();
-        String pizza_id = req.params("pizza_id");
+        String pizza_id = req.queryParams("pizza_id");
         orderService.createOrder("Rebecca", pizza_id);
         return renderTemplate("velocity/confirmation.vm", model);
     }

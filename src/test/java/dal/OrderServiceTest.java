@@ -1,19 +1,14 @@
 package dal;
 
 import functional.helpers.DatabaseSetupRule;
-import functional.helpers.FunctionalTestSetup;
 import model.Order;
 import model.Pizza;
 import org.junit.Before;
 import org.junit.ClassRule;
 import org.junit.Test;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
-
-import java.sql.SQLOutput;
 
 import static org.hamcrest.core.Is.is;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertThat;
 
 public class OrderServiceTest{
 
@@ -34,7 +29,10 @@ public class OrderServiceTest{
     public void shouldReturnOrderNumberGenerated() throws InterruptedException {
         Pizza pizza = pizzaService.getPizzaBySlug("veggie").get();
         String customerName = "Rebe";
+        System.out.println(pizza.getUuid()+"******");
         Order order = orderService.createOrder(customerName, pizza.getUuid().toString());
+        System.out.println(order+"******");
+
 
         assertThat(order.getOrder_number() , is(10000));
 //

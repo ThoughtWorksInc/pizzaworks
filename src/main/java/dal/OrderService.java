@@ -20,15 +20,14 @@ public class OrderService {
     public Order createOrder(String customerName, String pizzaId) {
         String insertSql =
                 "insert into pizza_order(uuid, order_number , customer_name, pizza_id, price, timestamp ) " +
-                        "values (:uuid, nextval('order_number_sequence'), :customerName, :pizza_uuid, :pizza_price, :timestamp)";
+                        "values (:uuid, nextval('order_number_sequence'), :customerName, :pizza_uuid, (SELECT price FROM PIZZA WHERE uuid = :pizza_uuid), :timestamp)";
 
         try (Connection con = sql2o.open()) {
             UUID value = UUID.randomUUID();
             con.createQuery(insertSql)
                     .addParameter("uuid", value)
                     .addParameter("customerName", customerName)
-                    .addParameter("pizza_uuid", pizzaId)
-                    .addParameter("pizza_price", 12.10)
+                    .addParameter("pizza_uuid", UUID.fromString(pizzaId))
                     .addParameter("timestamp", new Date())
                     .executeUpdate();
 

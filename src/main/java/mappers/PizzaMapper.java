@@ -33,7 +33,7 @@ public class PizzaMapper {
                 pizzaDAO.getVegan()
         );
 
-        return new Pizza(pizzaDAO.getName(), pizzaDAO.getPrice(), pizzaDAO.getIngredients(), pizzaDAO.getSlug(), nutritionalValues);
+        return new Pizza(pizzaDAO.getName(), pizzaDAO.getUuid(), pizzaDAO.getPrice(), pizzaDAO.getIngredients(), pizzaDAO.getSlug(), nutritionalValues);
     }
 
     public static List<Pizza> fromPizzaDaos(List<PizzaDAO> pizzaDAOS) {
