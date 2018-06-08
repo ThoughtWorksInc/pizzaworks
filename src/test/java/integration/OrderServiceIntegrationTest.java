@@ -33,12 +33,8 @@ public class OrderServiceIntegrationTest {
     public void shouldCreateAndGetOrder() {
         String customerName = "Jenny";
         Pizza pizza = pizzaService.getPizzaBySlug("veggie").get();
-        orderService.createOrder(customerName, pizza);
-        Order order = orderService
-                .getOrder()
-                .get(0);
+        Order order = orderService.createOrder(customerName, pizza.getUuid().toString());
         assertThat(order.getCustomer_name() , is(customerName));
-        System.out.println(pizza.getUuid());
         assertThat(order.getPizza_id(), is(pizza.getUuid()));
     }
 
