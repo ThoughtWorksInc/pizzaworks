@@ -13,21 +13,18 @@ public class PizzaWorksRequest {
     }
 
     public boolean isLoggedIn() {
-        if(req.session().attribute("loggedIn") != null)
+        if (req.session().attribute("loggedIn") != null)
             return true;
 
-         else return false;
+        else return false;
     }
 
-
-
-
     public String getUsername() {
-        return req.params("username");
+        return req.queryParams("username");
     }
 
     public String getHashedPassword() throws NoSuchAlgorithmException {
-        String password = req.params("password");
+        String password = req.queryParams("password");
         return Password.hashAndSalt(password);
     }
 }

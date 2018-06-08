@@ -19,36 +19,36 @@ public class LoginController {
         LoginController.loginService = loginService;
 
         get("/login", (req, res) -> renderLoginPage());
-        get("/admin", (req, res) -> renderAdminPage());
-        post("/login", (req, res) -> {
-            System.out.println("*****" + req.body());
-            return renderAdminPage();
+        get("/admin", (req, res) -> {
+            PizzaWorksRequest pizzaWorksRequest = new PizzaWorksRequest(req);
+            return adminValidCheck(pizzaWorksRequest) ? renderAdminPage() : redirectToLogin(res);
         });
 
-        before("/admin", (req, res) -> {
-            System.out.println("*****" + req.body());
+
+        post("/admin", (req, res) -> {
             PizzaWorksRequest pizzaWorksRequest = new PizzaWorksRequest(req);
-            processLogin(req, res, pizzaWorksRequest);
+            processLogin(req, pizzaWorksRequest);
+            return adminValidCheck(pizzaWorksRequest) ? renderAdminPage() : redirectToLogin(res);
         });
     }
 
-    private static void processLogin(Request request, Response response, PizzaWorksRequest pizzaWorksRequest) throws NoSuchAlgorithmException {
+    private static Response redirectToLogin(Response res) {
+        res.redirect("/login");
+        return res;
+    }
 
-        System.out.println("IS LOGGED IN BEFORE? " + pizzaWorksRequest.isLoggedIn());
+    private static void processLogin(Request request, PizzaWorksRequest pizzaWorksRequest) throws NoSuchAlgorithmException {
 
         String username = pizzaWorksRequest.getUsername();
         String hashedPassword = pizzaWorksRequest.getHashedPassword();
         if (loginService.isValidAdminUser(username, hashedPassword)) {
-            System.out.println(pizzaWorksRequest.getUsername());
             request.session().attribute("loggedIn", true);
         }
-        System.out.println("IS LOGGED IN AFTER? " + pizzaWorksRequest.isLoggedIn());
-        if (pizzaWorksRequest.isLoggedIn()) {
-            System.out.println("IS LOGGED IN IN IF? " + pizzaWorksRequest.isLoggedIn());
-            response.redirect("/admin", 301);
-        } else {
-            response.redirect("/login", 301);
-        }
+    }
+
+    private static Boolean adminValidCheck(PizzaWorksRequest pizzaWorksRequest) {
+        System.out.println("Admin logged in: " + pizzaWorksRequest.isLoggedIn());
+        return (pizzaWorksRequest.isLoggedIn());
     }
 
     private static String renderLoginPage() {
