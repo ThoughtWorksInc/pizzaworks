@@ -20,6 +20,10 @@ public class Pizza {
         this.nutritionalValues = nutritionalValues;
     }
 
+    public Pizza() {
+
+    }
+
     public NutritionalValues getNutritionalValues() {
         return nutritionalValues;
     }
@@ -42,5 +46,9 @@ public class Pizza {
 
     public String getSlug() {
         return slug;
+    }
+
+    public void setUUID(String uuid) {
+        this.uuid = UUID.fromString(uuid);
     }
 }

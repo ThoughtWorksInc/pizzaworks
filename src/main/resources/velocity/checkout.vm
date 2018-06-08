@@ -16,7 +16,13 @@
     </ul>
 </div>
 
+<form method="POST" action="/confirmation">
+    <label>Please enter your name</label>
+    <input type="text" name="customer_name" id="customer_name">
+    <input type="hidden" name="pizza_id" id="pizza_id" value="$orderedPizza.uuid">
+    <input id="submit-order-button" type="submit" value="Submit">
+</form>
+
 <div>
     <a href="/"><button id="cancel-order-button"> Cancel</button></a>
-    <a href="/confirmation"><button id="submit-order-button">Submit</button></a>
 </div>
