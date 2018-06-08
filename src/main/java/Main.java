@@ -1,6 +1,7 @@
 import controllers.LoginController;
 import controllers.OrderController;
 import controllers.PizzaController;
+import dal.LoginService;
 import dal.PizzaService;
 import database.DatabaseSetUp;
 
@@ -13,7 +14,7 @@ public class Main {
         staticFiles.location("/public");
 
         PizzaController.initialize(new PizzaService(DatabaseSetUp.sql2oFromDataBase()));
-        LoginController.initialize();
+        LoginController.initialize(new LoginService(DatabaseSetUp.sql2oFromDataBase()));
         OrderController.initialize();
     }
 

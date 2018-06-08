@@ -5,10 +5,10 @@
 
 <form action="/login" method="POST">
     <label>User Name</label>
-    <input type="text" name="username" placeholder="Enter your user name">
+    <input type="text" name="username" placeholder="Enter your user name" required>
     <br/>
     <label>Password</label>
-    <input type="password" name="password" placeholder="Enter your password">
+    <input type="password" name="password" placeholder="Enter your password" required>
     <br/>
     <input id="login-button" type="submit" value="Submit">
 </form>

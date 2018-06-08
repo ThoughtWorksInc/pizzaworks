@@ -14,13 +14,13 @@ import java.util.Optional;
 import static spark.Spark.*;
 
 public class PizzaController {
-    private  static PizzaService pizzaService;
+    private static PizzaService pizzaService;
 
     public static void initialize(PizzaService pizzaService) {
         PizzaController.pizzaService = pizzaService;
+
         get("/", (req, res) -> renderPizzas());
         get("/pizza/:pizzaslug", (req, res) -> renderChosenPizza(req.params(":pizzaslug")));
-
     }
 
     private static String renderChosenPizza(String slug) {

@@ -4,6 +4,7 @@ import config.DatabaseConfig;
 import controllers.LoginController;
 import controllers.OrderController;
 import controllers.PizzaController;
+import dal.LoginService;
 import dal.PizzaService;
 import database.DatabaseSetUp;
 import spark.servlet.SparkApplication;
@@ -12,7 +13,7 @@ public class TestPizzaApplication implements SparkApplication {
     @Override
     public void init() {
         PizzaController.initialize(new PizzaService(DatabaseSetUp.sql2oFromDataBase(getPizzaTestConfig())));
-        LoginController.initialize();
+        LoginController.initialize(new LoginService(DatabaseSetUp.sql2oFromDataBase(getPizzaTestConfig())));
         OrderController.initialize();
     }
 

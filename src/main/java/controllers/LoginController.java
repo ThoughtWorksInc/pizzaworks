@@ -1,10 +1,11 @@
 package controllers;
 
+import dal.LoginService;
 import domain.PizzaWorksRequest;
-import jdk.nashorn.internal.parser.JSONParser;
 import spark.Request;
 import spark.Response;
 
+import java.security.NoSuchAlgorithmException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -12,27 +13,42 @@ import static spark.Spark.*;
 import static util.TemplateHelper.renderTemplate;
 
 public class LoginController {
-    public static void initialize() {
+    private static LoginService loginService;
+
+    public static void initialize(LoginService loginService) {
+        LoginController.loginService = loginService;
+
         get("/login", (req, res) -> renderLoginPage());
         get("/admin", (req, res) -> renderAdminPage());
-        post("/login", LoginController::processLogin);
+        post("/login", (req, res) -> {
+            System.out.println("*****" + req.body());
+            return renderAdminPage();
+        });
 
-        before("/admin", (request, response) -> {
-//            RequestHelper.isLoggedIn(request);
-            new PizzaWorksRequest(request);
-            Boolean loggedIn = request.session().attribute("loggedIn");
-            if(loggedIn == null || !loggedIn) {
-                response.redirect("/login");
-            }
-
+        before("/admin", (req, res) -> {
+            System.out.println("*****" + req.body());
+            PizzaWorksRequest pizzaWorksRequest = new PizzaWorksRequest(req);
+            processLogin(req, res, pizzaWorksRequest);
         });
     }
 
-    private static String processLogin(Request req, Response response) {
-//        String hashedPassword = new JSONParser(req.body()).parse().get("hashedPassword");
-        req.session(true).attribute("loggedIn", true);
-        response.redirect("/admin");
-        return "";
+    private static void processLogin(Request request, Response response, PizzaWorksRequest pizzaWorksRequest) throws NoSuchAlgorithmException {
+
+        System.out.println("IS LOGGED IN BEFORE? " + pizzaWorksRequest.isLoggedIn());
+
+        String username = pizzaWorksRequest.getUsername();
+        String hashedPassword = pizzaWorksRequest.getHashedPassword();
+        if (loginService.isValidAdminUser(username, hashedPassword)) {
+            System.out.println(pizzaWorksRequest.getUsername());
+            request.session().attribute("loggedIn", true);
+        }
+        System.out.println("IS LOGGED IN AFTER? " + pizzaWorksRequest.isLoggedIn());
+        if (pizzaWorksRequest.isLoggedIn()) {
+            System.out.println("IS LOGGED IN IN IF? " + pizzaWorksRequest.isLoggedIn());
+            response.redirect("/admin", 301);
+        } else {
+            response.redirect("/login", 301);
+        }
     }
 
     private static String renderLoginPage() {
