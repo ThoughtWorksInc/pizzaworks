@@ -4,8 +4,9 @@ set -e
 
 echo "---- Copying Jar to Server ----"
 scp  ./jars/*.jar  ec2-user@$PIZZA_WORKS_SERVER:/home/ec2-user/pizzaworks.jar
+scp  ./.nvmrc  ec2-user@$PIZZA_WORKS_SERVER:/home/ec2-user/
 scp  build-scripts/start-server.sh  ec2-user@$PIZZA_WORKS_SERVER:/home/ec2-user/
-scp  -r migrations ec2-user@$PIZZA_WORKS_SERVER:/home/ec2-user/
+scp  -r migrations  ec2-user@$PIZZA_WORKS_SERVER:/home/ec2-user/
 
 
 echo "---- Starting Server on Remote box ----"

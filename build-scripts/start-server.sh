@@ -12,6 +12,8 @@ fi
 
 logger pghost: $PGHOST
 
+. $NVM_DIR/nvm.sh && nvm use
+
 # migrate the database
 (cd migrations && pg-migrator postgres://$PGUSER:$PGPW@$PGHOST:$PGPORT/$PGDATABASE)
 
