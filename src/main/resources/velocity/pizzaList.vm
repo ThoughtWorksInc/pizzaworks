@@ -1,34 +1,97 @@
 <header class="page-header">
     <a href="/"><img id="header-image" src="/images/pizzaworks-logo.png"></a>
     <h1>Welcome to PizzaWorks!</h1>
-    <a href="/login"><button>Login</button></a>
+    <a href="/login">
+        <button>Login</button>
+    </a>
     <div id="info">
         <p>Phone number: 0782-129-8883</p>
     </div>
 </header>
 
 <div id="main" class="row">
+
     <div class="col-12">
         <div class="info">
             Our famous pizzas:
         </div>
     </div>
-    <div class="col-12">
+
+    <div class="dropdown">
+        <button onclick="renderDropdown()" class="dropbtn">Show me...</button>
+        <div id="myDropdown" class="dropdown-content">
+            <a onclick="new FilterHelper().showAllPizzas()">All Pizzas</a>
+            <a onclick="showVegetarianPizzas()">Vegetarian pizzas only</a>
+            <a onclick="showVeganPizzas()">Vegan pizzas only</a>
+        </div>
+    </div>
+
+
+    <!-- Render ALL pizzas -->
+    <div id="all-pizzas" class="col-12">
         <ul id="pizza-list">
             #foreach($pizza in $pizzas)
-                <li class="pizza row">
+                <li class="pizza row $pizza.stringRepresentationOfFilter()">
                     <div class="name col-2">
                         <a href="/pizza/$pizza.slug">$pizza.name</a>
                     </div>
                     <div class="ingredients col-6 offset-1">$pizza.ingredients</div>
                     <div class="price col-1 offset-1"> £$pizza.price</div>
                     <div class="order-button col-1">
-
                         <a href="/checkout/$pizza.slug" id="order-$pizza.slug">Order</a>
-
                     </div>
                 </li>
             #end
         </ul>
     </div>
+
+    <!--Render ONLY vegetarian pizzas -->
+    <div id="vegetarian-pizzas" class="col-12">
+        <ul id="pizza-list">
+            #foreach($pizza in $pizzas)
+                #if ($pizza.nutritionalValues.vegetarian == "Yes")
+                    <li class="pizza row">
+                        <div class="name col-2">
+                            <a href="/pizza/$pizza.slug">$pizza.name</a>
+                        </div>
+                        <div class="ingredients col-6 offset-1">$pizza.ingredients</div>
+                        <div class="price col-1 offset-1"> £$pizza.price</div>
+                        <div class="order-button col-1">
+                            <a href="/checkout/$pizza.slug" id="order-$pizza.slug">Order</a>
+                        </div>
+                    </li>
+                #end
+            #end
+        </ul>
+    </div>
+
+    <!-- Render ONLY vegan pizzas -->
+    <div id="vegan-pizzas" class="col-12">
+        <ul id="pizza-list">
+            #foreach($pizza in $pizzas)
+                #if ($pizza.nutritionalValues.vegan == "Yes")
+                    <li class="pizza row">
+                        <div class="name col-2">
+                            <a href="/pizza/$pizza.slug">$pizza.name</a>
+                        </div>
+                        <div class="ingredients col-6 offset-1">$pizza.ingredients</div>
+                        <div class="price col-1 offset-1"> £$pizza.price</div>
+                        <div class="order-button col-1">
+                            <a href="/checkout/$pizza.slug" id="order-$pizza.slug">Order</a>
+                        </div>
+                    </li>
+                #end
+            #end
+        </ul>
+    </div>
 </div>
+
+<script src="/js/FilterHelper.js">
+    // FilterHelper.initialize();
+
+//    inside the object
+//     $(document).ready(function () {
+        // set up filtering;
+    // })
+//    -------------------
+</script>

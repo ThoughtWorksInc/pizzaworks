@@ -1,0 +1,23 @@
+{
+  "name": "pizzaworks",
+  "version": "1.0.0",
+  "description": "PizzaWorks",
+  "main": "index.js",
+  "scripts": {
+    "test": "jasmine"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ThoughtWorksInc/pizzaworks.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ThoughtWorksInc/pizzaworks/issues"
+  },
+  "homepage": "https://github.com/ThoughtWorksInc/pizzaworks#readme",
+  "devDependencies": {
+    "jasmine": "^3.1.0",
+    "jsdom": "9.12.0"
+  }
+}

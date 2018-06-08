@@ -35,4 +35,8 @@ public class Pizza {
     public String getSlug() {
         return slug;
     }
+
+    public String pizzaFilterType() {
+        return "";
+    }
 }
