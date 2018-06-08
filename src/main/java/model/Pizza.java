@@ -44,6 +44,10 @@ public class Pizza {
         return slug;
     }
 
+    public String pizzaFilterType() {
+        return "";
+    }
+
     public UUID getUuid() {
         return uuid;
     }
