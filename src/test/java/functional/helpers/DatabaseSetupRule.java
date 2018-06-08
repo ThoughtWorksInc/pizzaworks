@@ -40,7 +40,7 @@ public class DatabaseSetupRule extends ExternalResource {
 
         conn = DriverManager.getConnection(url);
 
-        ArrayList<String> commandList = Lists.newArrayList("/bin/bash", "-ic", "./db-scripts/migrate.sh");
+        ArrayList<String> commandList = Lists.newArrayList("/bin/bash", "-c", "./db-scripts/migrate.sh");
         ProcessBuilder pb = new ProcessBuilder(commandList);
         Map<String, String> env = pb.environment();
         env.put("PGHOST", host);

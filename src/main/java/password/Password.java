@@ -1,5 +1,7 @@
 package password;
 
+import dal.LoginService;
+
 import javax.crypto.SecretKey;
 import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.PBEKeySpec;
@@ -11,8 +13,12 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
 
-public class PasswordHasher {
+public class Password {
 
+
+    public Password(LoginService loginService) {
+
+    }
 
     public static String hashAndSalt(String password) throws NoSuchAlgorithmException {
 
@@ -21,10 +27,8 @@ public class PasswordHasher {
 
         String hashedPassword = DatatypeConverter.printHexBinary(hash);
 
-        System.out.println(hashedPassword);
 
         return hashedPassword;
 
     }
-
 }

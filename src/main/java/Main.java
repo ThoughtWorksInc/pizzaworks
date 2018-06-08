@@ -2,6 +2,7 @@ import controllers.CheckoutController;
 import controllers.ConfirmationController;
 import controllers.LoginController;
 import controllers.PizzaController;
+import dal.LoginService;
 import dal.OrderService;
 import dal.PizzaService;
 import database.DatabaseSetUp;
@@ -15,7 +16,7 @@ public class Main {
         staticFiles.location("/public");
 
         PizzaController.initialize(new PizzaService(DatabaseSetUp.sql2oFromDataBase()));
-        LoginController.initialize();
+        LoginController.initialize(new LoginService(DatabaseSetUp.sql2oFromDataBase()));
         CheckoutController.initialize(new PizzaService(DatabaseSetUp.sql2oFromDataBase()));
         ConfirmationController.initialize(new OrderService(DatabaseSetUp.sql2oFromDataBase()), new PizzaService(DatabaseSetUp.sql2oFromDataBase()));
     }

@@ -14,20 +14,15 @@ public class LoginService {
         this.sql2o = sql2o;
     }
 
-    public Optional<Admin> getAdminUserName(String username) {
-        try (Connection conn = sql2o.open()) {
-            return conn.createQuery("select * from admin_details where name = :username")
-                    .addParameter("username", username)
-                    .executeAndFetch(Admin.class)
-                    .stream()
-                    .findFirst();
-        }
+    public boolean isValidAdminUser(String username, String hashedPass) {
+        if (username == null || hashedPass == null) return false;
+        Admin admin = getAdminFromDatabase().get();
+        return  (admin.getName().equals(username) && admin.getHashcode().equals(hashedPass));
     }
 
-    public Optional<Admin> getAdminUserHashcode(String hashcode) {
+    private Optional<Admin> getAdminFromDatabase() {
         try (Connection conn = sql2o.open()) {
-            return conn.createQuery("select * from admin_details where hashcode = :hashcode")
-                    .addParameter("hashcode", hashcode)
+            return conn.createQuery("select * from admin_details")
                     .executeAndFetch(Admin.class)
                     .stream()
                     .findFirst();
