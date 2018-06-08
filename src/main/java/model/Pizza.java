@@ -1,19 +1,15 @@
 package model;
 
-import java.util.UUID;
-
 public class Pizza {
     private String name;
-    private UUID uuid;
     private float price;
     private String ingredients;
     private String slug;
     private NutritionalValues nutritionalValues;
 
 
-    public Pizza(String name, UUID uuid, float price, String ingredients, String slug, NutritionalValues nutritionalValues) {
+    public Pizza(String name, float price, String ingredients, String slug, NutritionalValues nutritionalValues) {
         this.name = name;
-        this.uuid = uuid;
         this.price = price;
         this.ingredients = ingredients;
         this.slug = slug;
@@ -30,10 +26,6 @@ public class Pizza {
 
     public String getName() {
         return name;
-    }
-
-    public UUID getUuid() {
-        return uuid;
     }
 
     public float getPrice() {
