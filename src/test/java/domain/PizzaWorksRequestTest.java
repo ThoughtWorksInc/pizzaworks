@@ -46,16 +46,14 @@ public class PizzaWorksRequestTest {
 
     @Test
     public void shouldReturnUsernameFromRequest() {
-        when(requestMock.session()).thenReturn(sessionMock);
-        when(sessionMock.attribute("username")).thenReturn("apple");
+        when(requestMock.queryParams("username")).thenReturn("apple");
         assertThat(pizzaWorksRequest.getUsername(), is("apple"));
     }
 
 
     @Test
     public void shouldReturnHashedPasswordFromRequest() throws NoSuchAlgorithmException {
-        when(requestMock.session()).thenReturn(sessionMock);
-        when(sessionMock.attribute("password")).thenReturn("mango");
+        when(requestMock.queryParams("password")).thenReturn("mango");
         assertThat(pizzaWorksRequest.getHashedPassword(), is("6815F3C300383519DE8E437497E2C3E97852FE8D717A5419D5AAFB00CB43C494"));
     }
 

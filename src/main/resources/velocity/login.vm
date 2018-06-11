@@ -1,9 +1,8 @@
 <header class="page-header">
 <a href="/"><img id="header-image" src="/images/pizzaworks-logo.png"></a>
-
 </header>
 
-<form action="/admin" method="POST">
+<form action="/login" method="POST">
     <label>User Name</label>
     <input type="text" name="username" placeholder="Enter your user name" required>
     <br/>
@@ -11,5 +10,8 @@
     <input type="password" name="password" placeholder="Enter your password" required>
     <br/>
     <input id="login-button" type="submit" value="Submit">
+    #if($loginError)
+        <p class="errorMessage">Incorrect username or password</p>
+    #end
 </form>
 <script src="/js/login.js"></script>

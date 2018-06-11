@@ -9,7 +9,8 @@ import java.security.NoSuchAlgorithmException;
 import java.util.HashMap;
 import java.util.Map;
 
-import static spark.Spark.*;
+import static spark.Spark.get;
+import static spark.Spark.post;
 import static util.TemplateHelper.renderTemplate;
 
 public class LoginController {
@@ -18,22 +19,17 @@ public class LoginController {
     public static void initialize(LoginService loginService) {
         LoginController.loginService = loginService;
 
-        get("/login", (req, res) -> renderLoginPage());
-        get("/admin", (req, res) -> {
-            PizzaWorksRequest pizzaWorksRequest = new PizzaWorksRequest(req);
-            return adminValidCheck(pizzaWorksRequest) ? renderAdminPage() : redirectToLogin(res);
-        });
-
-
-        post("/admin", (req, res) -> {
+        get("/login", (req, res) -> renderLoginPage(false));
+        post("/login", (req, res) -> {
             PizzaWorksRequest pizzaWorksRequest = new PizzaWorksRequest(req);
             processLogin(req, pizzaWorksRequest);
-            return adminValidCheck(pizzaWorksRequest) ? renderAdminPage() : redirectToLogin(res);
+
+            return pizzaWorksRequest.isLoggedIn() ? redirectToAdmin(res) : renderLoginPage(true);
         });
     }
 
-    private static Response redirectToLogin(Response res) {
-        res.redirect("/login");
+    private static Response redirectToAdmin(Response res) {
+        res.redirect("/admin");
         return res;
     }
 
@@ -46,18 +42,10 @@ public class LoginController {
         }
     }
 
-    private static Boolean adminValidCheck(PizzaWorksRequest pizzaWorksRequest) {
-        System.out.println("Admin logged in: " + pizzaWorksRequest.isLoggedIn());
-        return (pizzaWorksRequest.isLoggedIn());
-    }
-
-    private static String renderLoginPage() {
+    private static String renderLoginPage(Boolean loginError) {
         Map<String, Object> model = new HashMap<>();
+        model.put("loginError", loginError);
         return renderTemplate("velocity/login.vm", model);
     }
 
-    private static String renderAdminPage() {
-        Map<String, Object> model = new HashMap<>();
-        return renderTemplate("velocity/admin.vm", model);
-    }
 }

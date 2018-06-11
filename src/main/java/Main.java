@@ -1,7 +1,4 @@
-import controllers.CheckoutController;
-import controllers.ConfirmationController;
-import controllers.LoginController;
-import controllers.PizzaController;
+import controllers.*;
 import dal.LoginService;
 import dal.OrderService;
 import dal.PizzaService;
@@ -15,6 +12,7 @@ public class Main {
         exception(Exception.class, (e, req, res) -> e.printStackTrace()); // print all exceptions
         staticFiles.location("/public");
 
+        AdminController.initialize();
         PizzaController.initialize(new PizzaService(DatabaseSetUp.sql2oFromDataBase()));
         LoginController.initialize(new LoginService(DatabaseSetUp.sql2oFromDataBase()));
         CheckoutController.initialize(new PizzaService(DatabaseSetUp.sql2oFromDataBase()));

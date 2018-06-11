@@ -4,8 +4,8 @@ import functional.helpers.FunctionalTestSetup;
 import org.junit.Test;
 import org.openqa.selenium.By;
 
+import static java.lang.Thread.sleep;
 import static org.hamcrest.Matchers.is;
-import static org.hamcrest.Matchers.not;
 import static org.junit.Assert.assertThat;
 
 public class LoginPageTest extends FunctionalTestSetup {
@@ -25,8 +25,9 @@ public class LoginPageTest extends FunctionalTestSetup {
     }
 
     @Test
-    public void shouldReturnToLoginPageIfNotLoggedIn() {
+    public void shouldReturnToLoginPageIfNotLoggedIn() throws InterruptedException {
         driver.get("http://localhost:4568/admin");
+        sleep(2000);
         assertThat(driver.getCurrentUrl(), is("http://localhost:4568/login"));
 
     }
@@ -39,6 +40,7 @@ public class LoginPageTest extends FunctionalTestSetup {
         driver.findElement(By.name("password")).sendKeys("password");
         driver.findElement(By.id("login-button")).click();
         assertThat(driver.getCurrentUrl(), is("http://localhost:4568/login"));
+        assertThat(driver.findElement(By.className("errorMessage")).getText(), is("Incorrect username or password"));
 
 
 
