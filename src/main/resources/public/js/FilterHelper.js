@@ -16,7 +16,7 @@ FilterHelper = function ($) {
 
         showVegetarianPizzas: function() {
 
-            $('li').not('.veggie-pizza').hide();
+            $('li').not('.veggie-pizza , .vegan-pizza').hide();
 
         },
 
