@@ -21,13 +21,13 @@ public class OrderPizzaJourneyTest extends FunctionalTestSetup {
         veggieOrderButton.click();
         assertThat(driver.getCurrentUrl(), is("http://localhost:4568/checkout/veggie"));
         assertThat(driver.findElement(By.id("name")).getText(), is("Veggie"));
-        assertThat(driver.findElement(By.id("price")).getText(), is("12.99"));
+        assertThat(driver.findElement(By.id("price")).getText(), is("£12.99"));
 
         WebElement submitOrderButton = driver.findElement(By.id("submit-order-button"));
         submitOrderButton.click();
         assertThat(driver.getCurrentUrl(), is("http://localhost:4568/confirmation"));
         assertThat(driver.findElement(By.id("confirmed-pizza-name")).getText(), is("Veggie"));
-        assertThat(driver.findElement(By.id("confirmed-pizza-price")).getText(), is("12.99"));
+        assertThat(driver.findElement(By.id("confirmed-pizza-price")).getText(), is("£12.99"));
     }
 
     @Test

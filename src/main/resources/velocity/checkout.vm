@@ -15,8 +15,8 @@
     <h2 class="order-details-title">Here is your order</h2>
     <table class="confirmed-pizza">
         <tr>
-            <th>$orderedPizza.name</th>
-            <td>£$orderedPizza.price</td>
+            <th id="name">$orderedPizza.name</th>
+            <td id="price">£$orderedPizza.price</td>
         </tr>
         <tr>
             <th>Order total</th>
@@ -34,7 +34,7 @@
     <input style="width:200px;margin-left:20px;border:2px solid black"type="text" name="customer_name" id="customer_name" >
     <input type="hidden" name="pizza_id" id="pizza_id" value="$orderedPizza.uuid"></form></div>
     <div style="display:flex; justify-content: center">
-        <a href="/"><button id="cancel-order-button" style="color:blue; margin:10px"> Cancel</button></a>
+        <a href="/" id="cancel-order-button" style="color:blue; margin:10px; border:2px solid grey; width: 60px; text-align: center; background-color: grey"> Cancel</a>
         <input id="submit-order-button" type="submit" value="Submit" style="color:blue;margin:10px">
     </div>
 
