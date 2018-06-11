@@ -11,6 +11,7 @@ if [ -f save_pid.txt ]; then
 fi
 
 logger pghost: $PGHOST
+logger environment: $ENV
 
 . $NVM_DIR/nvm.sh && nvm use
 
