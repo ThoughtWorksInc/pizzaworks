@@ -17,14 +17,12 @@
         </div>
     </div>
 
-    <div class="dropdown">
-        <button onclick="renderDropdown()" class="dropbtn">Show me...</button>
-        <div id="myDropdown" class="dropdown-content">
-            <a onclick="new FilterHelper($).showAllPizzas()">All Pizzas</a>
-            <a onclick="new FilterHelper($).showVegetarianPizzas()">Vegetarian pizzas only</a>
-            <a onclick="new FilterHelper($).showVeganPizzas()">Vegan pizzas only</a>
-        </div>
-    </div>
+    <select id="pizza-options" name="pizza-options">
+        <option value=""> Show me...</option>
+        <option value="all-pizzas"> All Pizzas</option>
+        <option value="veggie-pizzas"> Vegetarian pizzas only</option>
+        <option value="vegan-pizzas"> Vegan pizzas only</option>
+    </select>
 
 
     <!-- Render ALL pizzas -->
@@ -45,53 +43,4 @@
         </ul>
     </div>
 
-##    <!--Render ONLY vegetarian pizzas -->
-##    <div id="vegetarian-pizzas" class="col-12">
-##        <ul id="pizza-list">
-##            #foreach($pizza in $pizzas)
-##                #if ($pizza.nutritionalValues.vegetarian == "Yes")
-##                    <li class="pizza row">
-##                        <div class="name col-2">
-##                            <a href="/pizza/$pizza.slug">$pizza.name</a>
-##                        </div>
-##                        <div class="ingredients col-6 offset-1">$pizza.ingredients</div>
-##                        <div class="price col-1 offset-1"> £$pizza.price</div>
-##                        <div class="order-button col-1">
-##                            <a href="/checkout/$pizza.slug" id="order-$pizza.slug">Order</a>
-##                        </div>
-##                    </li>
-##                #end
-##            #end
-##        </ul>
-##    </div>
-##
-##    <!-- Render ONLY vegan pizzas -->
-##    <div id="vegan-pizzas" class="col-12">
-##        <ul id="pizza-list">
-##            #foreach($pizza in $pizzas)
-##                #if ($pizza.nutritionalValues.vegan == "Yes")
-##                    <li class="pizza row">
-##                        <div class="name col-2">
-##                            <a href="/pizza/$pizza.slug">$pizza.name</a>
-##                        </div>
-##                        <div class="ingredients col-6 offset-1">$pizza.ingredients</div>
-##                        <div class="price col-1 offset-1"> £$pizza.price</div>
-##                        <div class="order-button col-1">
-##                            <a href="/checkout/$pizza.slug" id="order-$pizza.slug">Order</a>
-##                        </div>
-##                    </li>
-##                #end
-##            #end
-##        </ul>
-##    </div>
-##</div>
-
-<script src="/js/FilterHelper.js">
-    // FilterHelper.initialize();
-
-//    inside the object
-//     $(document).ready(function () {
-        // set up filtering;
-    // })
-//    -------------------
-</script>
+<script src="/js/FilterHelper.js"> </script>
