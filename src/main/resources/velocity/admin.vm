@@ -1,2 +1,46 @@
+<header class="page-header">
+    <a href="/"><img id="header-image" src="/images/pizzaworks-logo.png"></a>
+    <a href="/"><button>Home</button></a>
+    <a href="/login">
+        <button>Login</button>
+    </a>
+</header>
 
 <h1 class="title"> Welcome Admin!</h1>
+
+<div id="main" class="row">
+
+    <div class="col-12">
+        <div class="info">
+            Our famous pizzas:
+        </div>
+    </div>
+
+    <div class="dropdown">
+        <button onclick="renderDropdown()" class="dropbtn">Show me...</button>
+        <div id="myDropdown" class="dropdown-content">
+            <a onclick="new FilterHelper($).showAllPizzas()">All Pizzas</a>
+            <a onclick="new FilterHelper($).showVegetarianPizzas()">Vegetarian pizzas only</a>
+            <a onclick="new FilterHelper($).showVeganPizzas()">Vegan pizzas only</a>
+        </div>
+    </div>
+
+
+    <!-- Render ALL pizzas -->
+    <div class="col-12">
+        <ul id="pizza-list">
+            #foreach($pizza in $pizzas)
+                <li class="pizza row $pizza.stringRepresentationOfFilter()">
+                    <div class="name col-2">
+                        <a href="/pizza/$pizza.slug">$pizza.name</a>
+                    </div>
+                    <div class="ingredients col-6 offset-1">$pizza.ingredients</div>
+                    <div class="price col-1 offset-1"> £$pizza.price</div>
+                    <div class="order-button col-1">
+                        <a href="/checkout/$pizza.slug" id="order-$pizza.slug">Order</a>
+                    </div>
+                </li>
+            #end
+        </ul>
+    </div>
+</div>

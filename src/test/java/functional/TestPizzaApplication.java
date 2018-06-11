@@ -11,7 +11,7 @@ import spark.servlet.SparkApplication;
 public class TestPizzaApplication implements SparkApplication {
     @Override
     public void init() {
-        AdminController.initialize();
+        AdminController.initialize(new PizzaService(DatabaseSetUp.sql2oFromDataBase(getPizzaTestConfig())));
         PizzaController.initialize(new PizzaService(DatabaseSetUp.sql2oFromDataBase(getPizzaTestConfig())));
         LoginController.initialize(new LoginService(DatabaseSetUp.sql2oFromDataBase(getPizzaTestConfig())));
         CheckoutController.initialize(new PizzaService(DatabaseSetUp.sql2oFromDataBase(getPizzaTestConfig())));

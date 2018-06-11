@@ -12,7 +12,7 @@ public class Main {
         exception(Exception.class, (e, req, res) -> e.printStackTrace()); // print all exceptions
         staticFiles.location("/public");
 
-        AdminController.initialize();
+        AdminController.initialize(new PizzaService(DatabaseSetUp.sql2oFromDataBase()));
         PizzaController.initialize(new PizzaService(DatabaseSetUp.sql2oFromDataBase()));
         LoginController.initialize(new LoginService(DatabaseSetUp.sql2oFromDataBase()));
         CheckoutController.initialize(new PizzaService(DatabaseSetUp.sql2oFromDataBase()));

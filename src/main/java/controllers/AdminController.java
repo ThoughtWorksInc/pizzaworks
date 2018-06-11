@@ -1,5 +1,6 @@
 package controllers;
 
+import dal.PizzaService;
 import domain.PizzaWorksRequest;
 import spark.Response;
 
@@ -10,8 +11,11 @@ import static spark.Spark.get;
 import static util.TemplateHelper.renderTemplate;
 
 public class AdminController {
+    private static PizzaService pizzaService;
 
-    public static void initialize() {
+    public static void initialize(PizzaService pizzaService) {
+        AdminController.pizzaService = pizzaService;
+
         get("/admin", (req, res) -> {
             PizzaWorksRequest pizzaWorksRequest = new PizzaWorksRequest(req);
             return pizzaWorksRequest.isLoggedIn() ? renderAdminPage() : redirectToLogin(res);
@@ -25,6 +29,7 @@ public class AdminController {
 
     private static String renderAdminPage() {
         Map<String, Object> model = new HashMap<>();
+        model.put("pizzas", pizzaService.getAllPizzas());
         return renderTemplate("velocity/admin.vm", model);
     }
 }
