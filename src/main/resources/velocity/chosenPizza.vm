@@ -46,6 +46,11 @@
     </tr>
 
     <tr>
+        <td>Saturated Fat (g): $chosenPizza.nutritionalValues.saturated_fat_per_slice</td>
+        <td>Saturated Fat (g): $chosenPizza.nutritionalValues.saturated_fat_per_100</td>
+    </tr>
+
+    <tr>
         <td>Salt (g): $chosenPizza.nutritionalValues.salt_per_slice</td>
         <td>Salt (g): $chosenPizza.nutritionalValues.salt_per_100</td>
     </tr>
