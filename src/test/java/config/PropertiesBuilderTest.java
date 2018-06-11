@@ -25,4 +25,11 @@ public class PropertiesBuilderTest {
         assertThat(properties.getEnvironment(), is("prod"));
     }
 
+    @Test
+    public void shouldDefaultToLocalProperties() {
+        PizzaWorksProperties properties = PropertiesBuilder.load();
+
+        assertThat(properties.getEnvironment(), is("local"));
+    }
+
 }
