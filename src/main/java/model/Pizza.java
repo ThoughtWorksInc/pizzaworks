@@ -51,7 +51,7 @@ public class Pizza {
             }
             return "veggie-pizza";
         }
-        return "";
+        return "meaty-pizza";
     }
 
     public UUID getUuid() {

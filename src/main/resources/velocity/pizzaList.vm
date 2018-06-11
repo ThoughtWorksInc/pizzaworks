@@ -20,7 +20,7 @@
     <div class="dropdown">
         <button onclick="renderDropdown()" class="dropbtn">Show me...</button>
         <div id="myDropdown" class="dropdown-content">
-            <a onclick="new FilterHelper().showAllPizzas()">All Pizzas</a>
+            <a onclick="new FilterHelper($).showAllPizzas()">All Pizzas</a>
             <a onclick="new FilterHelper($).showVegetarianPizzas()">Vegetarian pizzas only</a>
             <a onclick="new FilterHelper($).showVeganPizzas()">Vegan pizzas only</a>
         </div>
