@@ -1,28 +1,41 @@
 <header class="page-header">
     <a href="/"><img id="header-image" src="/images/pizzaworks-logo.png"></a>
 </header>
+<div id="info" style="text-align: right; font-size: 20px">
+    <p>Call us now to order: 0800 123 4567</p>
+</div>
 
 <div class="checkout-title">
-    <h1>Checkout</h1>
-    <p>You can now order online and pay on collection by completing the details below.</p>
+    <h1 style="text-align: center;">Checkout</h1>
+    <p style="font-size: 20px; margin-top:10px;">You can now order online and pay on collection by completing the details below.</p>
 </div>
 
 
 <div class="order-details">
     <h2 class="order-details-title">Here is your order</h2>
-    <ul class="ordered-pizza">
-        <li id="name">$orderedPizza.name</li>
-        <li id="price">$orderedPizza.price</li>
-    </ul>
+    <table class="confirmed-pizza">
+        <tr>
+            <th>$orderedPizza.name</th>
+            <td>£$orderedPizza.price</td>
+        </tr>
+        <tr>
+            <th>Order total</th>
+            <td><strong>£$orderedPizza.price</strong></td>
+        </tr>
+        <tr>
+            <th>TOTAL DUE</th>
+            <td><strong>£$orderedPizza.price</strong></td>
+        </tr>
+    </table>
 </div>
 
-<form method="POST" action="/confirmation">
-    <label>Please enter your name</label>
-    <input type="text" name="customer_name" id="customer_name" >
-    <input type="hidden" name="pizza_id" id="pizza_id" value="$orderedPizza.uuid">
-    <input id="submit-order-button" type="submit" value="Submit">
+<form style="margin:30px" method="POST" action="/confirmation">
+    <div style="display: flex;justify-content: center"><label>Please enter your name</label>
+    <input style="width:200px;margin-left:20px;border:2px solid black"type="text" name="customer_name" id="customer_name" >
+    <input type="hidden" name="pizza_id" id="pizza_id" value="$orderedPizza.uuid"></form></div>
+    <div style="display:flex; justify-content: center">
+        <a href="/"><button id="cancel-order-button" style="color:blue; margin:10px"> Cancel</button></a>
+        <input id="submit-order-button" type="submit" value="Submit" style="color:blue;margin:10px">
+    </div>
+
 </form>
-
-<div>
-    <a href="/"><button id="cancel-order-button"> Cancel</button></a>
-</div>

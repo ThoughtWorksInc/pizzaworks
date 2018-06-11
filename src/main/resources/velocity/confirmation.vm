@@ -2,20 +2,39 @@
     <a href="/"><img id="header-image" src="/images/pizzaworks-logo.png"></a>
 </header>
 
+<div id="info" style="text-align: right; font-size: 20px">
+    <p>Call us now to order: 0800 123 4567</p>
+</div>
+
 <div class="confirmation-title">
-    <h1>Order confirmation</h1>
-    <p>$orderNumber</p>
+    <h1 style="text-align: center; margin-top: 10px">Order confirmation</h1>
+    <p style="border: 2px solid black; margin: 10px 10px; height: 60px; padding-left: 10px;">Order no: #$orderNumber</p>
 
 </div>
 <div class="confirmation-content">
-    <p>$orderName</p>
+    <p>
+        Dear $orderName, <br/> Thank you for your order. This is confirmation that we have received your order as shown below.
+    </p>
+    <p>It will be ready in 30 minutes from the time of your order. Our address is: PizzaWorks, 4 Federation House, 2 Federation st, Manchester M4 4BF.
+    Please park considerately. </p>
+    <p>Please be ready to make payment when you arrive</p>
 </div>
 
 <div class="confirmation-details">
     <h2 class="confirmation-details-title">Order details</h2>
 
-    <ul class="confirmed-pizza">
-        <li id="confirmed-pizza-name">$confirmedPizza.name</li>
-        <li id="confirmed-pizza-price">$confirmedPizza.price</li>
-    </ul>
+    <table class="confirmed-pizza">
+        <tr>
+            <th>$confirmedPizza.name</th>
+            <td>£$confirmedPizza.price</td>
+        </tr>
+        <tr>
+            <th>Order total</th>
+            <td><strong>£$confirmedPizza.price</strong></td>
+        </tr>
+        <tr>
+            <th>TOTAL DUE</th>
+            <td><strong>£$confirmedPizza.price</strong></td>
+        </tr>
+    </table>
 </div>
