@@ -29,7 +29,6 @@ describe("Filter Pizza Tests", function () {
                 expect(window.$('.vegan-pizza').css("display")).toEqual('list-item');
                 expect(window.$('.meaty-pizza').css("display")).toEqual('none');
             } catch (e) {
-                console.log(e);
                 fail('fail');
                 done();
             }
@@ -50,7 +49,6 @@ describe("Filter Pizza Tests", function () {
                 expect(window.$('.veggie-pizza').css("display")).toEqual('none');
                 expect(window.$('.meaty-pizza').css("display")).toEqual('none');
             } catch (e) {
-                console.log(e);
                 fail('fail');
                 done();
             }
@@ -71,7 +69,27 @@ describe("Filter Pizza Tests", function () {
                 expect(window.$('.veggie-pizza').css("display")).toEqual('list-item');
                 expect(window.$('.meaty-pizza').css("display")).toEqual('list-item');
             } catch (e) {
-                console.log(e);
+                fail('fail');
+                done();
+            }
+
+            done();
+        });
+
+    });
+
+    it("should show all vegetarian pizzas after vegan has been selected", function (done) {
+        jsdom.jQueryify(window, "https://code.jquery.com/jquery-3.3.1.min.js", function () {
+            try {
+                window.$('body').html(pizzaList);
+
+                new FilterHelper(window.$).showVeganPizzas();
+                new FilterHelper(window.$).showVegetarianPizzas();
+
+                expect(window.$('.vegan-pizza').css("display")).toEqual('list-item');
+                expect(window.$('.veggie-pizza').css("display")).toEqual('list-item');
+                expect(window.$('.meaty-pizza').css("display")).toEqual('none');
+            } catch (e) {
                 fail('fail');
                 done();
             }

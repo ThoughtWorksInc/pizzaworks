@@ -5,17 +5,18 @@ FilterHelper = function ($) {
 
     return {
         showAllPizzas: function () {
-            $('li').show();
+            $('#pizza-list li').show();
         },
 
         showVegetarianPizzas: function() {
-
-            $('li').not('.veggie-pizza , .vegan-pizza').hide();
+            $('#pizza-list li.veggie-pizza').show();
+            $('#pizza-list li').not('.veggie-pizza , .vegan-pizza').hide();
 
         },
 
         showVeganPizzas: function() {
-            $('li').not('.vegan-pizza').hide();
+            $('#pizza-list li.vegan-pizza').show();
+            $('#pizza-list li').not('.vegan-pizza').hide();
 
         }
 

@@ -18,7 +18,7 @@
     </div>
 
     <select id="pizza-options" name="pizza-options">
-        <option value=""> Show me...</option>
+        <option disabled selected value=""> Show me...</option>
         <option value="all-pizzas"> All Pizzas</option>
         <option value="veggie-pizzas"> Vegetarian pizzas only</option>
         <option value="vegan-pizzas"> Vegan pizzas only</option>
