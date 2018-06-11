@@ -9,9 +9,8 @@ import org.junit.Before;
 import org.junit.ClassRule;
 import org.junit.Test;
 
-import java.util.List;
-
 import static org.hamcrest.core.Is.is;
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertThat;
 
 public class OrderServiceIntegrationTest {
@@ -38,15 +37,13 @@ public class OrderServiceIntegrationTest {
         assertThat(order.getPizza_id(), is(pizza.getUuid()));
     }
 
-//    @Test
-//    public void shouldRetrieveOrderedPizzaDetailsFromDatabase() {
-//
-//        Pizza orderedPizza = pizzaService.getPizzaBySlug("veggie").get();
-//        // bring back one pizza e.g veggie as per our params
-//        // then be able to get that pizza's name / price / size
-//
-//        assertThat(orderedPizza.getName(), is("Veggie"));
-//        assertThat(orderedPizza.getPrice(), is(12.99F));
-//    }
+    @Test
+    public void shouldRetrievePizzaName() {
+        Pizza pizza = pizzaService.getPizzaBySlug("veggie").get();
+        Order order = orderService.createOrder("Arpitha", pizza.getUuid().toString());
+        assertNotNull(order);
+        assertThat(orderService.getPizzaFromOrder(order).get().getName(), is("Veggie"));
+
+    }
 
 }

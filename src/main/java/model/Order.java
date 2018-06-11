@@ -1,5 +1,7 @@
 package model;
 
+import dal.dao.PizzaDAO;
+
 import java.sql.Timestamp;
 import java.util.UUID;
 
@@ -11,6 +13,8 @@ public class Order {
     private UUID pizza_id;
     private float price;
 
+    private PizzaDAO pizzaDAO;
+
     public UUID getUuid() {
         return uuid;
     }
@@ -21,6 +25,10 @@ public class Order {
 
     public int getOrder_number() {
         return order_number;
+    }
+
+    public PizzaDAO getPizza() {
+        return pizzaDAO;
     }
 
     public void setOrder_number(int order_number) {
