@@ -4,17 +4,18 @@
 
 <div class="confirmation-title">
     <h1>Order confirmation</h1>
-    <p>Order no.</p>
+    <p>$orderNumber</p>
+
 </div>
 <div class="confirmation-content">
-    <p>customer message</p>
+    <p>$orderName</p>
 </div>
 
 <div class="confirmation-details">
     <h2 class="confirmation-details-title">Order details</h2>
 
     <ul class="confirmed-pizza">
-        <li id="confirmed-pizza-name">$orderedPizza.name</li>
-        <li id="confirmed-pizza-price">$orderedPizza.price</li>
+        <li id="confirmed-pizza-name">$confirmedPizza.name</li>
+        <li id="confirmed-pizza-price">$confirmedPizza.price</li>
     </ul>
 </div>

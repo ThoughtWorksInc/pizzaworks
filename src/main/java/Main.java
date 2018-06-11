@@ -17,7 +17,7 @@ public class Main {
         PizzaController.initialize(new PizzaService(DatabaseSetUp.sql2oFromDataBase()));
         LoginController.initialize();
         CheckoutController.initialize(new PizzaService(DatabaseSetUp.sql2oFromDataBase()));
-        ConfirmationController.initialize(new OrderService(DatabaseSetUp.sql2oFromDataBase()));
+        ConfirmationController.initialize(new OrderService(DatabaseSetUp.sql2oFromDataBase()), new PizzaService(DatabaseSetUp.sql2oFromDataBase()));
     }
 
     static int getAssignedPort() {

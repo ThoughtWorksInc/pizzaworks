@@ -42,7 +42,7 @@ public class OrderServiceIntegrationTest {
         Pizza pizza = pizzaService.getPizzaBySlug("veggie").get();
         Order order = orderService.createOrder("Arpitha", pizza.getUuid().toString());
         assertNotNull(order);
-        assertThat(orderService.getPizzaFromOrder(order).get().getName(), is("Veggie"));
+        assertThat(pizzaService.getPizzaFromOrder(order).get().getName(), is("Veggie"));
 
     }
 

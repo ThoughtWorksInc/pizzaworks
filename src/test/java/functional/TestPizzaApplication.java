@@ -16,7 +16,7 @@ public class TestPizzaApplication implements SparkApplication {
         PizzaController.initialize(new PizzaService(DatabaseSetUp.sql2oFromDataBase(getPizzaTestConfig())));
         LoginController.initialize();
         CheckoutController.initialize(new PizzaService(DatabaseSetUp.sql2oFromDataBase(getPizzaTestConfig())));
-        ConfirmationController.initialize(new OrderService(DatabaseSetUp.sql2oFromDataBase(getPizzaTestConfig())));
+        ConfirmationController.initialize(new OrderService(DatabaseSetUp.sql2oFromDataBase(getPizzaTestConfig())),new PizzaService(DatabaseSetUp.sql2oFromDataBase(getPizzaTestConfig())));
     }
 
     public static DatabaseConfig getPizzaTestConfig() {

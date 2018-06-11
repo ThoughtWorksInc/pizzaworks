@@ -1,14 +1,10 @@
 package dal;
 
-import dal.dao.PizzaDAO;
-import mappers.PizzaMapper;
 import model.Order;
-import model.Pizza;
 import org.sql2o.Connection;
 import org.sql2o.Sql2o;
 
 import java.util.Date;
-import java.util.Optional;
 import java.util.UUID;
 
 public class OrderService {
@@ -41,12 +37,6 @@ public class OrderService {
 
         }
     }
-    public Optional<Pizza> getPizzaFromOrder(Order order) {
-        try (Connection conn = sql2o.open()) {
-            return Optional.of(PizzaMapper.toPizza(conn.createQuery("select * from pizza where uuid = :pizza_id")
-                    .addParameter("pizza_id", order.getPizza_id())
-                    .executeAndFetchFirst(PizzaDAO.class)));
-        }
-    }
+
 
 }
