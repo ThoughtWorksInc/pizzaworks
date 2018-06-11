@@ -44,7 +44,13 @@ public class Pizza {
         return slug;
     }
 
-    public String pizzaFilterType() {
+    public String stringRepresentationOfFilter() {
+        if(nutritionalValues.getVegetarian().equals("Yes")){
+            if(nutritionalValues.getVegan().equals("Yes")) {
+                return "vegan-pizza";
+            }
+            return "veggie-pizza";
+        }
         return "";
     }
 

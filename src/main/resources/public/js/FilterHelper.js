@@ -1,5 +1,6 @@
 console.log('I have loaded the filter helper');
 
+
 FilterHelper = function ($) {
 
     return {
@@ -14,7 +15,13 @@ FilterHelper = function ($) {
         },
 
         showVegetarianPizzas: function() {
+
             $('li').not('.veggie-pizza').hide();
+
+        },
+
+        showVeganPizzas: function() {
+            $('li').not('.vegan-pizza').hide();
 
         }
 
