@@ -3,5 +3,5 @@
 set -e
 
 echo "---- starting new server ----"
-mvn clean compile assembly:single && java -jar target/*.jar
+mvn clean compile assembly:single && java -Denv="local" -jar target/*.jar
 

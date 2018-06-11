@@ -15,6 +15,7 @@ public class FunctionalTestSetup {
     @Before
     public void setUp() {
         System.setProperty("webdriver.gecko.driver", "./lib/geckodriver");
+        System.setProperty("env", "test");
         driver = new HtmlUnitDriver();
         driver.get("http://localhost:4568");
     }

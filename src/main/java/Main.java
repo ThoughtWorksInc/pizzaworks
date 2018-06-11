@@ -4,7 +4,9 @@ import dal.OrderService;
 import dal.PizzaService;
 import database.DatabaseSetUp;
 
-import static spark.Spark.*;
+import static spark.Spark.exception;
+import static spark.Spark.port;
+import static spark.Spark.staticFiles;
 
 public class Main {
     public static void main(String[] args) {

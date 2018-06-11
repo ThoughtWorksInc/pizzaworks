@@ -1,9 +1,11 @@
 <header class="page-header">
     <a href="/"><img id="header-image" src="/images/pizzaworks-logo.png"></a>
     <h1>Welcome to PizzaWorks!</h1>
-    <a href="/login">
-        <button>Login</button>
-    </a>
+    #if($properties.loginToggle)
+        <a href="/login">
+            <button>Login</button>
+        </a>
+    #end
     <div id="info">
         <p>Phone number: 0782-129-8883</p>
     </div>

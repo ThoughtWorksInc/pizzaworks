@@ -1,9 +1,7 @@
 package controllers;
 
+import config.PropertiesBuilder;
 import dal.PizzaService;
-import dal.dao.PizzaDAO;
-import spark.ModelAndView;
-import spark.template.velocity.VelocityTemplateEngine;
 import model.Pizza;
 import util.TemplateHelper;
 
@@ -11,7 +9,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 
-import static spark.Spark.*;
+import static spark.Spark.get;
+import static spark.Spark.halt;
 
 public class PizzaController {
     private static PizzaService pizzaService;
@@ -36,6 +35,7 @@ public class PizzaController {
     private static String renderPizzas() {
         Map<String, Object> model = new HashMap<>();
         model.put("pizzas", pizzaService.getAllPizzas());
+        model.put("properties", PropertiesBuilder.load());
 
         return TemplateHelper.renderTemplate("velocity/pizzaList.vm", model);
     }
