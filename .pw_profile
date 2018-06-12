@@ -1,0 +1,6 @@
+export PGHOST="127.0.0.1"
+export PGPORT="5432"
+export PGUSER="superpizza"
+export PGDATABASE="pizzaworks"
+export PGPW="enter_real_pw_here"
+export PGDATA="/usr/local/var/postgres-db"
