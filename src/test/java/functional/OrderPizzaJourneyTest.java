@@ -9,7 +9,9 @@ import java.util.List;
 import java.util.Optional;
 
 import static junit.framework.TestCase.assertTrue;
+import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.startsWith;
 import static org.junit.Assert.assertThat;
 
 public class OrderPizzaJourneyTest extends FunctionalTestSetup {
@@ -22,12 +24,15 @@ public class OrderPizzaJourneyTest extends FunctionalTestSetup {
         assertThat(driver.getCurrentUrl(), is("http://localhost:4568/checkout/veggie"));
         assertThat(driver.findElement(By.id("name")).getText(), is("Veggie"));
         assertThat(driver.findElement(By.id("price")).getText(), is("£12.99"));
+        String customerName = "customer-name";
+        driver.findElement(By.name("customer_name")).sendKeys(customerName);
 
         WebElement submitOrderButton = driver.findElement(By.id("submit-order-button"));
         submitOrderButton.click();
-        assertThat(driver.getCurrentUrl(), is("http://localhost:4568/confirmation"));
+        assertThat(driver.getCurrentUrl(), startsWith("http://localhost:4568/confirmation"));
         assertThat(driver.findElement(By.id("confirmed-pizza-name")).getText(), is("Veggie"));
         assertThat(driver.findElement(By.id("confirmed-pizza-price")).getText(), is("£12.99"));
+        assertThat(driver.findElement(By.className("confirmation-content")).getText(), containsString(customerName));
     }
 
     @Test
