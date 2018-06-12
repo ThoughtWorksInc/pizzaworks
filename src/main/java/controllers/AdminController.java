@@ -2,6 +2,7 @@ package controllers;
 
 import dal.PizzaService;
 import domain.PizzaWorksRequest;
+import spark.Request;
 import spark.Response;
 
 import java.util.HashMap;
@@ -18,7 +19,7 @@ public class AdminController {
 
         get("/admin", (req, res) -> {
             PizzaWorksRequest pizzaWorksRequest = new PizzaWorksRequest(req);
-            return pizzaWorksRequest.isLoggedIn() ? renderAdminPage() : redirectToLogin(res);
+            return pizzaWorksRequest.isLoggedIn() ? renderAdminPage(req) : redirectToLogin(res);
         });
     }
 
@@ -27,9 +28,10 @@ public class AdminController {
         return res;
     }
 
-    private static String renderAdminPage() {
+    private static String renderAdminPage(Request req) {
         Map<String, Object> model = new HashMap<>();
         model.put("pizzas", pizzaService.getAllPizzas());
-        return renderTemplate("velocity/admin.vm", model);
+
+        return renderTemplate("velocity/admin.vm", model, req);
     }
 }

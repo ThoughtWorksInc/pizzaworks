@@ -1,6 +1,3 @@
-<header class="page-header">
-    <a href="/"><img id="header-image" src="/images/pizzaworks-logo.png"></a>
-</header>
 <div id="info" style="text-align: right; font-size: 20px">
     <p>Call us now to order: 0800 123 4567</p>
 </div>

@@ -24,7 +24,6 @@ public class ConfirmationController {
 
     }
 
-
     private static Object renderConfirmationPage(Request req) {
         Map<String, Object> model = new HashMap<>();
         String pizza_id = req.queryParams("pizza_id");
@@ -33,7 +32,7 @@ public class ConfirmationController {
         model.put("confirmedPizza", pizzaService.getPizzaFromOrder(order).get());
         model.put("orderName",order.getCustomer_name());
         model.put("orderNumber",order.getOrder_number());
-        return renderTemplate("velocity/confirmation.vm", model);
+        return renderTemplate("velocity/confirmation.vm", model, req);
     }
 
 

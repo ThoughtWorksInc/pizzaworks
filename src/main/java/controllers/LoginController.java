@@ -19,13 +19,14 @@ public class LoginController {
     public static void initialize(LoginService loginService) {
         LoginController.loginService = loginService;
 
-        get("/login", (req, res) -> renderLoginPage(false));
+        get("/login", (req, res) -> renderLoginPage(false, req));
         post("/login", (req, res) -> {
             PizzaWorksRequest pizzaWorksRequest = new PizzaWorksRequest(req);
             processLogin(req, pizzaWorksRequest);
 
-            return pizzaWorksRequest.isLoggedIn() ? redirectToAdmin(res) : renderLoginPage(true);
+            return pizzaWorksRequest.isLoggedIn() ? redirectToAdmin(res) : renderLoginPage(true, req);
         });
+
     }
 
     private static Response redirectToAdmin(Response res) {
@@ -42,10 +43,10 @@ public class LoginController {
         }
     }
 
-    private static String renderLoginPage(Boolean loginError) {
+    private static String renderLoginPage(Boolean loginError, Request req) {
         Map<String, Object> model = new HashMap<>();
         model.put("loginError", loginError);
-        return renderTemplate("velocity/login.vm", model);
+        return renderTemplate("velocity/login.vm", model, req);
     }
 
 }
