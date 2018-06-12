@@ -38,11 +38,13 @@
                     <div class="ingredients col-6 offset-1">$pizza.ingredients</div>
                     <div class="price col-1 offset-1"> £$pizza.price</div>
                     <div class="order-button col-1">
-                        <a href="/checkout/$pizza.slug" id="order-$pizza.slug"><button>Order</button></a>
+                        <a href="/checkout/$pizza.slug" id="order-$pizza.slug">
+                            <button>Order</button>
+                        </a>
                     </div>
                 </li>
             #end
         </ul>
     </div>
 
-<script src="/js/FilterHelper.js"> </script>
+    <script src="/js/FilterHelper.js"></script>

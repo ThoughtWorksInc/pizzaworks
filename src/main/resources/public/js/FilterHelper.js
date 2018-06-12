@@ -1,6 +1,3 @@
-console.log('I have loaded the filter helper');
-
-
 FilterHelper = function ($) {
 
     return {
@@ -8,17 +5,16 @@ FilterHelper = function ($) {
             $('#pizza-list li').show();
         },
 
-        showVegetarianPizzas: function() {
+        showVegetarianPizzas: function () {
             $('#pizza-list li.veggie-pizza').show();
             $('#pizza-list li').not('.veggie-pizza , .vegan-pizza').hide();
 
         },
 
-        showVeganPizzas: function() {
+        showVeganPizzas: function () {
             $('#pizza-list li.vegan-pizza').show();
             $('#pizza-list li').not('.vegan-pizza').hide();
 
         }
-
     }
 };
