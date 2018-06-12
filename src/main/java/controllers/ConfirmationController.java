@@ -30,12 +30,18 @@ public class ConfirmationController {
     private static Object saveOrder(Request req, Response res) {
         String pizza_id = req.queryParams("pizza_id");
         String customer_name = req.queryParams("customer_name");
-        Order order = orderService.createOrder(customer_name, pizza_id);
-        res.redirect("/confirmation?" +
-                "pizza_id=" + order.getPizza_id() +
-                "&customerName=" + order.getCustomer_name() +
-                "&orderNumber=" + order.getOrder_number());
-        return res;
+        String pizzaSlug = req.queryParams("pizza_slug");
+        if(customer_name.equals("")){
+            res.redirect("/checkout/" + pizzaSlug + "/notValid");
+           return res;
+        } else {
+            Order order = orderService.createOrder(customer_name, pizza_id);
+            res.redirect("/confirmation?" +
+                    "pizza_id=" + order.getPizza_id() +
+                    "&customerName=" + order.getCustomer_name() +
+                    "&orderNumber=" + order.getOrder_number());
+            return res;
+        }
     }
 
 

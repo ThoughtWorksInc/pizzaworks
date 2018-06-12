@@ -52,6 +52,21 @@ public class OrderPizzaJourneyTest extends FunctionalTestSetup {
         assertTrue(margheritaListElement.isPresent());
 
     }
+    @Test
+    public void shouldDisplayAnErrorMessageInCheckoutIfNoCustomerName(){
+        assertThat(driver.getCurrentUrl(), is("http://localhost:4568/"));
+        WebElement veggieOrderButton = driver.findElement(By.id("order-veggie"));
+        veggieOrderButton.click();
+        assertThat(driver.getCurrentUrl(), is("http://localhost:4568/checkout/veggie"));
+        driver.findElement(By.name("customer_name")).sendKeys("");
+        WebElement submitOrderButton = driver.findElement(By.id("submit-order-button"));
+        submitOrderButton.click();
+        assertThat(driver.getCurrentUrl(), is("http://localhost:4568/checkout/veggie/notValid"));
+        WebElement errorMessage = driver.findElement(By.id("error-message"));
+        assertThat(errorMessage.getText(), is("Please enter your name to identify your order"));
+
+
+    }
 
 
 }

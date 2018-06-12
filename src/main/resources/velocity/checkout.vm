@@ -31,6 +31,11 @@
     <input style="width:200px;margin-left:20px;border:2px solid black"type="text" name="customer_name" id="customer_name" required=""
            oninvalid="this.setCustomValidity('Please enter your name to identify your order')" oninput="setCustomValidity('')">
     <input type="hidden" name="pizza_id" id="pizza_id" value="$orderedPizza.uuid"></div>
+    <input type="hidden" name="pizza_slug" id="pizza_slug" value="$orderedPizza.slug"></div>
+
+    #if( $invalid )
+        <p id="error-message" style="color:#ff0000; text-align: center"><strong>Please enter your name to identify your order</strong></p>
+    #end
     <div style="display:flex; justify-content: center">
         <a href="/" id="cancel-order-button" style="color:blue; margin:10px; border:2px solid grey; width: 60px; text-align: center"> Cancel</a>
         <input id="submit-order-button" type="submit" value="Submit" style="color:blue;margin:10px">
