@@ -31,13 +31,9 @@ public class OrderServiceTest{
         String customerName = "Rebe";
         System.out.println(pizza.getUuid()+"******");
         Order order = orderService.createOrder(customerName, pizza.getUuid().toString());
-        System.out.println(order+"******");
-
 
         assertThat(order.getOrder_number() , is(10000));
-//
-//        Order order2 = orderService.createOrder(customerName, pizza);
-//        assertThat(order2.getOrder_number() , is(10001));
+
     }
 
 

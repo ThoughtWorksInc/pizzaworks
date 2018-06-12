@@ -34,6 +34,7 @@ public class PizzaService {
                     .executeAndFetch(PizzaDAO.class));
         }
     }
+
     public Optional<Pizza> getPizzaFromOrder(Order order) {
         try (Connection conn = sql2o.open()) {
             return Optional.of(PizzaMapper.toPizza(conn.createQuery("select * from pizza where uuid = :pizza_id")
