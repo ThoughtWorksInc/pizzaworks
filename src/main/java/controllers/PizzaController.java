@@ -39,7 +39,6 @@ public class PizzaController {
     private static String renderPizzas(Request req) {
         Map<String, Object> model = new HashMap<>();
         model.put("pizzas", pizzaService.getAllPizzas());
-        model.put("properties", PropertiesBuilder.load());
 
         return TemplateHelper.renderTemplate("velocity/pizzaList.vm", model, req);
     }

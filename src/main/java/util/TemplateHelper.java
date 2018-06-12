@@ -1,5 +1,6 @@
 package util;
 
+import config.PropertiesBuilder;
 import domain.PizzaWorksRequest;
 import spark.ModelAndView;
 import spark.Request;
@@ -13,6 +14,7 @@ public class TemplateHelper {
 
         model.put("template", template);
         model.put("loggedIn", pizzaWorksRequest.isLoggedIn());
+        model.put("properties", PropertiesBuilder.load());
 
         return new VelocityTemplateEngine().render(new ModelAndView(model, "velocity/index.vm"));
     }

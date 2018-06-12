@@ -84,13 +84,13 @@
 </head>
 <body>
 
-<header class="page-header">
+<header class="page-header form-group">
     <a href="/"><img id="header-image" src="/images/pizzaworks-logo.png"></a>
 </header>
 
 <div class="container">
 
-    <nav>
+    <nav class="form-group">
         <a href="/"><button>Home</button></a>
         #if($properties.loginToggle)
             #if($loggedIn)
