@@ -1,17 +1,12 @@
 package dal;
 
 import functional.helpers.DatabaseSetupRule;
-import javafx.beans.binding.BooleanExpression;
 import model.Order;
 import model.Pizza;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.ClassRule;
 import org.junit.Test;
-
-import static javax.management.Query.not;
-import static org.hamcrest.core.Is.is;
-import static org.junit.Assert.assertThat;
 
 public class OrderServiceTest{
 
