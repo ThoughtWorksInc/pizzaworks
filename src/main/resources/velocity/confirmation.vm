@@ -8,12 +8,12 @@
 
 <div class="confirmation-title">
     <h1 style="text-align: center; margin-top: 10px">Order confirmation</h1>
-    <p style="border: 2px solid black; margin: 10px 10px; height: 60px; padding-left: 10px;">Order no: #$orderNumber</p>
+    <p style="border: 2px solid black; margin: 10px 10px; height: 60px; padding-left: 10px;">Order no: <strong>#$orderNumber</strong> </p>
 
 </div>
 <div class="confirmation-content">
     <p style="margin-top: 30px">
-        Dear $orderName, <br/> Thank you for your order. This is confirmation that we have received your order as shown below.
+        Dear $orderName, <br/> <br /> Thank you for your order. This is confirmation that we have received your order as shown below.
     </p>
     <p>It will be ready in 30 minutes from the time of your order. Our address is: PizzaWorks, 4 Federation House, 2 Federation st, Manchester M4 4BF.
     Please park considerately. </p>
