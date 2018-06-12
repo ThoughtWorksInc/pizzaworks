@@ -40,7 +40,7 @@ public class LoginPageTest extends FunctionalTestSetup {
         driver.findElement(By.name("password")).sendKeys("password");
         driver.findElement(By.id("login-button")).click();
         assertThat(driver.getCurrentUrl(), is("http://localhost:4568/login"));
-        assertThat(driver.findElement(By.className("errorMessage")).getText(), is("Incorrect username or password"));
+        assertThat(driver.findElement(By.className("errorMessage")).getText(), is("Please enter a correct username and password"));
 
 
 
