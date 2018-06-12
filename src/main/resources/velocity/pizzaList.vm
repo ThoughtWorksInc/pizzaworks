@@ -31,14 +31,14 @@
     <div class="col-12">
         <ul id="pizza-list">
             #foreach($pizza in $pizzas)
-                <li class="pizza row $pizza.stringRepresentationOfFilter()">
+                <li class="pizza row $pizza.stringRepresentationOfFilter()" style="margin: 20px">
                     <div class="name col-2">
                         <a href="/pizza/$pizza.slug">$pizza.name</a>
                     </div>
                     <div class="ingredients col-6 offset-1">$pizza.ingredients</div>
                     <div class="price col-1 offset-1"> £$pizza.price</div>
                     <div class="order-button col-1">
-                        <a href="/checkout/$pizza.slug" id="order-$pizza.slug">Order</a>
+                        <a href="/checkout/$pizza.slug" id="order-$pizza.slug"><button>Order</button></a>
                     </div>
                 </li>
             #end
