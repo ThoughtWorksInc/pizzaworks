@@ -92,10 +92,12 @@
 
     <nav>
         <a href="/"><button>Home</button></a>
-        #if($loggedIn)
-            <a href="/admin"><button>Admin</button></a>
-        #else
-            <a href="/login"><button>Login</button></a>
+        #if($properties.loginToggle)
+            #if($loggedIn)
+                <a href="/admin"><button>Admin</button></a>
+            #else
+                <a href="/login"><button>Login</button></a>
+            #end
         #end
     </nav>
 
