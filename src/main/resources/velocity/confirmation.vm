@@ -11,12 +11,12 @@
     <p style="margin-top: 30px">
         Dear $orderName, <br/> <br /> Thank you for your order. This is confirmation that we have received your order as shown below.
     </p>
-    <p>It will be ready in 30 minutes from the time of your order. Our address is: PizzaWorks, 4 Federation House, 2 Federation st, Manchester M4 4BF.
+    <p>It will be ready in 30 minutes from the time of your order. Our address is: PizzaWorks, 4 Federation House, 2 Federation St, Manchester M4 4BF.
     Please park considerately. </p>
     <p>Please be ready to make payment when you arrive</p>
 </div>
 
-<div class="confirmation-details">
+<div class="confirmation-details" style="margin:30px auto 120px">
     <h2 class="confirmation-details-title">Order details</h2>
 
     <table class="confirmed-pizza">

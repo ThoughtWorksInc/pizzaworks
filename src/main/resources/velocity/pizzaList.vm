@@ -31,7 +31,7 @@
                     <div class="price col-1 offset-1"> £$pizza.price</div>
                     <div class="order-button col-1">
                         <a href="/checkout/$pizza.slug" id="order-$pizza.slug">
-                            <button>Order</button>
+                            <button style="margin-left: 30px">Order</button>
                         </a>
                     </div>
                 </li>

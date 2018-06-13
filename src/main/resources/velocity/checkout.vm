@@ -26,7 +26,7 @@
     </table>
 </div>
 
-<form style="margin:30px" method="POST" action="/confirmation">
+<form style="margin:30px auto 50px" method="POST" action="/confirmation">
     <div style="display: flex;justify-content: center"><label>Please enter your name</label>
     <input style="width:200px;margin-left:20px;border:2px solid black"type="text" name="customer_name" id="customer_name" required=""
            oninvalid="this.setCustomValidity('Please enter your name to identify your order')" oninput="setCustomValidity('')">
