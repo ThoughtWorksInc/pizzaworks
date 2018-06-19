@@ -61,7 +61,7 @@ public class OrderPizzaJourneyTest extends FunctionalTestSetup {
         driver.findElement(By.name("customer_name")).sendKeys("");
         WebElement submitOrderButton = driver.findElement(By.id("submit-order-button"));
         submitOrderButton.click();
-        assertThat(driver.getCurrentUrl(), is("http://localhost:4568/checkout/veggie/notValid"));
+        assertThat(driver.getCurrentUrl(), is("http://localhost:4568/checkout/veggie?Valid=false"));
         WebElement errorMessage = driver.findElement(By.id("error-message"));
         assertThat(errorMessage.getText(), is("Please enter your name to identify your order"));
 

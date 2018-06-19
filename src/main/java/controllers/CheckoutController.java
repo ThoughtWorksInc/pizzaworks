@@ -18,7 +18,6 @@ public class CheckoutController {
     public static void initialize(PizzaService pizzaService) {
         CheckoutController.pizzaService = pizzaService;
         get("/checkout/:slug", CheckoutController::renderCheckoutPage);
-        get("/checkout/:slug/notValid",CheckoutController::renderCheckoutPage);
     }
 
     private static String renderCheckoutPage(Request req, Response res) {
@@ -26,9 +25,9 @@ public class CheckoutController {
         String slug = req.params(":slug");
         Pizza orderedPizza = pizzaService.getPizzaBySlug(slug).get();
         model.put("orderedPizza", orderedPizza);
-        if(req.url().contains("notValid")) {
+        if(!Boolean.parseBoolean(req.queryParams("Valid"))) {
             model.put("invalid", true);
-        };
+        }
         return renderTemplate("velocity/checkout.vm", model, req);
     }
 

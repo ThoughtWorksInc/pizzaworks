@@ -32,7 +32,7 @@ public class ConfirmationController {
         String customer_name = req.queryParams("customer_name");
         String pizzaSlug = req.queryParams("pizza_slug");
         if(customer_name.equals("")){
-            res.redirect("/checkout/" + pizzaSlug + "/notValid");
+            res.redirect("/checkout/" + pizzaSlug + "?Valid=false");
            return res;
         } else {
             Order order = orderService.createOrder(customer_name, pizza_id);
