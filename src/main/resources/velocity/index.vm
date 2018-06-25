@@ -110,6 +110,16 @@
 <script src="/js/app.js"></script>
 <script src="/js/vendor/bootstrap/bootstrap.bundle.min.js"></script>
 <script src="/js/FilterHelper.js"> </script>
+<script type="text/javascript">
+    var button = document.getElementById('addPizza')
+    button.addEventListener('click',hideshow,false);
+
+    function hideshow() {
+        document.getElementById('form').style.display = 'block';
+        this.style.display = 'none'
+    }
+</script>
+
 </body>
 
 </html>

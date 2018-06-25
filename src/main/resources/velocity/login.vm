@@ -12,4 +12,5 @@
 #if($loginError)
     <p class="errorMessage alert alert-danger">Please enter a correct username and password</p>
 #end
+
 <script src="/js/login.js"></script>

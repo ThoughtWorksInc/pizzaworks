@@ -31,4 +31,4 @@ public class CheckoutController {
         return renderTemplate("velocity/checkout.vm", model, req);
     }
 
-};
+}

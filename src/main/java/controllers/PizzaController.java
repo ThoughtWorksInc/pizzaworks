@@ -21,6 +21,8 @@ public class PizzaController {
 
         get("/", (req, res) -> renderPizzas(req));
         get("/pizza/:pizzaslug", (req, res) -> renderChosenPizza(req));
+        //post
+
     }
 
     private static String renderChosenPizza(Request req) {
@@ -39,7 +41,6 @@ public class PizzaController {
     private static String renderPizzas(Request req) {
         Map<String, Object> model = new HashMap<>();
         model.put("pizzas", pizzaService.getAllPizzas());
-
         return TemplateHelper.renderTemplate("velocity/pizzaList.vm", model, req);
     }
 

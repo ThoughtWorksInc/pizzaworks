@@ -21,5 +21,199 @@
                 </li>
             #end
         </ul>
+
+        <button id="addPizza" style="margin: 30px 30px auto auto  ">Create new pizza</button>
+
+        <form class="hidden" id="form" style="margin:30px auto 50px" method="POST" action="/admin">
+            <p>Create a pizza:</p>
+            <div class="row">
+                <label class="col-2">Name:</label>
+                <input class="col-4" type="text" name="pizzaname" required>
+            </div>
+            <div class="row">
+                <label class="col-1">Price:</label>
+                <p class="col-1">£</p>
+                <input class="col-4" type="text" name="pizzaprice" required>
+            </div>
+            <div class="row">
+                <label class="col-2">No of slices:</label>
+                <input class="col-4" type="text" name="pizzaslice" required>
+            </div>
+            <div class="row">
+                <label class="col-2">Key ingredients:</label>
+                <textarea class="col-6" type="text" name="pizzaingredients" required></textarea>
+            </div>
+            <div class="row allergyInfo top-buffer">
+                <label class="col-2">Allergy info:</label>
+                <label class="col-3">Gluten
+                    <span></span>
+                </label>
+                <input class="col-1" type="checkbox">
+                <label class="col-2">Mollusc products
+                    <span></span>
+                </label>
+                <input class="col-1" type="checkbox">
+                <label class="col-2">Lupin products
+                    <span></span>
+                </label>
+                <input class="col-1" type="checkbox">
+            </div>
+            <div class="row">
+                <label class="col-2"></label>
+                <label class="col-3">Soya/soya products
+                    <span></span>
+                </label>
+                <input class="col-1" type="checkbox">
+                <label class="col-2">Sulphur Dioxide
+                    <span></span>
+                </label>
+                <input class="col-1" type="checkbox">
+                <label class="col-2">Peanut products
+                    <span></span>
+                </label>
+                <input class="col-1" type="checkbox">
+            </div>
+            <div class="row">
+                <label class="col-2"></label>
+                <label class="col-3">Egg/egg products
+                    <span></span>
+                </label>
+                <input class="col-1" type="checkbox">
+                <label class="col-2">Sesame products
+                    <span></span>
+                </label>
+                <input class="col-1" type="checkbox">
+            </div>
+            <div class="row">
+                <label class="col-2"></label>
+                <label class="col-3">Milk/milk products
+                    <span></span>
+                </label>
+                <input class="col-1" type="checkbox">
+                <label class="col-2">Celery products
+                    <span></span>
+                </label>
+                <input class="col-1" type="checkbox">
+            </div>
+            <div class="row">
+                <label class="col-2"></label>
+                <label class="col-3">Fish/shellfish products
+                    <span></span>
+                </label>
+                <input class="col-1" type="checkbox">
+                <label class="col-2">Mustard products
+                    <span></span>
+                </label>
+                <input class="col-1" type="checkbox">
+            </div>
+
+            <div class="row top-buffer">
+                <label class="col-2">Vegetarian:
+                    <span></span>
+                </label>
+                <div class="onoffswitch">
+                    <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" checked>
+                    <label class="onoffswitch-label" for="myonoffswitch">
+                        <span class="onoffswitch-inner"></span>
+                        <span class="onoffswitch-switch"></span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="row">
+                <label class="col-2">Vegan:
+                    <span></span>
+                </label>
+                <div class="onoffswitch1">
+                    <input type="checkbox" name="onoffswitch1" class="onoffswitch1-checkbox" id="myonoffswitch1" checked>
+                    <label class="onoffswitch1-label" for="myonoffswitch1">
+                        <span class="onoffswitch1-inner"></span>
+                        <span class="onoffswitch1-switch"></span>
+                    </label>
+                </div>
+            </div>
+            <div class="top-buffer">
+                <p>Nutritional info per slice</p>
+                <div class="row ">
+                    <label class="col-2">Energy:</label>
+                    <input class="col-2" type="text" name="pizzaname" required>
+                    <label class="col-2">kCals</label>
+                </div>
+                <div class="row">
+                    <label class="col-2">Protein:</label>
+                    <input class="col-2" type="text" name="pizzaname" required>
+                    <label class="col-2">g</label>
+                </div>
+                <div class="row">
+                    <label class="col-2">Carbs:</label>
+                    <input class="col-2" type="text" name="pizzaname" required>
+                    <label class="col-2">g</label>
+                </div>
+                <div class="row">
+                    <label class="col-2">Sugars:</label>
+                    <input class="col-2" type="text" name="pizzaname" required>
+                    <label class="col-2">g</label>
+                </div>
+                <div class="row">
+                    <label class="col-2">Fat:</label>
+                    <input class="col-2" type="text" name="pizzaname" required>
+                    <label class="col-2">g</label>
+                </div>
+                <div class="row">
+                    <label class="col-2">Saturated fat:</label>
+                    <input class="col-2" type="text" name="pizzaname" required>
+                    <label class="col-2">g</label>
+                </div>
+                <div class="row">
+                    <label class="col-2">Salt:</label>
+                    <input class="col-2" type="text" name="pizzaname" required>
+                    <label class="col-2">g</label>
+                </div>
+            </div>
+            <div class="top-buffer">
+                <p>Nutritional info per 100g</p>
+                <div class="row">
+                    <label class="col-2">Energy:</label>
+                    <input class="col-2" type="text" name="pizzaname" required>
+                    <label class="col-2">kCals</label>
+                </div>
+                <div class="row">
+                    <label class="col-2">Protein:</label>
+                    <input class="col-2" type="text" name="pizzaname" required>
+                    <label class="col-2">g</label>
+                </div>
+                <div class="row">
+                    <label class="col-2">Carbs:</label>
+                    <input class="col-2" type="text" name="pizzaname" required>
+                    <label class="col-2">g</label>
+                </div>
+                <div class="row">
+                    <label class="col-2">Sugars:</label>
+                    <input class="col-2" type="text" name="pizzaname" required>
+                    <label class="col-2">g</label>
+                </div>
+                <div class="row">
+                    <label class="col-2">Fat:</label>
+                    <input class="col-2" type="text" name="pizzaname" required>
+                    <label class="col-2">g</label>
+                </div>
+                <div class="row">
+                    <label class="col-2">Saturated fat:</label>
+                    <input class="col-2" type="text" name="pizzaname" required>
+                    <label class="col-2">g</label>
+                </div>
+                <div class="row">
+                    <label class="col-2">Salt:</label>
+                    <input class="col-2" type="text" name="pizzaname" required>
+                    <label class="col-2">g</label>
+                </div>
+            </div>
+            <div class="row top-buffer">
+            <a href="/admin"><button class="col-4 cancel">Cancel</button></a>
+            <a href="/admin"><button class="col-8 save">Save</button></a>
+            </div>
+
+        </form>
+
     </div>
 </div>
