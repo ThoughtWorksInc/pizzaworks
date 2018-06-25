@@ -82,9 +82,6 @@ public class PizzaDAO {
         this.vegan = vegan;
     }
 
-
-
-
     public PizzaDAO(String name, UUID uuid, float price, String ingredients, String slug, int energy_per_slice) {
         this.name = name;
         this.uuid = uuid;

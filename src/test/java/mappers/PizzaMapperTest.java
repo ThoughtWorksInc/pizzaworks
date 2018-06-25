@@ -1,34 +1,39 @@
 package mappers;
 
+import builders.PizzaDaoBuilder;
 import dal.dao.PizzaDAO;
 import model.Pizza;
 import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertThat;
 
 public class PizzaMapperTest {
 
     @Test
     public void shouldMapToPizzaObject() {
-
-        PizzaDAO pizzaDAO = new PizzaDAO("pizzaName", UUID.randomUUID(), 1.0f, "ingredients", "slug", 1);
+        PizzaDAO pizzaDAO = PizzaDaoBuilder.pizzaDao()
+                .withName("pizzaName")
+                .withEnergyPerSlice(2)
+                .build();
 
         Pizza pizza = PizzaMapper.toPizza(pizzaDAO);
 
-        assertThat(pizza.getNutritionalValues().getEnergy_per_slice(), is(1));
+        assertThat(pizza.getNutritionalValues().getEnergy_per_slice(), is(2));
         assertThat(pizza.getName(), is("pizzaName"));
     }
 
     @Test
     public void shouldReturnListOfPizzaObjectsFromPizzaDAOs() {
-        PizzaDAO pizzaDAO = new PizzaDAO("pizzaName", UUID.randomUUID(), 1.0f, "ingredients", "slug", 1);
+        PizzaDAO pizzaDAO = PizzaDaoBuilder.pizzaDao()
+                .withName("pizzaName")
+                .build();
 
-        List<PizzaDAO> listOfPizzaDAOs = new ArrayList<PizzaDAO>() {};
+        List<PizzaDAO> listOfPizzaDAOs = new ArrayList<PizzaDAO>() {
+        };
         listOfPizzaDAOs.add(pizzaDAO);
 
         assertThat(PizzaMapper.fromPizzaDaos(listOfPizzaDAOs).size(), is(1));
