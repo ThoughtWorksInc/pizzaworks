@@ -5,6 +5,7 @@ import model.NutritionalValues;
 import model.Pizza;
 
 import java.util.List;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 public class PizzaMapper {
@@ -43,4 +44,29 @@ public class PizzaMapper {
                 .collect(Collectors.toList());
 
     }
+//
+//   public static PizzaDAO getPizzaDao(Pizza pizza) {
+//
+//        return new PizzaDAO (pizza.getName(),pizza.getUuid(),pizza.getPrice(),pizza.getIngredients(),pizza.getSlug(),
+//                pizza.getNutritionalValues().getWeight(),
+//                pizza.getNutritionalValues().getNum_slices(),
+//                pizza.getNutritionalValues().getEnergy_per_slice(),
+//                pizza.getNutritionalValues().getProtein_per_slice(),
+//                pizza.getNutritionalValues().getCarbohydrate_per_slice(),
+//                pizza.getNutritionalValues().getSugars_per_slice(),
+//                pizza.getNutritionalValues().getFat_per_slice(),
+//                pizza.getNutritionalValues().getSaturated_fat_per_slice(),
+//                pizza.getNutritionalValues().getSalt_per_slice(),
+//                pizza.getNutritionalValues().getEnergy_per_100(),
+//                pizza.getNutritionalValues().getProtein_per_100(),
+//                pizza.getNutritionalValues().getCarbohydrate_per_100(),
+//                pizza.getNutritionalValues().getSugars_per_100(),
+//                pizza.getNutritionalValues().getFat_per_100(),
+//                pizza.getNutritionalValues().getSaturated_fat_per_100(),
+//                pizza.getNutritionalValues().getSalt_per_100(),
+//                pizza.getNutritionalValues().getAllergens(),
+//                pizza.getNutritionalValues().getVegetarian(),
+//                pizza.getNutritionalValues().getVegan());
+//
+//   }
 }

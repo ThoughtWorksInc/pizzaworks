@@ -84,29 +84,29 @@ public class PizzaDAO {
 
 
 
-
-    public PizzaDAO(String name, UUID uuid, float price, String ingredients, String slug, int energy_per_slice) {
-        this.name = name;
-        this.uuid = uuid;
-        this.price = price;
-        this.ingredients = ingredients;
-        this.slug = slug;
-        this.energy_per_slice = energy_per_slice;
-    }
-
-    public PizzaDAO(String name) {
-        this.name = name;
-        this.uuid = UUID.randomUUID();
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
+//
+//    public PizzaDAO(String name, UUID uuid, float price, String ingredients, String slug, int energy_per_slice) {
+//        this.name = name;
+//        this.uuid = uuid;
+//        this.price = price;
+//        this.ingredients = ingredients;
+//        this.slug = slug;
+//        this.energy_per_slice = energy_per_slice;
+//    }
+//
+//    public PizzaDAO(String name) {
+//        this.name = name;
+//        this.uuid = UUID.randomUUID();
+//    }
+//
+//    public void setName(String name) {
+//        this.name = name;
+//    }
 
 //    todo remove this if unused
-    public static PizzaDAO create(String name) {
-        return new PizzaDAO(name);
-    }
+//    public static PizzaDAO create(String name) {
+//        return new PizzaDAO(name);
+//    }
 
     public String getName() {
         return name;
