@@ -110,6 +110,18 @@
 <script src="/js/app.js"></script>
 <script src="/js/vendor/bootstrap/bootstrap.bundle.min.js"></script>
 <script src="/js/FilterHelper.js"> </script>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        $("#form").hide();
+        $("#addPizza").click(function(e) {
+            $("#form").show();
+            $("#addPizza").hide();
+            e.preventDefault();
+        });
+    });
+</script>
+
 <script type="text/javascript">
     var button = document.getElementById('addPizza')
     button.addEventListener('click',hideshow,false);

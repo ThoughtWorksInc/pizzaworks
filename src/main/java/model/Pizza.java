@@ -57,8 +57,4 @@ public class Pizza {
     public UUID getUuid() {
         return uuid;
     }
-
-//    public void setUUID(String uuid) {
-//        this.uuid = UUID.fromString(uuid);
-//    }
 }

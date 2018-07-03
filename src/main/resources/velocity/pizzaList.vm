@@ -1,4 +1,4 @@
-<h1>Welcome to PizzaWorks!</h1>
+<h1 xmlns="http://www.w3.org/1999/html">Welcome to PizzaWorks!</h1>
 <div id="info">
     <p>Phone number: 0782-129-8883</p>
 </div>
@@ -40,3 +40,15 @@
     </div>
 
     <script src="/js/FilterHelper.js"></script>
+    <script>
+            document.addEventListener('DOMContentLoaded', function () {
+    document.querySelector('select[id="pizza-options"]').onchange = changeEventHandler;
+    }, false);
+
+    function changeEventHandler(event) {
+    if (event.target.value === 'all-pizzas') new FilterHelper($).showAllPizzas();
+    if (event.target.value === 'veggie-pizzas') new FilterHelper($).showVegetarianPizzas();
+    if (event.target.value === 'vegan-pizzas') new FilterHelper($).showVeganPizzas();
+
+    }
+    </script>
