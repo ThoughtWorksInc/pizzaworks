@@ -2,6 +2,8 @@ package model;
 
 public class NutritionalValues {
 
+    public static final String YES = "Yes";
+    public static final String NO = "No";
     private int weight;
     private int num_slices;
     private int energy_per_slice;
@@ -28,31 +30,31 @@ public class NutritionalValues {
         this.weight = weight;
         this.num_slices = num_slices;
         this.energy_per_slice = energy_per_slice;
-        this.protein_per_slice = Math.round(protein_per_slice * 10.0f)/10.0f;
-        this.carbohydrate_per_slice = Math.round(carbohydrate_per_slice * 10.0f)/10.0f;
-        this.sugars_per_slice = Math.round(sugars_per_slice * 10.0f)/10.0f;
-        this.fat_per_slice = Math.round(fat_per_slice * 10.0f)/10.0f;
-        this.saturated_fat_per_slice = Math.round(saturated_fat_per_slice * 10.0f)/10.0f;
-        this.salt_per_slice = Math.round(salt_per_slice*100.0f)/100.0f;
+        this.protein_per_slice = Math.round(protein_per_slice * 10.0f) / 10.0f;
+        this.carbohydrate_per_slice = Math.round(carbohydrate_per_slice * 10.0f) / 10.0f;
+        this.sugars_per_slice = Math.round(sugars_per_slice * 10.0f) / 10.0f;
+        this.fat_per_slice = Math.round(fat_per_slice * 10.0f) / 10.0f;
+        this.saturated_fat_per_slice = Math.round(saturated_fat_per_slice * 10.0f) / 10.0f;
+        this.salt_per_slice = Math.round(salt_per_slice * 100.0f) / 100.0f;
         this.energy_per_100 = energy_per_100;
-        this.protein_per_100 = Math.round(protein_per_100 * 10.0f)/10.0f;
-        this.carbohydrate_per_100 = Math.round(carbohydrate_per_100 * 10.0f)/10.0f;
-        this.sugars_per_100 = Math.round(sugars_per_100 * 10.0f)/10.0f;
-        this.fat_per_100 = Math.round(fat_per_100 * 10.0f)/10.0f;
-        this.saturated_fat_per_100 = Math.round(saturated_fat_per_100 * 10.0)/10.0f;
-        this.salt_per_100 = Math.round(salt_per_100*100.0f)/100.0f;
+        this.protein_per_100 = Math.round(protein_per_100 * 10.0f) / 10.0f;
+        this.carbohydrate_per_100 = Math.round(carbohydrate_per_100 * 10.0f) / 10.0f;
+        this.sugars_per_100 = Math.round(sugars_per_100 * 10.0f) / 10.0f;
+        this.fat_per_100 = Math.round(fat_per_100 * 10.0f) / 10.0f;
+        this.saturated_fat_per_100 = Math.round(saturated_fat_per_100 * 10.0) / 10.0f;
+        this.salt_per_100 = Math.round(salt_per_100 * 100.0f) / 100.0f;
         this.allergens = allergens;
 
         if (vegetarian) {
-            this.vegetarian = "Yes";
+            this.vegetarian = YES;
         } else {
-            this.vegetarian = "No";
+            this.vegetarian = NO;
         }
 
         if (vegan) {
-            this.vegan = "Yes";
+            this.vegan = YES;
         } else {
-            this.vegan = "No";
+            this.vegan = NO;
         }
     }
 
@@ -68,27 +70,27 @@ public class NutritionalValues {
         return energy_per_slice;
     }
 
-    public double getProtein_per_slice() {
+    public float getProtein_per_slice() {
         return protein_per_slice;
     }
 
-    public double getCarbohydrate_per_slice() {
+    public float getCarbohydrate_per_slice() {
         return carbohydrate_per_slice;
     }
 
-    public double getSugars_per_slice() {
+    public float getSugars_per_slice() {
         return sugars_per_slice;
     }
 
-    public double getFat_per_slice() {
+    public float getFat_per_slice() {
         return fat_per_slice;
     }
 
-    public double getSaturated_fat_per_slice() {
+    public float getSaturated_fat_per_slice() {
         return saturated_fat_per_slice;
     }
 
-    public double getSalt_per_slice() {
+    public float getSalt_per_slice() {
         return salt_per_slice;
     }
 
@@ -96,27 +98,27 @@ public class NutritionalValues {
         return energy_per_100;
     }
 
-    public double getProtein_per_100() {
+    public float getProtein_per_100() {
         return protein_per_100;
     }
 
-    public double getCarbohydrate_per_100() {
+    public float getCarbohydrate_per_100() {
         return carbohydrate_per_100;
     }
 
-    public double getSugars_per_100() {
+    public float getSugars_per_100() {
         return sugars_per_100;
     }
 
-    public double getFat_per_100() {
+    public float getFat_per_100() {
         return fat_per_100;
     }
 
-    public double getSaturated_fat_per_100() {
+    public float getSaturated_fat_per_100() {
         return saturated_fat_per_100;
     }
 
-    public double getSalt_per_100() {
+    public float getSalt_per_100() {
         return salt_per_100;
     }
 

@@ -44,22 +44,23 @@ public class LoginPageTest extends FunctionalTestSetup {
         assertThat(driver.findElement(By.className("errorMessage")).getText(), is("Please enter a correct username and password"));
 
     }
-//    @Test
-//    public void shouldBeAbleToNavigateToAddPizzaPage() {
-//        assertThat(driver.getCurrentUrl(), is("http://localhost:4568/"));
-//        driver.findElement(By.linkText("Login")).click();
-//        assertThat(driver.getCurrentUrl(), is("http://localhost:4568/login"));
-//
-//        driver.findElement(By.name("username")).sendKeys("Admin1");
-//        driver.findElement(By.name("password")).sendKeys("pass123");
-//        driver.findElement(By.id("login-button")).click();
-//
-//        assertThat(driver.getCurrentUrl(), is("http://localhost:4568/admin"));
-//        WebElement createButton = driver.findElement(By.id("addPizza"));
-//        createButton.click();
-//        assertThat(driver.getCurrentUrl(), is("http://localhost:4568/admin"));
-//        assertThat(driver.findElement(By.className("title")).getText(), is("Welcome Admin!"));
-//
-//    }
+    @Test
+    public void shouldBeAbleToNavigateToAdminPageWithCreatePizzaForm() {
+        assertThat(driver.getCurrentUrl(), is("http://localhost:4568/"));
+        driver.findElement(By.linkText("Login")).click();
+        assertThat(driver.getCurrentUrl(), is("http://localhost:4568/login"));
+
+        driver.findElement(By.name("username")).sendKeys("Admin1");
+        driver.findElement(By.name("password")).sendKeys("pass123");
+        driver.findElement(By.id("login-button")).click();
+
+        assertThat(driver.getCurrentUrl(), is("http://localhost:4568/admin"));
+        WebElement createButton = driver.findElement(By.id("addPizza"));
+        createButton.click();
+        assertThat(driver.getCurrentUrl(), is("http://localhost:4568/admin"));
+        assertThat(driver.findElement(By.className("createpizza")).getText(), is("Create a pizza:"));
+
+    }
+
 
 }

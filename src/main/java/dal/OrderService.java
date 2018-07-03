@@ -31,8 +31,8 @@ public class OrderService {
                     .addParameter("timestamp", new Date())
                     .executeUpdate();
 
-            return con.createQuery("select * from pizza_order where uuid = :orderNumber")
-                    .addParameter("orderNumber", value)
+            return con.createQuery("select * from pizza_order where uuid = :uuid")
+                    .addParameter("uuid", value)
                     .executeAndFetch(Order.class).get(0);
 
         }

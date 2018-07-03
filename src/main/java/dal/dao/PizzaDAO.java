@@ -83,9 +83,6 @@ public class PizzaDAO {
     }
 
 
-
-
-//
 //    public PizzaDAO(String name, UUID uuid, float price, String ingredients, String slug, int energy_per_slice) {
 //        this.name = name;
 //        this.uuid = uuid;
@@ -102,11 +99,6 @@ public class PizzaDAO {
 //
 //    public void setName(String name) {
 //        this.name = name;
-//    }
-
-//    todo remove this if unused
-//    public static PizzaDAO create(String name) {
-//        return new PizzaDAO(name);
 //    }
 
     public String getName() {

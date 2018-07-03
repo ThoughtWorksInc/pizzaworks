@@ -67,17 +67,13 @@ public class PizzaServiceIntegrationTest {
         assertFalse(optional.isPresent());
     }
 
-//    @Test
-//    public void shouldRetrieveNewlyAddedPizzas() {
-//        new Pizza()
-//        List<Pizza> newlyAddedPizzas = pizzaService.createPizza("Rocket-parmesan", "semolina flour, tomatoes, mozzarella cheese, rocket, parmesan cheese, balsamic vinegar, olive oil, basil leaves", 9.99F, "rocket-parmesan", true, false);
-//        assertThat(newlyAddedPizzas.size(), is(1));
-//
-//        Pizza ParmesanPizza = getPizzaByName(newlyAddedPizzas,"Rocket-parmesan");
-//        assertThat(ParmesanPizza.getName(), is("Rocket-parmesan"));
-//        assertThat(ParmesanPizza.getSlug(), is("rocket-parmesan"));
-//        assertThat(ParmesanPizza.getIngredients(), is("semolina flour, tomatoes, mozzarella cheese, rocket, parmesan cheese, balsamic vinegar, olive oil, basil leaves"));
-//        assertThat(ParmesanPizza.getPrice(), is(9.99F));
-//
-//    }
+    @Test
+
+    public void shouldRRetrieveNewlyAddedPizza (){
+
+        List<Pizza> allPizzas = pizzaService.getAllPizzas();
+        assertThat(allPizzas.size(), is(4));
+
+    }
+
 }

@@ -45,7 +45,7 @@ public class PizzaService {
         }
     }
 
-    public void createPizza(pizza) {
+    public List<Pizza> createPizza(Pizza pizza) {
         String insertSql =
                 "insert into pizza(uuid, name, ingredients, price, slug, weight, num_slices, energy_per_slice, protein_per_slice , carbohydrate_per_slice, " +
                         "sugars_per_slice, fat_per_slice, saturated_fat_per_slice, salt_per_slice, energy_per_100, protein_per_100, carbohydrate_per_100," +
@@ -54,12 +54,15 @@ public class PizzaService {
                         ":sugars_per_slice, :fat_per_slice, :saturated_fat_per_slice, :salt_per_slice, :energy_per_100, :protein_per_100, :carbohydrate_per_100," +
                         ":sugars_per_100, :fat_per_100, :saturated_fat_per_100, :salt_per_100, :allergens, :vegetarian, :vegan)";
 
-        try (Connection con = sql2o.open()) {
-            UUID value = UUID.randomUUID();
-            con.createQuery(insertSql)
+        try (Connection conn = sql2o.open()) {
+//            UUID value = UUID.randomUUID();
+            conn.createQuery(insertSql)
+//                    .addParameter("pizza_uuid",value)
                     .bind(PizzaMapper.toPizzaDao(pizza))
                     .executeUpdate();
 
+            return PizzaMapper.fromPizzaDaos(conn.createQuery("select * from pizza")
+                    .executeAndFetch(PizzaDAO.class));
         }
     }
 

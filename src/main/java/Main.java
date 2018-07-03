@@ -19,7 +19,7 @@ public class Main {
         LoginController.initialize(new LoginService(DatabaseSetUp.sql2oFromDataBase()));
         CheckoutController.initialize(new PizzaService(DatabaseSetUp.sql2oFromDataBase()));
         ConfirmationController.initialize(new OrderService(DatabaseSetUp.sql2oFromDataBase()), new PizzaService(DatabaseSetUp.sql2oFromDataBase()));
-//        AddPizzaController.initialize(new PizzaService(DatabaseSetUp.sql2oFromDataBase()));
+
 
     }
 
