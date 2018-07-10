@@ -20,9 +20,6 @@ public class Pizza {
         this.nutritionalValues = nutritionalValues;
     }
 
-    public Pizza() {
-
-    }
 
     public NutritionalValues getNutritionalValues() {
         return nutritionalValues;

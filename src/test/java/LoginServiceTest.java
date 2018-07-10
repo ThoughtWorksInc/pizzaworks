@@ -2,7 +2,6 @@ import dal.LoginService;
 import org.junit.Before;
 import org.junit.Test;
 import org.sql2o.Sql2o;
-import sun.rmi.runtime.Log;
 
 import static org.junit.Assert.assertFalse;
 import static org.mockito.Mockito.mock;

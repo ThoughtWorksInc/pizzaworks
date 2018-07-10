@@ -1,6 +1,7 @@
 package functional;
 
 import functional.helpers.FunctionalTestSetup;
+import org.junit.After;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -50,5 +51,6 @@ public class PizzaPageTest extends FunctionalTestSetup {
         driver.get("http://localhost:4568/pizza/pizzathatdoesntexist");
         assertThat(driver.findElement(By.tagName("body")).getText(), is("Not found"));
     }
+
 
 }

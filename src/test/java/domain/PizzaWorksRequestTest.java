@@ -47,6 +47,8 @@ public class PizzaWorksRequestTest {
     @Test
     public void shouldReturnUsernameFromRequest() {
         when(requestMock.queryParams("username")).thenReturn("apple");
+        when(requestMock.body()).thenReturn("apple");
+
         assertThat(pizzaWorksRequest.getUsername(), is("apple"));
     }
 

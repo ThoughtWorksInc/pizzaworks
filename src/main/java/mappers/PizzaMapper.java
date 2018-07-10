@@ -5,7 +5,6 @@ import model.NutritionalValues;
 import model.Pizza;
 
 import java.util.List;
-import java.util.UUID;
 import java.util.stream.Collectors;
 
 public class PizzaMapper {

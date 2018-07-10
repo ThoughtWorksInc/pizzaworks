@@ -1,10 +1,10 @@
 package functional;
 
 import config.DatabaseConfig;
-import controllers.*;
 import dal.LoginService;
 import dal.OrderService;
 import dal.PizzaService;
+import controllers.*;
 import database.DatabaseSetUp;
 import spark.servlet.SparkApplication;
 

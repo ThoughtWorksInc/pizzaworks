@@ -1,7 +1,6 @@
 package functional.helpers;
 
 import com.google.common.collect.Lists;
-import de.flapdoodle.embed.process.config.IRuntimeConfig;
 import org.junit.rules.ExternalResource;
 import org.sql2o.Sql2o;
 import org.sql2o.converters.UUIDConverter;
@@ -9,7 +8,6 @@ import org.sql2o.quirks.PostgresQuirks;
 import ru.yandex.qatools.embed.postgresql.EmbeddedPostgres;
 
 import java.io.File;
-import java.nio.file.Paths;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -18,7 +16,6 @@ import java.util.Map;
 import java.util.UUID;
 
 import static java.util.Collections.emptyList;
-import static ru.yandex.qatools.embed.postgresql.EmbeddedPostgres.cachedRuntimeConfig;
 import static ru.yandex.qatools.embed.postgresql.distribution.Version.Main.V10;
 
 public class DatabaseSetupRule extends ExternalResource {
@@ -66,15 +63,18 @@ public class DatabaseSetupRule extends ExternalResource {
         });
     }
 
+
     @Override
     protected void after() {
         super.after();
         // close db connection
+
         try {
             conn.close();
         } catch (SQLException e) {
             throw new RuntimeException("Connection could not close");
         }
+
         // stop Postgres
         postgres.stop();
     }

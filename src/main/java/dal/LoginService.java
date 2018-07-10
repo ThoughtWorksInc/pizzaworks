@@ -1,11 +1,10 @@
 package dal;
 
 
-        import model.Admin;
-        import org.sql2o.Connection;
-        import org.sql2o.Sql2o;
-
-        import java.util.Optional;
+import model.Admin;
+import org.sql2o.Connection;
+import org.sql2o.Sql2o;
+import java.util.Optional;
 
 public class LoginService {
     private Sql2o sql2o;

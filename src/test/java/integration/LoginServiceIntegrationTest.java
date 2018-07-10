@@ -2,13 +2,10 @@ package integration;
 
 import dal.LoginService;
 import functional.helpers.DatabaseSetupRule;
-import model.Admin;
 import org.junit.Before;
 import org.junit.ClassRule;
 import org.junit.Test;
 
-import static org.hamcrest.core.Is.is;
-import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 
 public class LoginServiceIntegrationTest {

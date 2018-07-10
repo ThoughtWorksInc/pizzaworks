@@ -1,12 +1,10 @@
-import controllers.*;
 import dal.LoginService;
 import dal.OrderService;
 import dal.PizzaService;
+import controllers.*;
 import database.DatabaseSetUp;
 
-import static spark.Spark.exception;
-import static spark.Spark.port;
-import static spark.Spark.staticFiles;
+import static spark.Spark.*;
 
 public class Main {
     public static void main(String[] args) {

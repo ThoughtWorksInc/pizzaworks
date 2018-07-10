@@ -3,13 +3,11 @@ package mappers;
 import builders.PizzaBuilder;
 import builders.PizzaDaoBuilder;
 import dal.dao.PizzaDAO;
-import model.NutritionalValues;
 import model.Pizza;
 import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
