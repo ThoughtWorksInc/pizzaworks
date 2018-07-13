@@ -1,0 +1,2 @@
+ALTER TABLE pizza
+  DROP COLUMN slug;

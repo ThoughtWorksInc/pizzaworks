@@ -42,8 +42,8 @@ public class Pizza {
     }
 
     public String stringRepresentationOfFilter() {
-        if(nutritionalValues.getVegetarian().equals("Yes")){
-            if(nutritionalValues.getVegan().equals("Yes")) {
+        if (nutritionalValues.getVegetarian().equals("Yes")) {
+            if (nutritionalValues.getVegan().equals("Yes")) {
                 return "vegan-pizza";
             }
             return "veggie-pizza";
@@ -53,5 +53,13 @@ public class Pizza {
 
     public UUID getUuid() {
         return uuid;
+    }
+
+    public boolean isValid() {
+        if ((name.equals("")) || price == 0 || (slug.equals(""))) {
+            return false;
+        } else {
+            return true;
+        }
     }
 }

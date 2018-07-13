@@ -37,7 +37,7 @@
             </div>
             <div class="row">
                 <label class="col-2">No of slices:</label>
-                <input class="col-4" type="text" name="pizzaslice" required>
+                <input class="col-4" type="text" name="pizzaslice" >
             </div>
             <div class="row">
                 <label class="col-2">Pizza Slug:</label>
@@ -45,11 +45,11 @@
             </div>
             <div class="row">
                 <label class="col-2">Weight:</label>
-                <input class="col-4" type="text" name="pizzaweight" required>
+                <input class="col-4" type="text" name="pizzaweight" >
             </div>
             <div class="row">
                 <label class="col-2">Key ingredients:</label>
-                <textarea class="col-6" type="text" name="pizzaingredients" required></textarea>
+                <textarea class="col-6" type="text" name="pizzaingredients" ></textarea>
             </div>
 
 
@@ -58,63 +58,63 @@
                 <label class="col-3">Gluten
                     <span></span>
                 </label>
-                <input class="col-1" type="checkbox" name="allergen" value="arp" id="gluten">
+                <input class="col-1" type="checkbox" name="allergen" value="Gluten" id="gluten">
                 <label class="col-2" >Mollusc products
                     <span></span>
                 </label>
-                <input class="col-1" type="checkbox" name="allergen" value="mollusc" id="mollsc">
+                <input class="col-1" type="checkbox" name="allergen" value="Mollusc products" id="mollsc">
                 <label class="col-2">Lupin products
                     <span></span>
                 </label>
-                <input class="col-1" type="checkbox" name="allergen" value="lupin">
+                <input class="col-1" type="checkbox" name="allergen" value="Lupin products" id="lupin">
             </div>
             <div class="row">
                 <label class="col-2"></label>
                 <label class="col-3">Soya/soya products
                     <span></span>
                 </label>
-                <input class="col-1" type="checkbox" name="allergen" value="soya">
+                <input class="col-1" type="checkbox" name="allergen" value="Soya/soya products" id="soya">
                 <label class="col-2">Sulphur Dioxide
                     <span></span>
                 </label>
-                <input class="col-1" type="checkbox" name="allergen" value="sulphur">
+                <input class="col-1" type="checkbox" name="allergen" value="Sulphur Dioxide" id="sulphur">
                 <label class="col-2">Peanut products
                     <span></span>
                 </label>
-                <input class="col-1" type="checkbox" name="allergen" value="peanut">
+                <input class="col-1" type="checkbox" name="allergen" value="Peanut products" id="peanut">
             </div>
             <div class="row">
                 <label class="col-2"></label>
                 <label class="col-3">Egg/egg products
                     <span></span>
                 </label>
-                <input class="col-1" type="checkbox" name="allergen" value="egg">
+                <input class="col-1" type="checkbox" name="allergen" value="Egg/egg products" id="egg">
                 <label class="col-2">Sesame products
                     <span></span>
                 </label>
-                <input class="col-1" type="checkbox" name="allergen" value="sesame">
+                <input class="col-1" type="checkbox" name="allergen" value="Sesame products" id="sesame">
             </div>
             <div class="row">
                 <label class="col-2"></label>
                 <label class="col-3">Milk/milk products
                     <span></span>
                 </label>
-                <input class="col-1" type="checkbox" name="allergen" value="milk">
+                <input class="col-1" type="checkbox" name="allergen" value="Milk/milk products" id="milk">
                 <label class="col-2">Celery products
                     <span></span>
                 </label>
-                <input class="col-1" type="checkbox" name="allergen" value="celery">
+                <input class="col-1" type="checkbox" name="allergen" value="Celery products" id="celery">
             </div>
             <div class="row">
                 <label class="col-2"></label>
                 <label class="col-3">Fish/shellfish products
                     <span></span>
                 </label>
-                <input class="col-1" type="checkbox" name="allergen" value="fish">
+                <input class="col-1" type="checkbox" name="allergen" value="Fish/shellfish products" id="fish">
                 <label class="col-2">Mustard products
                     <span></span>
                 </label>
-                <input class="col-1" type="checkbox" name="allergen" value="mustard">
+                <input class="col-1" type="checkbox" name="allergen" value="Mustard products" id="mustard">
             </div>
 
             <div class="row top-buffer">
@@ -122,7 +122,7 @@
                     <span></span>
                 </label>
                 <div class="onoffswitch">
-                    <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" value="vegetarian" id="myonoffswitch" >
+                    <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" value="true" id="myonoffswitch" required>
                     <label class="onoffswitch-label" for="myonoffswitch">
                         <span class="onoffswitch-inner"></span>
                         <span class="onoffswitch-switch"></span>
@@ -135,7 +135,7 @@
                     <span></span>
                 </label>
                 <div class="onoffswitch1">
-                    <input type="checkbox" name="onoffswitch1" class="onoffswitch1-checkbox" value="vegan" id="myonoffswitch1" >
+                    <input type="checkbox" name="onoffswitch1" class="onoffswitch1-checkbox" value="true" id="myonoffswitch1" required>
                     <label class="onoffswitch1-label" for="myonoffswitch1">
                         <span class="onoffswitch1-inner"></span>
                         <span class="onoffswitch1-switch"></span>
@@ -146,37 +146,37 @@
                 <p>Nutritional info per slice</p>
                 <div class="row ">
                     <label class="col-2">Energy:</label>
-                    <input class="col-2" type="text" name="energy" required>
+                    <input class="col-2" type="text" name="energy" >
                     <label class="col-2">kCals</label>
                 </div>
                 <div class="row">
                     <label class="col-2">Protein:</label>
-                    <input class="col-2" type="text" name="protein" required>
+                    <input class="col-2" type="text" name="protein" >
                     <label class="col-2">g</label>
                 </div>
                 <div class="row">
                     <label class="col-2">Carbs:</label>
-                    <input class="col-2" type="text" name="carbs" required>
+                    <input class="col-2" type="text" name="carbs" >
                     <label class="col-2">g</label>
                 </div>
                 <div class="row">
                     <label class="col-2">Sugars:</label>
-                    <input class="col-2" type="text" name="sugars" required>
+                    <input class="col-2" type="text" name="sugars" >
                     <label class="col-2">g</label>
                 </div>
                 <div class="row">
                     <label class="col-2">Fat:</label>
-                    <input class="col-2" type="text" name="fat" required>
+                    <input class="col-2" type="text" name="fat" >
                     <label class="col-2">g</label>
                 </div>
                 <div class="row">
                     <label class="col-2">Saturated fat:</label>
-                    <input class="col-2" type="text" name="saturatedfat" required>
+                    <input class="col-2" type="text" name="saturatedfat" >
                     <label class="col-2">g</label>
                 </div>
                 <div class="row">
                     <label class="col-2">Salt:</label>
-                    <input class="col-2" type="text" name="salt" required>
+                    <input class="col-2" type="text" name="salt" >
                     <label class="col-2">g</label>
                 </div>
             </div>
@@ -184,37 +184,37 @@
                 <p>Nutritional info per 100g</p>
                 <div class="row">
                     <label class="col-2">Energy:</label>
-                    <input class="col-2" type="text" name="energy100" required>
+                    <input class="col-2" type="text" name="energy100" >
                     <label class="col-2">kCals</label>
                 </div>
                 <div class="row">
                     <label class="col-2">Protein:</label>
-                    <input class="col-2" type="text" name="protein100" required>
+                    <input class="col-2" type="text" name="protein100" >
                     <label class="col-2">g</label>
                 </div>
                 <div class="row">
                     <label class="col-2">Carbs:</label>
-                    <input class="col-2" type="text" name="carbs100" required>
+                    <input class="col-2" type="text" name="carbs100" >
                     <label class="col-2">g</label>
                 </div>
                 <div class="row">
                     <label class="col-2">Sugars:</label>
-                    <input class="col-2" type="text" name="sugars100" required>
+                    <input class="col-2" type="text" name="sugars100" >
                     <label class="col-2">g</label>
                 </div>
                 <div class="row">
                     <label class="col-2">Fat:</label>
-                    <input class="col-2" type="text" name="fat100" required>
+                    <input class="col-2" type="text" name="fat100" >
                     <label class="col-2">g</label>
                 </div>
                 <div class="row">
                     <label class="col-2">Saturated fat:</label>
-                    <input class="col-2" type="text" name="saturatedfat100" required>
+                    <input class="col-2" type="text" name="saturatedfat100" >
                     <label class="col-2">g</label>
                 </div>
                 <div class="row">
                     <label class="col-2">Salt:</label>
-                    <input class="col-2" type="text" name="salt100" required>
+                    <input class="col-2" type="text" name="salt100" >
                     <label class="col-2">g</label>
                 </div>
             </div>

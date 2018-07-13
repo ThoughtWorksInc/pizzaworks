@@ -2,12 +2,17 @@ package integration;
 
 import dal.PizzaService;
 import functional.helpers.DatabaseSetupRule;
+import mappers.PizzaMapper;
 import model.NutritionalValues;
 import model.Pizza;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.ClassRule;
 import org.junit.Test;
+import org.sql2o.Connection;
+import org.sql2o.Sql2o;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -25,10 +30,14 @@ public class PizzaServiceIntegrationTest {
     @ClassRule
     public static DatabaseSetupRule dbSetupRule = new DatabaseSetupRule();
 
+    private Sql2o sql2o = dbSetupRule.getSql2o();
+
+    private List<Pizza> pizzasToDelete = new ArrayList<>();
+
 
     @Before
     public void setUp() {
-        pizzaService = new PizzaService(dbSetupRule.getSql2o());
+        pizzaService = new PizzaService(sql2o);
 
     }
 
@@ -36,7 +45,7 @@ public class PizzaServiceIntegrationTest {
     public void shouldRetrievePizzas() {
 
         List<Pizza> allPizzas = pizzaService.getAllPizzas();
-        assertThat(allPizzas.size(), is(5));
+        assertThat(allPizzas.size(), is(4));
 
         Pizza veggiePizza = getPizzaByName(allPizzas, "Veggie");
         Pizza pepperoniPizza = getPizzaByName(allPizzas, "Pepperoni feast");
@@ -53,7 +62,7 @@ public class PizzaServiceIntegrationTest {
     }
 
     @Test
-    public void shouldRRetrievePizzaBySlug() {
+    public void shouldRetrievePizzaBySlug() {
         Pizza veggie = pizzaService.getPizzaBySlug("veggie").get();
         assertThat((veggie.getName()), is("Veggie"));
 
@@ -80,11 +89,27 @@ public class PizzaServiceIntegrationTest {
                 1, 1, 1, 1, 1, "all", true, false);
 
         Pizza newPizza = new Pizza("apples", UUID.randomUUID(), 12, "tomato", "apples", nutritionalValues1);
+
+        Pizza newPizza1 = new Pizza("apples1", UUID.randomUUID(), 12, "tomato", "apples", nutritionalValues1);
         pizzaService.createPizza(newPizza);
+        pizzasToDelete.add(newPizza);
+        pizzasToDelete.add(newPizza1);
+//        sql2o.open().rollback();
         List<Pizza> newPizzas = pizzaService.getAllPizzas();
-        assertThat((newPizzas.get(4).getName()), is("apples"));
         assertThat((newPizzas.size()), is(5));
+        assertThat((newPizzas.get(4).getName()), is("apples"));
+        assertThat((pizzasToDelete.get(1).getName()), is("apples1"));
+        assertThat((pizzasToDelete.size()), is(2));
 
     }
 
+    @After
+    public void after() {
+        try (Connection conn = sql2o.open()) {
+        pizzasToDelete.stream().forEach(pizza ->
+            conn.createQuery("Delete from pizza where uuid = :uuid")
+                    .addParameter("uuid", pizza.getUuid())
+                    .executeUpdate());
+        }
+    }
 }

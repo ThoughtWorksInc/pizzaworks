@@ -11,9 +11,13 @@ public class PizzaBuilder {
     private String ingredients = "ingredients";
     private String slug = "slug";
     private UUID uuid = UUID.randomUUID();
-    private NutritionalValues nutritionalValues =  new NutritionalValues(1, 1, 1, 1, 1,
+    private Boolean vegetarian = false;
+    private Boolean vegan = true;
+
+    // add vegan and vegetarian default
+    private NutritionalValues nutritionalValues = new NutritionalValues(1, 1, 1, 1, 1,
             1, 1, 1, 1, 1, 1, 1, 1,
-            1, 1, 1, "allergens", false, false);
+            1, 1, 1, "allergens", vegetarian, vegan);
 
 
     public static PizzaBuilder pizza() {
@@ -30,21 +34,31 @@ public class PizzaBuilder {
         return this;
     }
 
-    public PizzaBuilder withIngredients(String ingredients){
+    public PizzaBuilder withIngredients(String ingredients) {
         this.ingredients = ingredients;
         return this;
     }
 
-    public PizzaBuilder withSlug(String slug){
+    public PizzaBuilder withSlug(String slug) {
         this.slug = slug;
         return this;
     }
 
-    public Pizza build (){
+    public PizzaBuilder withVegetarian(Boolean vegetarian) {
+        this.vegetarian= vegetarian;
+        return this;
+    }
+
+    public PizzaBuilder withVegan(Boolean vegan) {
+        this.vegan= vegan;
+        return this;
+    }
+
+    public Pizza build() {
         return new Pizza(pizzaName, uuid, price, ingredients, slug, nutritionalValues);
     }
 
-    public PizzaBuilder withNutritionalValues (NutritionalValues nutritionalValues){
+    public PizzaBuilder withNutritionalValues(NutritionalValues nutritionalValues) {
         this.nutritionalValues = nutritionalValues;
         return this;
 

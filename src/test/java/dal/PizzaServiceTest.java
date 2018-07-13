@@ -51,33 +51,10 @@ public class PizzaServiceTest {
         verify(queryMock).executeAndFetch(PizzaDAO.class);
     }
 
-
-
-//    @Test
-//    public void shouldQueryForNewlyAddedPizzas() {
-//        when(connectionMock.createQuery(eq("select * from pizza"))).thenReturn(queryMock);
-//        when(queryMock.executeAndFetch(PizzaDAO.class)).thenReturn(Lists.newArrayList(PizzaDaoBuilder.pizzaDao().withName("test").build()));
-//        List<Pizza> allPizzas = pizzaService.getAllPizzas();
-//        assertThat(allPizzas.size(), is(1));
-//
-//        NutritionalValues nutritionalValues1 = new NutritionalValues(1,1,1,1,
-//                1,1,1,1,1,1,1,
-//                1,1,1,1,1,"all", true,true);
-//
-//
-//        Pizza pizza1 = new Pizza("apple", UUID.randomUUID(), 12, "tomato","apple", nutritionalValues1);
-//        List <Pizza> pizza = pizzaService.createPizza(pizza1);
-//        when(queryMock.executeUpdate()).thenReturn(Lists.newArrayList(PizzaDaoBuilder.pizzaDao().withName("test").build()));
-//
-//        assertThat(pizza.size(), is(2));
-//        verify(queryMock).executeAndUpdate(PizzaDAO.class);
-//    }
-
     @After
     public void validate() {
         validateMockitoUsage();
     }
-
 
 
 }
