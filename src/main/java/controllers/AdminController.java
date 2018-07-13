@@ -8,7 +8,6 @@ import spark.Request;
 import spark.Response;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
@@ -88,8 +87,8 @@ public class AdminController {
                     carbohydrate_per_100, sugars_per_100, fat_per_100, saturated_fat_per_100, salt_per_100, "all", true, false);
 
 
-            Pizza pizza1 = new Pizza(pizza_name, UUID.randomUUID(), pizza_Price, pizza_ingredients, pizzaSlug, nutritionalValues1);
-            List<Pizza> pizza = pizzaService.createPizza(pizza1);
+            Pizza newPizza = new Pizza(pizza_name, UUID.randomUUID(), pizza_Price, pizza_ingredients, pizzaSlug, nutritionalValues1);
+            pizzaService.createPizza(newPizza);
             res.redirect("/admin");
             return res;
         }

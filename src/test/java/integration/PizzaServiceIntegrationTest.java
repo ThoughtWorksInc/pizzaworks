@@ -32,7 +32,6 @@ public class PizzaServiceIntegrationTest {
 
     }
 
-
     @Test
     public void shouldRetrievePizzas() {
 
@@ -53,9 +52,6 @@ public class PizzaServiceIntegrationTest {
         assertThat(pepperoniPizza.getPrice(), is(13.99F));
     }
 
-
-
-
     @Test
     public void shouldRRetrievePizzaBySlug() {
         Pizza veggie = pizzaService.getPizzaBySlug("veggie").get();
@@ -70,26 +66,22 @@ public class PizzaServiceIntegrationTest {
     }
 
 
-
-
     @Test
-    public void shouldReturnEmptyOptionalIfNoPizzaWithSlugCanBeFound(){
+    public void shouldReturnEmptyOptionalIfNoPizzaWithSlugCanBeFound() {
         Optional<Pizza> optional = pizzaService.getPizzaBySlug("pizzadoesnotexist");
         assertFalse(optional.isPresent());
     }
 
 
     @Test
+    public void shouldRetrieveNewlyAddedPizza() {
+        NutritionalValues nutritionalValues1 = new NutritionalValues(1, 1, 1, 1,
+                1, 1, 1, 1, 1, 1, 1,
+                1, 1, 1, 1, 1, "all", true, false);
 
-    public void shouldRRetrieveNewlyAddedPizza (){
-
-        NutritionalValues nutritionalValues1 = new NutritionalValues(1,1,1,1,
-                1,1,1,1,1,1,1,
-                1,1,1,1,1,"all", true,false);
-
-
-        Pizza pizza1 = new Pizza("apples", UUID.randomUUID(), 12, "tomato","apples", nutritionalValues1);
-        List <Pizza> newPizzas = pizzaService.createPizza(pizza1);
+        Pizza newPizza = new Pizza("apples", UUID.randomUUID(), 12, "tomato", "apples", nutritionalValues1);
+        pizzaService.createPizza(newPizza);
+        List<Pizza> newPizzas = pizzaService.getAllPizzas();
         assertThat((newPizzas.get(4).getName()), is("apples"));
         assertThat((newPizzas.size()), is(5));
 
